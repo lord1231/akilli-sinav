@@ -38,6 +38,13 @@ Program ayrıntıları:
 6. Program değiştiğinde eski sürüm silinmez; yeni sürüm ayrı kaydedilir ve eski sınavların hangi sürümle üretildiği korunur.
 7. Yeni programın yürürlük tarihi ve sınıf kapsamı resmî MEB duyurusundan kontrol edilmeden otomatik etkinleştirme yapılmaz.
 
+## Depoda hazır içe aktarım dosyaları
+
+- `data/curriculum/5-matematik-tymm-2024.json`: 5. sınıf Matematik, 6 tema ve 23 öğrenme çıktısı.
+- `data/curriculum/5-sosyal-bilgiler-tymm-2024.json`: 5. sınıf Sosyal Bilgiler, 6 öğrenme alanı ve 19 öğrenme çıktısı.
+
+Bu iki dosya, yukarıdaki resmî MEB PDF programlarından alınan öğrenme çıktısı kodları ve kısa resmî açıklamalarla hazırlanmıştır. `backend/app.cli.import_curriculum` komutuyla veritabanına yüklenebilir.
+
 ## Veri durumunun dürüst gösterimi
 
 Bu depoda müfredat yönetim API'si ve yönetici veri giriş ekranı bulunur. Resmî öğrenme çıktılarının tamamı henüz veri tabanına aktarılmış değildir. Bu nedenle ders listesi boşsa sistemin eksik veri durumu saklanmamalı; yönetici önce resmî kaynaktan veri girmelidir. Eksik veya tahmin edilmiş kazanımlarla sınav üretimi yapılmamalıdır.
