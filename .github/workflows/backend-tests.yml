@@ -30,5 +30,9 @@ jobs:
         run: node --check ../frontend/app.js
       - name: Verify database migrations
         run: alembic upgrade head
+      - name: Import official curriculum seed files
+        run: |
+          python -m app.cli.import_curriculum ../data/curriculum/5-matematik-tymm-2024.json
+          python -m app.cli.import_curriculum ../data/curriculum/5-sosyal-bilgiler-tymm-2024.json
       - name: Run tests
         run: pytest -q
