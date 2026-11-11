@@ -1,6 +1,6 @@
 # Akıllı Sınav — MEB müfredat doğrulama yol haritası
 
-Son inceleme: 12 Kasım 2026  
+Son inceleme: 12 Kasım 2026 (TTKB kataloğu ve MEB 2026-2027 duyurusu canlı sayfa kontrolü)  
 Amaç: 4. ve 5. sınıflar için program sürümünü, sınıf kapsamını ve yürürlük yılını doğrulamadan kazanım verisini etkinleştirmemek.
 
 ## Resmî kaynaklar
@@ -30,6 +30,17 @@ Aşağıdaki liste, katalog arama görünümünde tespit edilen program adları/
 | 5 | Sosyal Bilgiler | Sosyal Bilgiler (4-7), 2026 kaydı katalog görünümünde | PDF/kurul kararı doğrulaması bekliyor |
 | 5 | İngilizce | İngilizce (2-8), 2025 | Sınıf bazlı yürürlük ve kapsam kontrolü bekliyor |
 | 5 | Din Kültürü ve Ahlak Bilgisi | 4-8, 2026 | 2026-2027'de 5. sınıfta uygulanacak; program PDF'si ayrıca eşleştirilmeli |
+
+## 12 Kasım 2026 canlı katalog görünümü
+
+TTKB'nin güncel [Öğretim Programları](https://mufredat.meb.gov.tr/Programlar.aspx) sayfası kontrol edildiğinde TYMM Temel Eğitim bölümünde 2026 etiketli kayıtlar arasında İlkokul Türkçe (1-4), İlkokul Matematik (1-4), Fen Bilimleri (3-8), Ortaokul Matematik (5-8), Ortaokul Türkçe (5-8) ve Sosyal Bilgiler (4-7) yer almaktadır. Aynı sayfada İngilizce (2-8) 2025; İnsan Hakları, Vatandaşlık ve Demokrasi (4. sınıf) 2024; Trafik Güvenliği (4. sınıf) 2025 olarak listelenmektedir.
+
+Bu katalog envanteri, tek başına her sınıf için yürürlük kanıtı değildir. MEB Temel Eğitim Genel Müdürlüğünün 3 Eylül 2026 tarihli 2026-2027 taslak çerçeve plan duyurusu, TYMM'nin o öğretim yılında genel uygulama kapsamını 1, 2, 3, 5, 6 ve 7. sınıflar olarak açıklamaktadır. Bu nedenle 4. sınıf derslerinde katalogda 2026 programı görünmesi, o programın 2026-2027'de 4. sınıfta uygulanacağı anlamına gelmez; ders bazlı kurul kararı ve uygulama yılı aranır.
+
+Kaynaklar:
+- TTKB güncel katalog: https://mufredat.meb.gov.tr/Programlar.aspx
+- MEB 2026-2027 taslak çerçeve plan duyurusu: https://tegm.meb.gov.tr/www/2026-2027-egitim-ogretim-yili-taslak-cerceve-planlar-yayinlandi/icerik/1316
+- TTKB'nin TYMM programlarına erişim açıklaması: https://ttkb.meb.gov.tr/www/sss.php
 
 ## Portalda görülen sınıf sayfaları
 
