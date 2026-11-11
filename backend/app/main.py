@@ -2,25 +2,27 @@ from fastapi import FastAPI, HTTPException
 from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 
+from app.api.routes import auth, exams
 from app.core.config import settings
 from app.db.session import engine
 
 app = FastAPI(
     title=settings.APP_NAME,
-    version="0.2.0",
+    version="0.3.0",
     description="MEB kazanımlarına dayalı yapay zekâ destekli sınav platformu.",
 )
+
+app.include_router(auth.router)
+app.include_router(exams.router)
 
 
 @app.get("/health", tags=["Sistem"])
 def health_check() -> dict[str, str]:
-    """Process-level health check; does not require the database."""
     return {"status": "ok", "service": "akilli-sinav-api"}
 
 
 @app.get("/health/ready", tags=["Sistem"])
 def readiness_check() -> dict[str, str]:
-    """Readiness check including PostgreSQL connectivity."""
     try:
         with engine.connect() as connection:
             connection.execute(text("SELECT 1"))
@@ -31,4 +33,4 @@ def readiness_check() -> dict[str, str]:
 
 @app.get("/", tags=["Sistem"])
 def root() -> dict[str, str]:
-    return {"message": "Akıllı Sınav API hazır.", "docs": "/docs"}
+    return {"message": "Akıllı Sınav API hazır.", "docs": "/docs", "version": app.version}
