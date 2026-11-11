@@ -28,26 +28,19 @@ Program ayrıntıları:
 
 5. sınıf matematik programında altı tema yer alır: Sayılar ve Nicelikler, İşlemlerle Cebirsel Düşünme, Geometrik Şekiller, Geometrik Nicelikler, İstatistiksel Araştırma Süreci ve Veriden Olasılığa. Sosyal Bilgiler programı 4. sınıfta ve 5. sınıfta ayrı öğrenme alanları tanımlar.
 
-## 12 Kasım 2026 katalog kontrolü: yeni sürüm uyarısı
+## 12 Kasım 2026 katalog kontrolü: sürüm uyuşmazlığı uyarısı
 
-TTKB'nin güncel program kataloğunda aşağıdaki daha yeni kayıtlar da listelenmektedir:
+TTKB katalog arama görünümünde bazı temel eğitim dersleri için 2026 tarihli kayıtlar görünmektedir: İlkokul Türkçe (1-4), İlkokul Matematik (1-4), Fen Bilimleri (3-8), Ortaokul Matematik (5-8), Ortaokul Türkçe (5-8) ve Sosyal Bilgiler (4-7). Din Kültürü ve Ahlak Bilgisi için de 2026 programı listelenmektedir.
 
-| Ders | Katalogda görünen sürüm | Kapsam | Durum |
-|---|---:|---:|---|
-| Ortaokul Matematik | 2026 | 5-8 | Yeni program kaydı; PDF ve yürürlük bilgisi doğrulanacak |
-| Ortaokul Türkçe | 2026 | 5-8 | Yeni program kaydı; PDF ve yürürlük bilgisi doğrulanacak |
-| Sosyal Bilgiler | 2026 | 4-7 | Yeni program kaydı; PDF ve yürürlük bilgisi doğrulanacak |
-| Fen Bilimleri | 2026 | 3-8 | Yeni program kaydı; PDF ve yürürlük bilgisi doğrulanacak |
-| Din Kültürü ve Ahlak Bilgisi | 2026 | 4-8 | Yeni program kaydı; PDF ve yürürlük bilgisi doğrulanacak |
-| İngilizce | 2025 | 2-8 | Program kaydı; sınıf bazlı uygulama planı doğrulanacak |
+Ancak katalog sayfasının önbelleğe alınmış metin görünümü bazı derslerde yalnızca 2024 sürümünü göstermektedir. Bu nedenle arama görünümünde görülen kayıtlar ile açılabilen program/PDF sürümü birebir eşleştirilmeden 2026 programına ait PID, kazanım kodu veya yürürlük tarihi varsayılmayacaktır.
 
-Katalog bağlantısı: https://mufredat.meb.gov.tr/Programlar.aspx
+- Güncel katalog: https://mufredat.meb.gov.tr/Programlar.aspx
+- TYMM program portalı: https://tymm.meb.gov.tr/ogretim-programlari
+- Ayrıntılı sınıf/ders takip listesi: `docs/curriculum-roadmap-2026-2027.md`
 
-Bulunan program detay sayfaları:
-- Ortaokul Matematik 2026: https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=2340
-- Ortaokul Türkçe 2026: https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=2352
+**Din Kültürü ve Ahlak Bilgisi yürürlük notu:** 2026 programına ilişkin kurul kararında 2026-2027 yılında 5, 6 ve 7. sınıflarda; 2027-2028 yılında tüm sınıf seviyelerinde uygulanacağı belirtilmektedir. Bu nedenle 4. sınıf için 2026 programı 2026-2027 yılında etkinleştirilmez. Resmî karar/PDF: https://dogm.meb.gov.tr/Programlar/Ortaokul/2026004-Dkab-orta.pdf
 
-**Önemli veri güvenliği kuralı:** Depodaki `5-matematik-tymm-2024.json` ve `5-sosyal-bilgiler-tymm-2024.json` dosyaları silinmeyecek; kendi sürüm adlarıyla tarihsel veri olarak korunacaktır. Ancak yeni 2026 katalog kayıtlarının PDF içeriği, kazanım kodları ve 2026-2027 uygulama kapsamı doğrulanmadan bu eski dosyalar güncel müfredat olarak işaretlenmeyecek; yeni program adına tahmini kazanım eklenmeyecektir. Yeni sürüm doğrulanınca ayrı JSON dosyası hazırlanıp eski sürümle yan yana tutulacaktır.
+**Veri güvenliği:** Depodaki `5-matematik-tymm-2024.json` ve `5-sosyal-bilgiler-tymm-2024.json` dosyaları tarihsel 2024 kayıtlarıdır. Yeni programın resmî PDF'si, öğrenme çıktıları ve yürürlük takvimi doğrulanmadan eski dosyalar güncel program olarak işaretlenmeyecek ve yeni sürüm adına tahmini kazanım eklenmeyecektir.
 
 ## Sisteme veri girme kuralları
 
