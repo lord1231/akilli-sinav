@@ -9,39 +9,33 @@ MEB müfredatına dayalı, Gemini API destekli ve mobil uyumlu sınav platformu.
 - Docker Compose
 - Pytest ve GitHub Actions
 
-## Yerel/cloud kurulum
-1. Depoyu çalışma ortamınıza alın.
-2. `.env.example` dosyasını `.env` olarak kopyalayın.
-3. `.env` içinde güçlü ve rastgele bir `SECRET_KEY` belirleyin. Gemini anahtarını yalnızca sunucu ortamındaki `GEMINI_API_KEY` alanına girin.
-4. Servisleri başlatın: `docker compose up --build`
-5. API belgeleri: `http://localhost:8000/docs`
-6. Uygulama sağlık kontrolü: `http://localhost:8000/health`
-7. PostgreSQL bağlantı kontrolü: `http://localhost:8000/health/ready`
+## Kurulum
+1. `.env.example` dosyasını `.env` olarak kopyalayın.
+2. Güçlü bir `SECRET_KEY`, veritabanı parolası ve sunucu ortamında `GEMINI_API_KEY` tanımlayın.
+3. `docker compose up --build` ile başlatın.
+4. API belgeleri: `/docs`; sağlık kontrolü: `/health`; DB kontrolü: `/health/ready`.
 
-Docker başlangıcında Alembic migration'ları otomatik uygulanır. Elle çalıştırmak için backend klasöründe `alembic upgrade head` komutu kullanılabilir.
+## Uygulanan API
+- Veli kaydı: `POST /api/auth/register`
+- Giriş: `POST /api/auth/login`
+- Oturum profili: `GET /api/auth/me`
+- Veli öğrenci hesabı oluşturma: `POST /api/auth/students` (açık veli onayı zorunlu)
+- Veli öğrencilerini listeleme: `GET /api/auth/students`
+- Gemini ile 25 soru üretme: `POST /api/exams/generate`
+- Sınavları listeleme/görüntüleme: `GET /api/exams`, `GET /api/exams/{id}`
+- Cevap kaydetme ve teslim: `POST /api/exams/{id}/answers/{exam_question_id}`, `POST /api/exams/{id}/submit`
+- Sonuç ve açıklamalar: `GET /api/exams/{id}/results`
 
 ## Test
-Backend klasöründe:
-```bash
-pip install -r requirements.txt
-pytest
-```
+`cd backend && pip install -r requirements.txt && pytest -q`.
+GitHub Actions, Python 3.12 ile testleri çalıştırır.
 
-GitHub Actions, backend testlerini Python 3.12 üzerinde otomatik çalıştırır.
+## Önemli durum
+Bu depo şu an backend API aşamasındadır; kullanıcı arayüzü, gerçek MEB kazanım veri aktarımı, e-posta servisi ve bulut dağıtımı henüz tamamlanmamıştır. Gemini sınav üretimi, veritabanında ilgili sınıfa ait ders/ünite/kazanım kaydı ve sunucu tarafında GEMINI_API_KEY gerektirir. Yapay zekâ soruları otomatik oluşturulsa da öğrencilere açılmadan önce öğretmen/yönetici incelemesi gerektirir.
 
-## Mevcut geliştirme
-- FastAPI başlangıç API'si ve sağlık uçları
-- PostgreSQL bağlantı katmanı
-- SQLAlchemy temel modelleri: kullanıcı, ders, ünite, kazanım, soru, sınav, sınav sorusu ve öğrenci cevabı
-- Alembic migration altyapısı ve ilk şema migration'ı
-- İlk API testleri ve CI iş akışı
-
-## Sonraki aşamalar
-Kimlik doğrulama ve rol yetkileri, veli-öğrenci ilişkilendirmesi, MEB kazanım kataloğu, Gemini ile doğrulanmış 25 soruluk sınav üretimi, sınav çözme ekranı, sonuç/başarı raporları ve e-posta bildirimleri.
-
-## Güvenlik ilkeleri
-- Gerçek API anahtarlarını, parolaları veya öğrenci kişisel verilerini GitHub'a yüklemeyin.
-- Gemini anahtarı yalnızca backend ortam değişkeninde tutulur.
-- Çocuk verileri için veri minimizasyonu, veli onayı, erişim kontrolü ve KVKK ilkeleri uygulanmalıdır.
-- Yapay zekâ tarafından üretilen sorular yayımlanmadan önce kazanım, seçenek ve doğru cevap doğrulamasından geçmelidir.
-- Resmî müfredat kaynakları ve sürümleri kayıt altında tutulmalı; telifli soru bankaları kopyalanmamalıdır.
+## Güvenlik
+- API anahtarlarını ve gerçek öğrenci verilerini Git'e yüklemeyin.
+- Öğrenci hesaplarını yalnızca veli onayıyla oluşturun.
+- Admin rolü açık kayıt endpoint'inden verilemez.
+- Çocuk verileri için KVKK, veri minimizasyonu, saklama süresi ve veli hakları ayrıca işletilmelidir.
+- MEB kazanımlarını resmî kaynak URL'si ve sürümüyle kaydedin; telifli soru bankalarını kopyalamayın.
