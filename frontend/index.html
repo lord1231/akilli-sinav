@@ -6,10 +6,10 @@
 <link rel="stylesheet" href="/app/style.css">
 </head>
 <body>
-<header><div class="brand">📘 Akıllı Sınav</div><span id="session-label">MEB uyumlu öğrenme platformu</span></header>
+<header><div class="brand">📘 Akıllı Sınav</div><span>MEB uyumlu öğrenme platformu</span></header>
 <main>
 <section id="auth-panel" class="panel">
-<h1>Hoş geldiniz</h1><p>Veli hesabınızla giriş yapın veya yeni hesap oluşturun.</p>
+<h1>Hoş geldiniz</h1><p>Veli veya öğrenci hesabınızla giriş yapın.</p>
 <div class="tabs"><button id="login-tab" class="active">Giriş yap</button><button id="register-tab">Veli kaydı</button></div>
 <form id="auth-form">
 <label>E-posta<input name="email" type="email" required autocomplete="email"></label>
@@ -20,7 +20,8 @@
 </section>
 <section id="dashboard" class="panel" hidden>
 <div class="row"><div><h1>Kontrol paneli</h1><p id="welcome"></p></div><button id="logout">Çıkış</button></div>
-<div id="parent-tools" hidden><h2>Öğrenci hesabı oluştur</h2>
+<div id="parent-tools" hidden>
+<h2>Öğrenci hesabı oluştur</h2>
 <form id="student-form">
 <label>Öğrenci adı<input name="full_name" required></label>
 <label>Öğrenci e-postası<input name="email" type="email" required></label>
@@ -28,10 +29,26 @@
 <label>Sınıf<select name="grade_level"><option value="4">4. sınıf</option><option value="5">5. sınıf</option></select></label>
 <label class="check"><input name="consent_confirmed" type="checkbox" required> Veli olarak gerekli onayı veriyorum.</label>
 <button class="primary">Öğrenci oluştur</button></form><p id="student-message"></p><h2>Öğrencilerim</h2><div id="students"></div>
+<div id="create-exam-panel" hidden><h2>Yeni sınav hazırla</h2>
+<form id="create-exam-form">
+<label>Öğrenci<select name="student_id" id="exam-student" required></select></label>
+<label>Ders<select id="exam-subject" required></select></label>
+<label>Ünite<select id="exam-unit" required></select></label>
+<label>Kazanım<select name="learning_outcome_id" id="exam-outcome" required></select></label>
+<label>Sınav adı<input name="title" value="Kazanım değerlendirme sınavı" required minlength="3"></label>
+<button class="primary">Gemini ile 25 soru hazırla</button></form><p id="exam-message"></p>
+</div></div>
+<div id="student-tools" hidden><h2>Öğrenci sınavlarım</h2><p>Sınavı açıp cevaplarını işaretle ve bitirdiğinde teslim et.</p></div>
+<div id="admin-tools" hidden><h2>Yönetici inceleme kuyruğu</h2><div id="review-queue"></div>
+<h2>Müfredat kaydı</h2><p>Ders, ünite ve kazanımları yalnızca doğrulanmış resmî MEB kaynağına dayanarak ekleyin.</p>
+<form id="subject-form"><label>Sınıf<select name="grade_level"><option value="4">4. sınıf</option><option value="5">5. sınıf</option></select></label><label>Ders adı<input name="name" required></label><label>Müfredat sürümü<input name="curriculum_version" required placeholder="Resmî program sürümü"></label><button class="primary">Ders ekle</button></form><p id="curriculum-message"></p>
+<form id="unit-form"><label>Ders<select name="subject_id" id="admin-subject" required></select></label><label>Ünite adı<input name="name" required></label><label>Sıra numarası<input name="order_no" type="number" min="1" value="1" required></label><button>Ünite ekle</button></form>
+<form id="outcome-form"><label>Ünite<select name="unit_id" id="admin-unit" required></select></label><label>Kazanım kodu<input name="code" required></label><label>Kazanım açıklaması<textarea name="description" required></textarea></label><label>Resmî kaynak URL'si<input name="source_url" type="url"></label><label>Kaynak sürümü<input name="source_version"></label><button>Kazanım ekle</button></form>
 </div>
 <h2>Sınavlar</h2><div id="exams">Sınavlar yükleniyor…</div>
+<div id="exam-workspace" class="workspace" hidden></div>
 </section>
 </main>
-<footer>Akıllı Sınav • Öğrenci verileri güvenli tutulmalıdır.</footer>
+<footer>Akıllı Sınav • Yapay zekâ ile oluşturulan sorular yönetici incelemesinden sonra yayımlanır.</footer>
 <script src="/app/app.js"></script>
 </body></html>
