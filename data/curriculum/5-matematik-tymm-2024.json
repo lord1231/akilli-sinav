@@ -1,0 +1,67 @@
+{
+  "grade_level": 5,
+  "subject_name": "Matematik",
+  "curriculum_version": "TYMM 2024",
+  "source_url": "https://mufredat.meb.gov.tr/Dosyalar/202582516434252-ortaokul%20matematik.pdf",
+  "units": [
+    {
+      "name": "Geometrik Şekiller",
+      "order_no": 1,
+      "outcomes": [
+        {"code":"MAT.5.3.1","description":"Temel geometrik çizimler için matematiksel araç ve teknolojiden yararlanabilme"},
+        {"code":"MAT.5.3.2","description":"Temel geometrik çizimlere dayalı deneyimlerini yansıtabilme"},
+        {"code":"MAT.5.3.3","description":"Açıları ölçmek için matematiksel araç ve teknolojiden yararlanabilme"},
+        {"code":"MAT.5.3.4","description":"Düzlemde iki veya üç doğrunun birbirine göre durumuna bağlı olarak oluşabilecek açılara dair çıkarım yapabilme"},
+        {"code":"MAT.5.3.5","description":"Çokgenleri düzlemde ardışık olarak kesişen doğruların oluşturduğu kapalı şekiller olarak yorumlayabilme"},
+        {"code":"MAT.5.3.6","description":"Çokgenlerin özellikleri ile ilgili edindiği deneyimleri yansıtabilme"},
+        {"code":"MAT.5.3.7","description":"Matematiksel araç ve teknoloji yardımıyla düzlemde iki noktada kesişen çember çiftinin merkezleri ve kesişim noktalarından biri ile inşa edilen üçgenlerin kenar özelliklerine yönelik muhakeme yapabilme"}
+      ]
+    },
+    {
+      "name": "Sayılar ve Nicelikler",
+      "order_no": 2,
+      "outcomes": [
+        {"code":"MAT.5.1.1","description":"Altı basamaklı sayıları okuma ve yazmayı çok basamaklı sayılara genelleyebilme"},
+        {"code":"MAT.5.1.2","description":"Doğal sayılar ve işlemler içeren gerçek yaşam problemlerini çözebilme"},
+        {"code":"MAT.5.1.3","description":"Gerçek yaşam durumlarına karşılık gelen kesirleri farklı biçimlerde temsil edebilme"},
+        {"code":"MAT.5.1.4","description":"Farklı gösterimlerle ifade edilen kesirlerin karşılaştırılmasına yönelik çıkarım yapabilme"}
+      ]
+    },
+    {
+      "name": "Geometrik Nicelikler",
+      "order_no": 3,
+      "outcomes": [
+        {"code":"MAT.5.4.1","description":"Kenar uzunlukları doğal sayı olan bir dikdörtgenin çevre uzunluğu verildiğinde kenar uzunluklarını yorumlayabilme"},
+        {"code":"MAT.5.4.2","description":"Birim karelerden yola çıkarak dikdörtgenin alanını değerlendirebilme"},
+        {"code":"MAT.5.4.3","description":"Kenar uzunlukları doğal sayı olan bir dikdörtgenin alanının ölçüsü verildiğinde çevre uzunluğunu, çevre uzunluğu verildiğinde alanını yorumlayabilme"},
+        {"code":"MAT.5.4.4","description":"Dikdörtgenin çevre uzunluğu ve alanı ile ilgili problemleri çözebilme"}
+      ]
+    },
+    {
+      "name": "İstatistiksel Araştırma Süreci",
+      "order_no": 4,
+      "outcomes": [
+        {"code":"MAT.5.5.1","description":"Kategorik veri ile çalışabilme ve veriye dayalı karar verebilme"},
+        {"code":"MAT.5.5.2","description":"Başkaları tarafından oluşturulan kategorik veriye dayalı istatistiksel sonuç veya yorumları tartışabilme"}
+      ]
+    },
+    {
+      "name": "İşlemlerle Cebirsel Düşünme",
+      "order_no": 5,
+      "outcomes": [
+        {"code":"MAT.5.2.1","description":"Eşitliğin korunumuna ve işlem özelliklerine yönelik çıkarım yapabilme"},
+        {"code":"MAT.5.2.2","description":"Karşılaştığı günlük hayat ya da matematiksel durumlarda işlem önceliğini yorumlayabilme"},
+        {"code":"MAT.5.2.3","description":"Sayı ve şekil örüntülerinin kuralına ilişkin muhakeme yapabilme"},
+        {"code":"MAT.5.2.4","description":"Temel aritmetik işlem içeren durumlardaki algoritmaları yorumlayabilme"}
+      ]
+    },
+    {
+      "name": "Veriden Olasılığa",
+      "order_no": 6,
+      "outcomes": [
+        {"code":"MAT.5.6.1","description":"Herhangi bir olayın olasılığının 0 (imkânsız) ile 1 (kesin) arasında (0 ve 1 dâhil) olduğunu (olasılık spektrumu) yorumlayabilme"},
+        {"code":"MAT.5.6.2","description":"Olayları az ya da çok olasılıklı şeklinde yapılandırabilme"}
+      ]
+    }
+  ]
+}
