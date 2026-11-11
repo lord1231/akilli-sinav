@@ -91,7 +91,7 @@ def test_generate_questions_rejects_invalid_options(monkeypatch):
 
 def test_generate_questions_rejects_duplicate_prompts(monkeypatch):
     questions = make_questions()
-    questions[1]["prompt"] = questions[0]["prompt"]
+    questions[1]["prompt"] = "  " + questions[0]["prompt"].upper().replace(" ", "   ") + "  "
     install_fake_client(monkeypatch, {"questions": questions})
 
     with pytest.raises(ValueError, match="aynı veya çok benzer"):
