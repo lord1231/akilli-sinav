@@ -1,0 +1,63 @@
+{
+  "grade_level": 5,
+  "subject_name": "Sosyal Bilgiler",
+  "curriculum_version": "TYMM 2024",
+  "source_url": "https://mufredat.meb.gov.tr/Dosyalar/202582516728345-sosyal%20bilgiler.pdf",
+  "units": [
+    {
+      "name": "Birlikte Yaşamak",
+      "order_no": 1,
+      "outcomes": [
+        {"code":"SB.5.1.1","description":"Dâhil olduğu gruplar ve bu gruplardaki rolleri arasındaki ilişkileri çözümleyebilme"},
+        {"code":"SB.5.1.2","description":"Kültürel özelliklere saygı duymanın birlikte yaşamaya etkisini yorumlayabilme"},
+        {"code":"SB.5.1.3","description":"Toplumsal birliği sürdürmeye yönelik yardımlaşma ve dayanışma faaliyetlerine katkı sağlayabilme"}
+      ]
+    },
+    {
+      "name": "Evimiz Dünya",
+      "order_no": 2,
+      "outcomes": [
+        {"code":"SB.5.2.1","description":"Yaşadığı ilin göreceli konum özelliklerini belirleyebilme"},
+        {"code":"SB.5.2.2","description":"Yaşadığı ilde doğal ve beşerî çevredeki değişimi neden ve sonuçlarıyla yorumlayabilme"},
+        {"code":"SB.5.2.3","description":"Yaşadığı ilde meydana gelebilecek afetlerin etkilerini azaltmaya yönelik farkındalık etkinlikleri düzenleyebilme"},
+        {"code":"SB.5.2.4","description":"Ülkemize komşu devletler hakkında bilgi toplayabilme"}
+      ]
+    },
+    {
+      "name": "Ortak Mirasımız",
+      "order_no": 3,
+      "outcomes": [
+        {"code":"SB.5.3.1","description":"Yaşadığı ildeki ortak miras ögelerine ilişkin oluşturduğu ürünü paylaşabilme"},
+        {"code":"SB.5.3.2","description":"Anadolu’da ilk yerleşimleri kuran toplumların sosyal hayatlarına yönelik bakış açısı geliştirebilme"},
+        {"code":"SB.5.3.3","description":"Mezopotamya ve Anadolu medeniyetlerinin ortak mirasa katkılarını karşılaştırabilme"}
+      ]
+    },
+    {
+      "name": "Yaşayan Demokrasimiz",
+      "order_no": 4,
+      "outcomes": [
+        {"code":"SB.5.4.1","description":"Demokrasi ve cumhuriyet kavramları arasındaki ilişkiyi çözümleyebilme"},
+        {"code":"SB.5.4.2","description":"Toplum düzenine etkisi bakımından etkin vatandaş olmanın önemine yönelik çıkarımda bulunabilme"},
+        {"code":"SB.5.4.3","description":"Temel insan hak ve sorumluluklarının önemini sorgulayabilme"},
+        {"code":"SB.5.4.4","description":"Bir ihtiyaç hâlinde veya sorun karşısında başvuru yapılabilecek kurumlar hakkında bilgi toplayabilme"}
+      ]
+    },
+    {
+      "name": "Hayatımızdaki Ekonomi",
+      "order_no": 5,
+      "outcomes": [
+        {"code":"SB.5.5.1","description":"Kaynakları verimli kullanmanın doğa ve insanlar üzerindeki etkisini yorumlayabilme"},
+        {"code":"SB.5.5.2","description":"İhtiyaç ve isteklerini karşılamak için gerekli bütçeyi planlayabilme"},
+        {"code":"SB.5.5.3","description":"Yaşadığı ildeki ekonomik faaliyetleri özetleyebilme"}
+      ]
+    },
+    {
+      "name": "Teknoloji ve Sosyal Bilimler",
+      "order_no": 6,
+      "outcomes": [
+        {"code":"SB.5.6.1","description":"Teknolojik gelişmelerin toplum hayatına etkilerini tartışabilme"},
+        {"code":"SB.5.6.2","description":"Teknolojik ürünlerin bilinçli kullanımının önemine ilişkin ürün oluşturabilme"}
+      ]
+    }
+  ]
+}
