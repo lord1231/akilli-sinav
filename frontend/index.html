@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#14243a"><title>Akıllı Sınav</title>
+<link rel="stylesheet" href="/app/style.css">
+</head>
+<body>
+<header><div class="brand">📘 Akıllı Sınav</div><span id="session-label">MEB uyumlu öğrenme platformu</span></header>
+<main>
+<section id="auth-panel" class="panel">
+<h1>Hoş geldiniz</h1><p>Veli hesabınızla giriş yapın veya yeni hesap oluşturun.</p>
+<div class="tabs"><button id="login-tab" class="active">Giriş yap</button><button id="register-tab">Veli kaydı</button></div>
+<form id="auth-form">
+<label>E-posta<input name="email" type="email" required autocomplete="email"></label>
+<label id="name-field" hidden>Ad soyad<input name="full_name" autocomplete="name"></label>
+<label>Parola<input name="password" type="password" required minlength="10" autocomplete="current-password"></label>
+<button class="primary" type="submit" id="auth-submit">Giriş yap</button>
+</form><p id="auth-message" role="status"></p>
+</section>
+<section id="dashboard" class="panel" hidden>
+<div class="row"><div><h1>Kontrol paneli</h1><p id="welcome"></p></div><button id="logout">Çıkış</button></div>
+<div id="parent-tools" hidden><h2>Öğrenci hesabı oluştur</h2>
+<form id="student-form">
+<label>Öğrenci adı<input name="full_name" required></label>
+<label>Öğrenci e-postası<input name="email" type="email" required></label>
+<label>Parola<input name="password" type="password" minlength="10" required></label>
+<label>Sınıf<select name="grade_level"><option value="4">4. sınıf</option><option value="5">5. sınıf</option></select></label>
+<label class="check"><input name="consent_confirmed" type="checkbox" required> Veli olarak gerekli onayı veriyorum.</label>
+<button class="primary">Öğrenci oluştur</button></form><p id="student-message"></p><h2>Öğrencilerim</h2><div id="students"></div>
+</div>
+<h2>Sınavlar</h2><div id="exams">Sınavlar yükleniyor…</div>
+</section>
+</main>
+<footer>Akıllı Sınav • Öğrenci verileri güvenli tutulmalıdır.</footer>
+<script src="/app/app.js"></script>
+</body></html>
