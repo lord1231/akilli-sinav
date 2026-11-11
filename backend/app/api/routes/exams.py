@@ -1,16 +1,17 @@
 from datetime import datetime, timezone
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_user
 from app.db.session import get_db
 from app.models import (Exam, ExamQuestion, LearningOutcome, ParentStudentLink,
-                        Question, StudentAnswer, User, Unit, Subject)
+                        Question, StudentAnswer, User, Unit, Subject, ParentStudentLink)
 from app.schemas import AnswerRequest, ExamGenerateRequest
 from app.services.question_generator import generate_questions
+from app.services.email import send_exam_result_email
 
 router = APIRouter(prefix="/api/exams", tags=["Sınavlar"])
 
@@ -171,7 +172,7 @@ def save_answer(exam_id: UUID, exam_question_id: UUID, payload: AnswerRequest,
 
 
 @router.post("/{exam_id}/submit")
-def submit_exam(exam_id: UUID, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+def submit_exam(exam_id: UUID, background_tasks: BackgroundTasks, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     exam = db.get(Exam, exam_id)
     if not exam or exam.student_id != user.id or user.role != "student":
         raise HTTPException(status_code=404, detail="Sınav bulunamadı.")
@@ -193,7 +194,13 @@ def submit_exam(exam_id: UUID, user: User = Depends(get_current_user), db: Sessi
     exam.score = round(correct * 100 / 25)
     exam.status = "completed"
     exam.completed_at = datetime.now(timezone.utc)
+    parent_emails = db.scalars(select(User.email).join(
+        ParentStudentLink, ParentStudentLink.parent_id == User.id
+    ).where(ParentStudentLink.student_id == exam.student_id,
+            ParentStudentLink.consent_confirmed.is_(True))).all()
     db.commit()
+    for email in parent_emails:
+        background_tasks.add_task(send_exam_result_email, email, exam.title, exam.score, correct, 25)
     return {"exam_id": str(exam.id), "correct": correct, "total": 25,
             "score": exam.score, "status": exam.status}
 
