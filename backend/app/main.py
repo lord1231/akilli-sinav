@@ -1,18 +1,18 @@
+from pathlib import Path
+
 from fastapi import FastAPI, HTTPException
+from fastapi.staticfiles import StaticFiles
 from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 
-from app.api.routes import auth, exams
+from app.api.routes import auth, curriculum, exams
 from app.core.config import settings
 from app.db.session import engine
 
-app = FastAPI(
-    title=settings.APP_NAME,
-    version="0.3.0",
-    description="MEB kazanımlarına dayalı yapay zekâ destekli sınav platformu.",
-)
-
+app = FastAPI(title=settings.APP_NAME, version="0.4.0",
+              description="MEB kazanımlarına dayalı yapay zekâ destekli sınav platformu.")
 app.include_router(auth.router)
+app.include_router(curriculum.router)
 app.include_router(exams.router)
 
 
@@ -33,4 +33,9 @@ def readiness_check() -> dict[str, str]:
 
 @app.get("/", tags=["Sistem"])
 def root() -> dict[str, str]:
-    return {"message": "Akıllı Sınav API hazır.", "docs": "/docs", "version": app.version}
+    return {"message": "Akıllı Sınav API hazır.", "docs": "/docs", "app": "/app/"}
+
+
+frontend_dir = Path(__file__).resolve().parents[2] / "frontend"
+if frontend_dir.exists():
+    app.mount("/app", StaticFiles(directory=frontend_dir, html=True), name="frontend")
