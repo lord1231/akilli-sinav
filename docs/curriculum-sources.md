@@ -28,6 +28,27 @@ Program ayrıntıları:
 
 5. sınıf matematik programında altı tema yer alır: Sayılar ve Nicelikler, İşlemlerle Cebirsel Düşünme, Geometrik Şekiller, Geometrik Nicelikler, İstatistiksel Araştırma Süreci ve Veriden Olasılığa. Sosyal Bilgiler programı 4. sınıfta ve 5. sınıfta ayrı öğrenme alanları tanımlar.
 
+## 12 Kasım 2026 katalog kontrolü: yeni sürüm uyarısı
+
+TTKB'nin güncel program kataloğunda aşağıdaki daha yeni kayıtlar da listelenmektedir:
+
+| Ders | Katalogda görünen sürüm | Kapsam | Durum |
+|---|---:|---:|---|
+| Ortaokul Matematik | 2026 | 5-8 | Yeni program kaydı; PDF ve yürürlük bilgisi doğrulanacak |
+| Ortaokul Türkçe | 2026 | 5-8 | Yeni program kaydı; PDF ve yürürlük bilgisi doğrulanacak |
+| Sosyal Bilgiler | 2026 | 4-7 | Yeni program kaydı; PDF ve yürürlük bilgisi doğrulanacak |
+| Fen Bilimleri | 2026 | 3-8 | Yeni program kaydı; PDF ve yürürlük bilgisi doğrulanacak |
+| Din Kültürü ve Ahlak Bilgisi | 2026 | 4-8 | Yeni program kaydı; PDF ve yürürlük bilgisi doğrulanacak |
+| İngilizce | 2025 | 2-8 | Program kaydı; sınıf bazlı uygulama planı doğrulanacak |
+
+Katalog bağlantısı: https://mufredat.meb.gov.tr/Programlar.aspx
+
+Bulunan program detay sayfaları:
+- Ortaokul Matematik 2026: https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=2340
+- Ortaokul Türkçe 2026: https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=2352
+
+**Önemli veri güvenliği kuralı:** Depodaki `5-matematik-tymm-2024.json` ve `5-sosyal-bilgiler-tymm-2024.json` dosyaları silinmeyecek; kendi sürüm adlarıyla tarihsel veri olarak korunacaktır. Ancak yeni 2026 katalog kayıtlarının PDF içeriği, kazanım kodları ve 2026-2027 uygulama kapsamı doğrulanmadan bu eski dosyalar güncel müfredat olarak işaretlenmeyecek; yeni program adına tahmini kazanım eklenmeyecektir. Yeni sürüm doğrulanınca ayrı JSON dosyası hazırlanıp eski sürümle yan yana tutulacaktır.
+
 ## Sisteme veri girme kuralları
 
 1. Ders, sınıf seviyesi ve müfredat sürümü birlikte kaydedilir.
