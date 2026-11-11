@@ -18,14 +18,14 @@ def hash_password(password: str) -> str:
 def verify_password(password: str, password_hash: str) -> bool:
     try:
         return _password_hasher.verify(password_hash, password)
-    except (VerifyMismatchError, Exception):
+    except (VerifyMismatchError, ValueError, TypeError):
         return False
 
 
 def create_access_token(user_id: UUID, role: str) -> str:
     expires = datetime.now(timezone.utc) + timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
-    payload = {"sub": str(user_id), "role": role, "exp": expires}
-    return jwt.encode(payload, settings.SECRET_KEY, algorithm=ALGORITHM)
+    return jwt.encode({"sub": str(user_id), "role": role, "exp": expires},
+                      settings.SECRET_KEY, algorithm=ALGORITHM)
 
 
 def decode_access_token(token: str) -> dict:
