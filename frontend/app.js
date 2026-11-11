@@ -28,3 +28,4 @@ if(token)dashboard();
 
 async function loadAdminUnits(subjectId){const a=await api("/api/curriculum/subjects/"+subjectId+"/units");$("admin-unit").innerHTML=a.map(x=>'<option value="'+x.id+'">'+esc(x.name)+'</option>').join("")}
 $("admin-subject").onchange=e=>loadAdminUnits(e.target.value).catch(x=>msg("curriculum-message",x.message));
+if(role==="admin"&&$("admin-subject").value)loadAdminUnits($("admin-subject").value).catch(x=>msg("curriculum-message",x.message));
