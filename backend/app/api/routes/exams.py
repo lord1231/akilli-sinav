@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 from app.api.deps import get_current_user
 from app.db.session import get_db
 from app.models import (Exam, ExamQuestion, LearningOutcome, ParentStudentLink,
-                        Question, StudentAnswer, User, Unit, Subject, ParentStudentLink)
+                        Question, StudentAnswer, User, Unit, Subject)
 from app.schemas import AnswerRequest, ExamGenerateRequest
 from app.services.question_generator import generate_questions
 from app.services.email import send_exam_result_email
