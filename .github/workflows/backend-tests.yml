@@ -14,7 +14,8 @@ jobs:
         working-directory: backend
     env:
       DATABASE_URL: sqlite:///./ci-test.db
-      SECRET_KEY: ci-only-test-secret
+      SECRET_KEY: ci-only-test-secret-for-github-actions
+      PYTHONPATH: backend
     steps:
       - name: Checkout
         uses: actions/checkout@v4
