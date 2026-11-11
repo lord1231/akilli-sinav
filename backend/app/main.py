@@ -33,7 +33,7 @@ def readiness_check() -> dict[str, str]:
 
 @app.get("/", tags=["Sistem"])
 def root() -> dict[str, str]:
-    return {"message": "Akıllı Sınav API hazır.", "docs": "/docs", "app": "/app/"}
+    return {"message": "Akıllı Sınav API hazır.", "docs": "/docs", "app": "/app/", "version": app.version}
 
 
 frontend_dir = Path(__file__).resolve().parents[2] / "frontend"
