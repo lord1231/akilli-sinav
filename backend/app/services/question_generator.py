@@ -43,7 +43,7 @@ class GeneratedExam(BaseModel):
 
 
 def _normalize_prompt(value: str) -> str:
-    return re.sub(r"\\s+", " ", value.casefold()).strip()
+    return re.sub(r"\s+", " ", value.casefold()).strip()
 
 
 def generate_questions(
