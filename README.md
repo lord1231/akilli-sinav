@@ -13,7 +13,8 @@ MEB müfredatına dayalı, Gemini API destekli ve mobil uyumlu sınav platformu.
 1. `.env.example` dosyasını `.env` olarak kopyalayın.
 2. Güçlü bir `SECRET_KEY`, veritabanı parolası ve sunucu ortamında `GEMINI_API_KEY` tanımlayın.
 3. `docker compose up --build` ile başlatın.
-4. API belgeleri: `/docs`; sağlık kontrolü: `/health`; DB kontrolü: `/health/ready`.
+4. API belgeleri: `/docs`; web arayüzü: `/app/`; sağlık kontrolü: `/health`; DB kontrolü: `/health/ready`.
+5. İlk yönetici hesabını oluşturmak için `.env` içinde `ADMIN_EMAIL`, en az 14 karakterli `ADMIN_PASSWORD` ve `ADMIN_FULL_NAME` belirleyin; ardından `docker compose exec api python -m app.cli.create_admin` komutunu çalıştırın. Yönetici parolasını kurulumdan sonra güvenli biçimde saklayın.
 
 ## Uygulanan API
 - Veli kaydı: `POST /api/auth/register`
@@ -25,13 +26,16 @@ MEB müfredatına dayalı, Gemini API destekli ve mobil uyumlu sınav platformu.
 - Sınavları listeleme/görüntüleme: `GET /api/exams`, `GET /api/exams/{id}`
 - Cevap kaydetme ve teslim: `POST /api/exams/{id}/answers/{exam_question_id}`, `POST /api/exams/{id}/submit`
 - Sonuç ve açıklamalar: `GET /api/exams/{id}/results`
+- Yönetici inceleme kuyruğu: `GET /api/exams/review-queue`; yayımlama: `POST /api/exams/{id}/approve`
+- Veli başarı raporu: `GET /api/auth/students/{student_id}/progress`
+- E-posta bildirimi: sınav tesliminden sonra SMTP ayarları tanımlıysa veliye otomatik bildirim
 
 ## Test
 `cd backend && pip install -r requirements.txt && pytest -q`.
 GitHub Actions, Python 3.12 ile testleri çalıştırır.
 
 ## Önemli durum
-Bu depo şu an backend API aşamasındadır; kullanıcı arayüzü, gerçek MEB kazanım veri aktarımı, e-posta servisi ve bulut dağıtımı henüz tamamlanmamıştır. Gemini sınav üretimi, veritabanında ilgili sınıfa ait ders/ünite/kazanım kaydı ve sunucu tarafında GEMINI_API_KEY gerektirir. Yapay zekâ soruları otomatik oluşturulsa da öğrencilere açılmadan önce öğretmen/yönetici incelemesi gerektirir.
+Mobil uyumlu web arayüzü, veli/öğrenci/yönetici ekranları, sınav akışı, yönetici soru incelemesi ve isteğe bağlı SMTP bildirim kodu eklenmiştir. Resmî MEB öğrenme çıktılarının tamamının aktarımı, canlı Gemini/SMTP doğrulaması ve bulut dağıtımı henüz tamamlanmamıştır. Müfredat kaynağı ve sürüm politikası için `docs/curriculum-sources.md` dosyasına bakın. Gemini sınav üretimi, veritabanında ilgili sınıfa ait ders/ünite/kazanım kaydı ve sunucu tarafında GEMINI_API_KEY gerektirir. Yapay zekâ soruları otomatik oluşturulsa da öğrencilere açılmadan önce öğretmen/yönetici incelemesi gerektirir.
 
 ## Güvenlik
 - API anahtarlarını ve gerçek öğrenci verilerini Git'e yüklemeyin.
