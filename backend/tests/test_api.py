@@ -20,6 +20,12 @@ def test_health_endpoint() -> None:
     assert response.json()["status"] == "ok"
 
 
+def test_frontend_is_served() -> None:
+    response = client.get("/app/")
+    assert response.status_code == 200
+    assert "Akıllı Sınav" in response.text
+
+
 def test_auth_routes_are_registered() -> None:
     response = client.post("/api/auth/login", json={"email": "bad@example.com", "password": "wrong"})
     assert response.status_code == 401
@@ -73,6 +79,10 @@ def test_parent_can_create_student_only_with_consent() -> None:
     students = client.get("/api/auth/students", headers=headers)
     assert students.status_code == 200
     assert len(students.json()) == 1
+    student_id = created.json()["id"]
+    progress = client.get("/api/auth/students/" + student_id + "/progress", headers=headers)
+    assert progress.status_code == 200
+    assert progress.json()["completed_exam_count"] == 0
 
 
 def test_curriculum_write_requires_admin() -> None:
@@ -80,3 +90,15 @@ def test_curriculum_write_requires_admin() -> None:
         "grade_level": 4, "name": "Matematik", "curriculum_version": "test"
     })
     assert response.status_code == 401
+
+
+def test_curriculum_import_rejects_non_meb_source() -> None:
+    response = client.post("/api/curriculum/import", json={
+        "grade_level": 5,
+        "subject_name": "Matematik",
+        "curriculum_version": "TYMM 2024",
+        "source_url": "https://example.com/fake-curriculum.pdf",
+        "units": [{"name": "Sayılar", "order_no": 1,
+                   "outcomes": [{"code": "MAT.5.1.1", "description": "Örnek kazanım açıklaması."}]}]
+    })
+    assert response.status_code == 422
