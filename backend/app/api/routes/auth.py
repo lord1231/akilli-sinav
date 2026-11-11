@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -5,7 +7,8 @@ from sqlalchemy.orm import Session
 from app.api.deps import get_current_user
 from app.core.security import create_access_token, hash_password, verify_password
 from app.db.session import get_db
-from app.models import ParentStudentLink, User
+from app.models import (Exam, ExamQuestion, LearningOutcome, ParentStudentLink,
+                        Question, StudentAnswer, User)
 from app.schemas import CreateStudent, LoginRequest, RegisterParent, TokenResponse, UserResponse
 
 router = APIRouter(prefix="/api/auth", tags=["Kimlik doğrulama"])
@@ -60,5 +63,53 @@ def create_student(payload: CreateStudent, parent: User = Depends(get_current_us
 def list_my_students(parent: User = Depends(get_current_user), db: Session = Depends(get_db)):
     if parent.role != "parent":
         raise HTTPException(status_code=403, detail="Yalnızca veliler erişebilir.")
-    return list(db.scalars(select(User).join(ParentStudentLink, ParentStudentLink.student_id == User.id)
-                            .where(ParentStudentLink.parent_id == parent.id)).all())
+    return list(db.scalars(select(User).join(
+        ParentStudentLink, ParentStudentLink.student_id == User.id
+    ).where(ParentStudentLink.parent_id == parent.id,
+            ParentStudentLink.consent_confirmed.is_(True))).all())
+
+
+@router.get("/students/{student_id}/progress")
+def student_progress(student_id: UUID, parent: User = Depends(get_current_user),
+                     db: Session = Depends(get_db)):
+    if parent.role != "parent":
+        raise HTTPException(status_code=403, detail="Yalnızca veliler erişebilir.")
+    linked = db.scalar(select(ParentStudentLink.id).where(
+        ParentStudentLink.parent_id == parent.id,
+        ParentStudentLink.student_id == student_id,
+        ParentStudentLink.consent_confirmed.is_(True)))
+    if not linked:
+        raise HTTPException(status_code=404, detail="Öğrenci bulunamadı.")
+    exams = db.scalars(select(Exam).where(
+        Exam.student_id == student_id, Exam.status == "completed"
+    ).order_by(Exam.completed_at.desc())).all()
+    scores = [exam.score for exam in exams if exam.score is not None]
+    rows = db.execute(
+        select(LearningOutcome.code, LearningOutcome.description, StudentAnswer.is_correct)
+        .join(Question, Question.learning_outcome_id == LearningOutcome.id)
+        .join(ExamQuestion, ExamQuestion.question_id == Question.id)
+        .join(Exam, Exam.id == ExamQuestion.exam_id)
+        .outerjoin(StudentAnswer, StudentAnswer.exam_question_id == ExamQuestion.id)
+        .where(Exam.student_id == student_id, Exam.status == "completed")
+    ).all()
+    outcome_stats = {}
+    for code, description, is_correct in rows:
+        stat = outcome_stats.setdefault(code, {"code": code, "description": description,
+                                               "answered": 0, "correct": 0})
+        if is_correct is not None:
+            stat["answered"] += 1
+            stat["correct"] += int(is_correct)
+    outcomes = []
+    for stat in outcome_stats.values():
+        stat["success_rate"] = round(100 * stat["correct"] / stat["answered"]) if stat["answered"] else 0
+        outcomes.append(stat)
+    outcomes.sort(key=lambda x: x["success_rate"])
+    return {
+        "student_id": str(student_id),
+        "completed_exam_count": len(exams),
+        "average_score": round(sum(scores) / len(scores)) if scores else None,
+        "recent_exams": [{"title": e.title, "score": e.score,
+                          "completed_at": e.completed_at.isoformat() if e.completed_at else None}
+                         for e in exams[:10]],
+        "learning_outcomes": outcomes,
+    }
