@@ -28,5 +28,7 @@ jobs:
           pip install -r requirements.txt
       - name: Check frontend JavaScript syntax
         run: node --check ../frontend/app.js
+      - name: Verify database migrations
+        run: alembic upgrade head
       - name: Run tests
         run: pytest -q
