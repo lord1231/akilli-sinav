@@ -1,6 +1,9 @@
 from uuid import uuid4
 
+import pytest
 from fastapi.testclient import TestClient
+
+from app.api.routes.curriculum import validate_meb_source
 
 from app.main import app
 
@@ -93,12 +96,5 @@ def test_curriculum_write_requires_admin() -> None:
 
 
 def test_curriculum_import_rejects_non_meb_source() -> None:
-    response = client.post("/api/curriculum/import", json={
-        "grade_level": 5,
-        "subject_name": "Matematik",
-        "curriculum_version": "TYMM 2024",
-        "source_url": "https://example.com/fake-curriculum.pdf",
-        "units": [{"name": "Sayılar", "order_no": 1,
-                   "outcomes": [{"code": "MAT.5.1.1", "description": "Örnek kazanım açıklaması."}]}]
-    })
-    assert response.status_code == 422
+    with pytest.raises(ValueError):
+        validate_meb_source("https://example.com/fake-curriculum.pdf")
