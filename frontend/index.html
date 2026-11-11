@@ -40,10 +40,15 @@
 </div></div>
 <div id="student-tools" hidden><h2>Öğrenci sınavlarım</h2><p>Sınavı açıp cevaplarını işaretle ve bitirdiğinde teslim et.</p></div>
 <div id="admin-tools" hidden><h2>Yönetici inceleme kuyruğu</h2><div id="review-queue"></div>
-<h2>Müfredat kaydı</h2><p>Ders, ünite ve kazanımları yalnızca doğrulanmış resmî MEB kaynağına dayanarak ekleyin.</p>
+<h2>Toplu MEB müfredatı aktarımı</h2>
+<p>Resmî kaynaktan doğruladığınız ders, ünite ve kazanımları JSON olarak içe aktarabilirsiniz.</p>
+<form id="curriculum-import-form">
+<label>Program JSON verisi<textarea name="payload" rows="8" required placeholder='{"grade_level":5,"subject_name":"Matematik","curriculum_version":"TYMM 2024","source_url":"https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=1978","units":[{"name":"Sayılar ve Nicelikler","order_no":1,"outcomes":[{"code":"MAT.5.1.1","description":"Resmî programdan doğrulanmış öğrenme çıktısı açıklaması"}]}]}'></textarea></label>
+<button class="primary">Müfredatı içe aktar</button></form><p id="import-message"></p>
+<h2>Tek tek müfredat kaydı</h2><p>Ders, ünite ve kazanımları yalnızca doğrulanmış resmî MEB kaynağına dayanarak ekleyin.</p>
 <form id="subject-form"><label>Sınıf<select name="grade_level"><option value="4">4. sınıf</option><option value="5">5. sınıf</option></select></label><label>Ders adı<input name="name" required></label><label>Müfredat sürümü<input name="curriculum_version" required placeholder="Resmî program sürümü"></label><button class="primary">Ders ekle</button></form><p id="curriculum-message"></p>
 <form id="unit-form"><label>Ders<select name="subject_id" id="admin-subject" required></select></label><label>Ünite adı<input name="name" required></label><label>Sıra numarası<input name="order_no" type="number" min="1" value="1" required></label><button>Ünite ekle</button></form>
-<form id="outcome-form"><label>Ünite<select name="unit_id" id="admin-unit" required></select></label><label>Kazanım kodu<input name="code" required></label><label>Kazanım açıklaması<textarea name="description" required></textarea></label><label>Resmî kaynak URL'si<input name="source_url" type="url"></label><label>Kaynak sürümü<input name="source_version"></label><button>Kazanım ekle</button></form>
+<form id="outcome-form"><label>Ünite<select name="unit_id" id="admin-unit" required></select></label><label>Kazanım kodu<input name="code" required></label><label>Kazanım açıklaması<textarea name="description" required></textarea></label><label>Resmî kaynak URL'si<input name="source_url" type="url" required></label><label>Kaynak sürümü<input name="source_version" required></label><button>Kazanım ekle</button></form>
 </div>
 <h2>Sınavlar</h2><div id="exams">Sınavlar yükleniyor…</div>
 <div id="exam-workspace" class="workspace" hidden></div>
