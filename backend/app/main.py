@@ -1,16 +1,32 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
+from sqlalchemy import text
+from sqlalchemy.exc import SQLAlchemyError
+
 from app.core.config import settings
+from app.db.session import engine
 
 app = FastAPI(
     title=settings.APP_NAME,
-    version="0.1.0",
+    version="0.2.0",
     description="MEB kazanımlarına dayalı yapay zekâ destekli sınav platformu.",
 )
 
 
 @app.get("/health", tags=["Sistem"])
 def health_check() -> dict[str, str]:
+    """Process-level health check; does not require the database."""
     return {"status": "ok", "service": "akilli-sinav-api"}
+
+
+@app.get("/health/ready", tags=["Sistem"])
+def readiness_check() -> dict[str, str]:
+    """Readiness check including PostgreSQL connectivity."""
+    try:
+        with engine.connect() as connection:
+            connection.execute(text("SELECT 1"))
+    except SQLAlchemyError as exc:
+        raise HTTPException(status_code=503, detail="Veritabanına erişilemiyor.") from exc
+    return {"status": "ready", "database": "connected"}
 
 
 @app.get("/", tags=["Sistem"])
