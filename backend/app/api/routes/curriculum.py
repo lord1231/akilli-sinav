@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field
+from uuid import UUID
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -17,13 +18,13 @@ class SubjectInput(BaseModel):
 
 
 class UnitInput(BaseModel):
-    subject_id: str
+    subject_id: UUID
     name: str = Field(min_length=2, max_length=160)
     order_no: int = Field(ge=1)
 
 
 class OutcomeInput(BaseModel):
-    unit_id: str
+    unit_id: UUID
     code: str = Field(min_length=2, max_length=80)
     description: str = Field(min_length=10)
     source_url: str | None = None
@@ -46,13 +47,13 @@ def list_subjects(grade: int | None = None, db: Session = Depends(get_db)):
 
 
 @router.get("/subjects/{subject_id}/units")
-def list_units(subject_id: str, db: Session = Depends(get_db)):
+def list_units(subject_id: UUID, db: Session = Depends(get_db)):
     rows = db.scalars(select(Unit).where(Unit.subject_id == subject_id).order_by(Unit.order_no)).all()
     return [{"id": str(x.id), "name": x.name, "order_no": x.order_no} for x in rows]
 
 
 @router.get("/units/{unit_id}/outcomes")
-def list_outcomes(unit_id: str, db: Session = Depends(get_db)):
+def list_outcomes(unit_id: UUID, db: Session = Depends(get_db)):
     rows = db.scalars(select(LearningOutcome).where(LearningOutcome.unit_id == unit_id)).all()
     return [{"id": str(x.id), "code": x.code, "description": x.description,
              "source_url": x.source_url, "source_version": x.source_version} for x in rows]
