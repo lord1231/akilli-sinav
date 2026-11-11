@@ -36,6 +36,8 @@ def root() -> dict[str, str]:
     return {"message": "Akıllı Sınav API hazır.", "docs": "/docs", "app": "/app/", "version": app.version}
 
 
-frontend_dir = Path(__file__).resolve().parents[2] / "frontend"\nif not frontend_dir.exists():\n    frontend_dir = Path(__file__).resolve().parents[1] / "frontend"
+frontend_dir = Path(__file__).resolve().parents[2] / "frontend"
+if not frontend_dir.exists():
+    frontend_dir = Path(__file__).resolve().parents[1] / "frontend"
 if frontend_dir.exists():
     app.mount("/app", StaticFiles(directory=frontend_dir, html=True), name="frontend")
