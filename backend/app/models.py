@@ -35,7 +35,7 @@ class ParentStudentLink(Base):
 
 class Subject(Base):
     __tablename__ = "subjects"
-    __table_args__ = (UniqueConstraint("grade_level", "name", name="uq_subject_grade_name"),)
+    __table_args__ = (UniqueConstraint("grade_level", "name", "curriculum_version", name="uq_subject_grade_name_version"),)
 
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
     grade_level: Mapped[int] = mapped_column(Integer, index=True)
