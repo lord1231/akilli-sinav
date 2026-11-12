@@ -29,6 +29,7 @@ Gizli anahtarları sohbet mesajlarına, GitHub deposuna veya istemci tarafı Jav
 - Ters vekil aynı makinedeyse `API_PORT=127.0.0.1:8000` kullanarak Docker portunu yalnızca yerel arayüze bağlayın.
 - PostgreSQL portunu internete açmayın. Compose dosyasında veritabanı için host portu yayımlanmamaktadır.
 - HTTPS sertifikasının geçerli olduğunu ve ters vekilin HTTP isteklerini HTTPS'ye yönlendirdiğini doğrulayın.
+- API konteyneri root olmayan `appuser` kullanıcısıyla, salt okunur kök dosya sistemi ve sınırlı geçici alanla çalışır; Linux capabilities kaldırılır ve `no-new-privileges` etkinleştirilir. Docker sağlık kontrolü `/health/ready` uç noktasını izler.
 - Üretimde Swagger/OpenAPI dokümantasyon uç noktaları kapalıdır. Güvenlik başlıkları ve API yanıtları için `no-store` önbellek politikası etkinleştirilir.
 
 ## 3. Başlatma
