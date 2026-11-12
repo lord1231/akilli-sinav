@@ -1,0 +1,80 @@
+{
+  "grade_level": 5,
+  "subject_name": "Müzik",
+  "curriculum_version": "TYMM 2025",
+  "source_url": "https://tymm.meb.gov.tr/upload/program/muzik-dersi-programi-tegm.pdf",
+  "units": [
+    {
+      "name": "Müzik Dili",
+      "order_no": 1,
+      "outcomes": [
+        {
+          "code": "MÜZ.5.1.1",
+          "description": "İstiklâl Marşı’nı ezgisine dikkat ederek söyleyebilme."
+        },
+        {
+          "code": "MÜZ.5.1.2",
+          "description": "Farklı türdeki eserleri söyleyebilme."
+        },
+        {
+          "code": "MÜZ.5.1.3",
+          "description": "Belirli gün ve haftalarla ilgili eserleri söyleyebilme."
+        },
+        {
+          "code": "MÜZ.5.1.4",
+          "description": "Ortak repertuvardaki eserleri söyleyebilme."
+        },
+        {
+          "code": "MÜZ.5.1.5",
+          "description": "Müzik eserlerine bedensel hareketlerle eşlik edebilme."
+        },
+        {
+          "code": "MÜZ.5.1.6",
+          "description": "Müzik yazısını çözümleyebilme."
+        },
+        {
+          "code": "MÜZ.5.1.7",
+          "description": "Güzel sanatlarla ilgili kavramları sınıflandırabilme."
+        }
+      ]
+    },
+    {
+      "name": "Müzik Kültürü",
+      "order_no": 2,
+      "outcomes": [
+        {
+          "code": "MÜZ.5.2.1",
+          "description": "Atatürk’ün güzel sanatlara verdiği önemi özetleyebilme."
+        },
+        {
+          "code": "MÜZ.5.2.2",
+          "description": "Farklı türdeki eserleri söyleyebilme."
+        },
+        {
+          "code": "MÜZ.5.2.3",
+          "description": "Nefesli çalgıların özelliklerini karşılaştırabilme."
+        },
+        {
+          "code": "MÜZ.5.2.4",
+          "description": "Klavyeli çalgıların özelliklerini karşılaştırabilme."
+        },
+        {
+          "code": "MÜZ.5.2.5",
+          "description": "Belirli gün ve haftalarla ilgili eserleri söyleyebilme."
+        },
+        {
+          "code": "MÜZ.5.2.6",
+          "description": "Popüler müzik türlerini karşılaştırabilme."
+        },
+        {
+          "code": "MÜZ.5.2.7",
+          "description": "Ortak repertuvardaki eserleri söyleyebilme."
+        },
+        {
+          "code": "MÜZ.5.2.8",
+          "description": "Müzik eserlerine bedensel hareketlerle eşlik edebilme."
+        }
+      ]
+    }
+  ]
+}
