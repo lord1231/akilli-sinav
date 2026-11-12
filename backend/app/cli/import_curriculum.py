@@ -9,11 +9,8 @@ from app.db.session import SessionLocal
 from app.models import LearningOutcome, Subject, Unit
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description="MEB müfredat JSON aktarımı")
-    parser.add_argument("file", help="JSON dosyasının yolu")
-    args = parser.parse_args()
-    payload = CurriculumImport.model_validate_json(Path(args.file).read_text(encoding="utf-8"))
+def import_file(file_path: str | Path) -> tuple[int, int]:
+    payload = CurriculumImport.model_validate_json(Path(file_path).read_text(encoding="utf-8"))
     db = SessionLocal()
     units_added = 0
     outcomes_added = 0
@@ -63,7 +60,15 @@ def main() -> None:
         raise
     finally:
         db.close()
-    print(f"Aktarım tamamlandı: {units_added} yeni ünite, {outcomes_added} yeni kazanım.")
+    print(f"{Path(file_path).name}: {units_added} yeni ünite, {outcomes_added} yeni kazanım.")
+    return units_added, outcomes_added
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="MEB müfredat JSON aktarımı")
+    parser.add_argument("file", help="JSON dosyasının yolu")
+    args = parser.parse_args()
+    import_file(args.file)
 
 
 if __name__ == "__main__":
