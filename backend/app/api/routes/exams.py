@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from uuid import UUID
 
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
@@ -19,6 +19,15 @@ router = APIRouter(prefix="/api/exams", tags=["Sınavlar"])
 
 def student_can_open_exam(status: str) -> bool:
     return status in {"published", "completed"}
+
+
+def exam_deadline(exam: Exam) -> datetime | None:
+    if exam.started_at is None:
+        return None
+    started = exam.started_at
+    if started.tzinfo is None:
+        started = started.replace(tzinfo=timezone.utc)
+    return started + timedelta(minutes=exam.duration_minutes or 30)
 
 
 def student_question_payload(exam_question: ExamQuestion, question: Question) -> dict:
@@ -174,10 +183,25 @@ def get_exam(exam_id: UUID, user: User = Depends(get_current_user), db: Session 
         raise HTTPException(status_code=404, detail="Sınav bulunamadı.")
     if not student_can_open_exam(exam.status) and user.role != "admin":
         raise HTTPException(status_code=409, detail="Sınav henüz yayımlanmadı veya erişime kapatıldı.")
+    if user.role == "student" and exam.status == "published" and exam.started_at is None:
+        exam.started_at = datetime.now(timezone.utc)
+        db.commit()
+        db.refresh(exam)
     rows = db.execute(select(ExamQuestion, Question).join(
         Question, Question.id == ExamQuestion.question_id
     ).where(ExamQuestion.exam_id == exam.id).order_by(ExamQuestion.position)).all()
+    saved = {}
+    if user.role == "student":
+        for eq, _question in rows:
+            answer = db.scalar(select(StudentAnswer).where(StudentAnswer.exam_question_id == eq.id))
+            if answer and answer.selected_option:
+                saved[str(eq.id)] = answer.selected_option
+    deadline = exam_deadline(exam)
     return {"id": str(exam.id), "title": exam.title, "status": exam.status,
+            "duration_minutes": exam.duration_minutes,
+            "started_at": exam.started_at.isoformat() if exam.started_at else None,
+            "deadline_at": deadline.isoformat() if deadline else None,
+            "saved_answers": saved,
             "questions": [student_question_payload(eq, q) for eq, q in rows]}
 
 
@@ -189,6 +213,9 @@ def save_answer(exam_id: UUID, exam_question_id: UUID, payload: AnswerRequest,
         raise HTTPException(status_code=404, detail="Sınav bulunamadı.")
     if exam.status != "published":
         raise HTTPException(status_code=409, detail="Sınav cevap kabul etmiyor.")
+    deadline = exam_deadline(exam)
+    if deadline and datetime.now(timezone.utc) >= deadline:
+        raise HTTPException(status_code=409, detail="Sınav süresi doldu. Cevaplarınız teslim ediliyor.")
     eq = db.get(ExamQuestion, exam_question_id)
     if not eq or eq.exam_id != exam.id:
         raise HTTPException(status_code=404, detail="Soru bulunamadı.")
