@@ -1,0 +1,256 @@
+{
+  "grade_level": 4,
+  "subject_name": "İngilizce",
+  "curriculum_version": "MEB 2018 (2026-2027 uygulama kontrolü; 2025 güncellemesi 4. sınıfta henüz kademeli uygulamaya alınmadı)",
+  "source_url": "https://mufredat.meb.gov.tr/Dosyalar/201812411191321-%C4%B0NG%C4%B0L%C4%B0ZCE%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI%20Klas%C3%B6r%C3%BC.pdf",
+  "units": [
+    {
+      "name": "Classroom Rules",
+      "order_no": 1,
+      "outcomes": [
+        {
+          "code": "E4.1.L1",
+          "description": "Students will be able to understand short and clear utterances about requests."
+        },
+        {
+          "code": "E4.1.L2",
+          "description": "Students will be able to understand short and clear utterances about permission."
+        },
+        {
+          "code": "E4.1.L3",
+          "description": "Students will be able to recognize simple classroom instructions."
+        },
+        {
+          "code": "E4.1.L4",
+          "description": "Students will be able to recognize numbers from one to fifty."
+        },
+        {
+          "code": "E4.1.S1",
+          "description": "Students will be able to interact with their classmates through asking for and giving permission in short utterances."
+        },
+        {
+          "code": "E4.1.S2",
+          "description": "Students will be able to make requests by using simple utterances."
+        },
+        {
+          "code": "E4.1.S3",
+          "description": "Students will be able to give and respond to simple instructions verbally."
+        },
+        {
+          "code": "E4.1.S4",
+          "description": "Students will be able to count up to fifty."
+        }
+      ]
+    },
+    {
+      "name": "Nationality",
+      "order_no": 2,
+      "outcomes": [
+        {
+          "code": "E4.2.L1",
+          "description": "Students will be able to recognize information about other people."
+        },
+        {
+          "code": "E4.2.L2",
+          "description": "Students will be able to identify different people’s nationalities."
+        },
+        {
+          "code": "E4.2.S1",
+          "description": "Students will be able to talk about nationalities."
+        },
+        {
+          "code": "E4.2.S2",
+          "description": "Students will be able to talk about locations of cities."
+        }
+      ]
+    },
+    {
+      "name": "Cartoon Characters",
+      "order_no": 3,
+      "outcomes": [
+        {
+          "code": "E4.3.L1",
+          "description": "Students will be able to get the main idea of a simple oral text about the abilities of self and others."
+        },
+        {
+          "code": "E4.3.L2",
+          "description": "Students will be able to recognize possessions of others in a clear, short and slow oral text."
+        },
+        {
+          "code": "E4.3.S1",
+          "description": "Students will be able to talk about their own and others’ possessions."
+        },
+        {
+          "code": "E4.3.S2",
+          "description": "Students will be able to deliver a simple, brief speech about abilities with an initial preparation."
+        }
+      ]
+    },
+    {
+      "name": "Free Time",
+      "order_no": 4,
+      "outcomes": [
+        {
+          "code": "E4.4.L1",
+          "description": "Students will be able to understand the general information in an oral text about likes and dislikes."
+        },
+        {
+          "code": "E4.4.S1",
+          "description": "Students will be able to talk about their likes and dislikes."
+        },
+        {
+          "code": "E4.4.S2",
+          "description": "Students will be able to engage in simple conversations about likes and dislikes."
+        },
+        {
+          "code": "E4.4.S3",
+          "description": "Students will be able to ask for clarification in conversations."
+        }
+      ]
+    },
+    {
+      "name": "My Day",
+      "order_no": 5,
+      "outcomes": [
+        {
+          "code": "E4.5.L1",
+          "description": "Students will be able to understand the general and specific information in a short, oral text about daily routines."
+        },
+        {
+          "code": "E4.5.L2",
+          "description": "Students will be able to recognize the time in a short oral text."
+        },
+        {
+          "code": "E4.5.S1",
+          "description": "Students will be able to talk about their daily routines."
+        },
+        {
+          "code": "E4.5.S2",
+          "description": "Students will be able to talk about the time."
+        }
+      ]
+    },
+    {
+      "name": "Fun with Science",
+      "order_no": 6,
+      "outcomes": [
+        {
+          "code": "E4.6.L1",
+          "description": "Students will be able to understand and follow simple instructions."
+        },
+        {
+          "code": "E4.6.L2",
+          "description": "Students will be able to recognize phrases/descriptions about locations."
+        },
+        {
+          "code": "E4.6.S1",
+          "description": "Students will be able to give short and basic instructions."
+        },
+        {
+          "code": "E4.6.S2",
+          "description": "Students will be able to talk about locations of objects."
+        },
+        {
+          "code": "E4.6.S3",
+          "description": "Students will be able to ask and answer simple clarification questions."
+        }
+      ]
+    },
+    {
+      "name": "Jobs",
+      "order_no": 7,
+      "outcomes": [
+        {
+          "code": "E4.7.L1",
+          "description": "Students will be able to identify other people’s jobs and likes in a short, simple oral text."
+        },
+        {
+          "code": "E4.7.S1",
+          "description": "Students will be able to talk about other people’s jobs and likes in simple conversations."
+        }
+      ]
+    },
+    {
+      "name": "My Clothes",
+      "order_no": 8,
+      "outcomes": [
+        {
+          "code": "E4.8.L1",
+          "description": "Students will be able to understand short oral texts about weather conditions and clothing."
+        },
+        {
+          "code": "E4.8.L2",
+          "description": "Students will be able to recognize the names of the seasons and clothes in short oral texts."
+        },
+        {
+          "code": "E4.8.S1",
+          "description": "Students will be able to describe the weather conditions."
+        },
+        {
+          "code": "E4.8.S2",
+          "description": "Students will be able to name the seasons."
+        },
+        {
+          "code": "E4.8.S3",
+          "description": "Students will be able to ask and answer simple questions about weather conditions and clothing items in simple conversations."
+        },
+        {
+          "code": "E4.8.S4",
+          "description": "Students will be able to make simple request about borrowing."
+        }
+      ]
+    },
+    {
+      "name": "My Friends",
+      "order_no": 9,
+      "outcomes": [
+        {
+          "code": "E4.9.L1",
+          "description": "Students will be able to understand the main point in short, clear, simple messages and announcements (e.g. describing people and their features)."
+        },
+        {
+          "code": "E4.9.L2",
+          "description": "Students will be able to understand short, oral texts about possessions."
+        },
+        {
+          "code": "E4.9.S1",
+          "description": "Students will be able to describe their friends and other people (family members, teachers, etc.)."
+        },
+        {
+          "code": "E4.9.S2",
+          "description": "Students will be able to ask and answer questions about other people’s physical characteristics."
+        },
+        {
+          "code": "E4.9.S3",
+          "description": "Students will be able to talk about possessions."
+        }
+      ]
+    },
+    {
+      "name": "Food and Drinks",
+      "order_no": 10,
+      "outcomes": [
+        {
+          "code": "E4.10.L1",
+          "description": "Students will be able to recognize simple words and phrases about food and drinks."
+        },
+        {
+          "code": "E4.10.L2",
+          "description": "Students will be able to understand the offers about their basic needs."
+        },
+        {
+          "code": "E4.10.L3",
+          "description": "Students will be able to identify others’ needs and feelings in simple oral texts."
+        },
+        {
+          "code": "E4.10.S1",
+          "description": "Students will be able to talk about their basic needs and feelings."
+        },
+        {
+          "code": "E4.10.S2",
+          "description": "Students will be able to express others’ feelings and their needs."
+        }
+      ]
+    }
+  ]
+}
