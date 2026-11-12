@@ -12,7 +12,7 @@ from app.core.security import create_access_token, hash_password, verify_passwor
 from app.core.config import settings
 from app.db.session import get_db
 from app.models import (Exam, ExamQuestion, LearningOutcome, ParentStudentLink,
-                        PasswordResetToken, Question, StudentAnswer, Subject, User)
+                        PasswordResetToken, Question, StudentAnswer, Subject, Unit, User)
 from app.services.email import send_password_reset_email
 from app.core.rate_limit import limiter
 from app.schemas import (CreateStudent, ForgotPasswordRequest, LoginRequest,
