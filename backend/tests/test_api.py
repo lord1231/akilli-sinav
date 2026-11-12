@@ -42,6 +42,8 @@ def test_protected_profile_requires_token() -> None:
 def test_exam_routes_are_registered() -> None:
     response = client.get("/api/exams")
     assert response.status_code == 401
+    rejected = client.post("/api/exams/" + str(uuid4()) + "/reject", json={"reason": "Kalite kontrolü başarısız."})
+    assert rejected.status_code == 401
 
 
 def test_parent_registration_and_login() -> None:
@@ -120,3 +122,11 @@ def test_official_meb_sources_are_accepted(url: str) -> None:
 def test_unsafe_or_non_official_sources_are_rejected(url: str) -> None:
     with pytest.raises(ValueError):
         validate_meb_source(url)
+
+
+def test_exam_rejection_reason_validation() -> None:
+    from app.schemas import ExamRejectRequest
+
+    assert ExamRejectRequest(reason="  Eksik kazanım  ").reason == "Eksik kazanım"
+    with pytest.raises(Exception):
+        ExamRejectRequest(reason="   ")
