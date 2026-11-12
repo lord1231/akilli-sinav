@@ -192,3 +192,21 @@ def student_progress(student_id: UUID, parent: User = Depends(get_current_user),
                          for e in exams[:10]],
         "learning_outcomes": outcomes,
     }
+
+
+@router.get("/students/{student_id}/progress.pdf")
+def download_student_progress_pdf(student_id: UUID, parent: User = Depends(get_current_user),
+                                 db: Session = Depends(get_db)):
+    from fastapi.responses import Response
+    from app.services.pdf_reports import build_parent_progress_pdf
+
+    if parent.role != "parent":
+        raise HTTPException(status_code=403, detail="Yalnızca veliler erişebilir.")
+    progress = student_progress(student_id, parent, db)
+    student = db.get(User, student_id)
+    pdf = build_parent_progress_pdf(student_name=student.full_name, progress=progress)
+    return Response(
+        content=pdf,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f'attachment; filename="ogrenci-gelisim-{student_id}.pdf"'},
+    )
