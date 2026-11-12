@@ -9,7 +9,7 @@ from app.api.deps import get_current_user
 from app.db.session import get_db
 from app.models import (Exam, ExamQuestion, LearningOutcome, ParentStudentLink,
                         Question, StudentAnswer, User, Unit, Subject)
-from app.schemas import AnswerRequest, ExamGenerateRequest
+from app.schemas import AnswerRequest, ExamGenerateRequest, ExamRejectRequest
 from app.services.question_generator import generate_questions
 from app.services.email import send_exam_result_email
 
@@ -116,6 +116,21 @@ def approve_exam(exam_id: UUID, user: User = Depends(get_current_user),
     exam.status = "published"
     db.commit()
     return {"id": str(exam.id), "status": exam.status, "question_count": 25}
+
+
+@router.post("/{exam_id}/reject")
+def reject_exam(exam_id: UUID, payload: ExamRejectRequest,
+                user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    require_admin(user)
+    exam = db.get(Exam, exam_id)
+    if not exam:
+        raise HTTPException(status_code=404, detail="Sınav bulunamadı.")
+    if exam.status != "pending_review":
+        raise HTTPException(status_code=409, detail="Yalnızca incelemedeki sınav reddedilebilir.")
+    exam.status = "rejected"
+    exam.review_note = payload.reason
+    db.commit()
+    return {"id": str(exam.id), "status": exam.status, "review_note": exam.review_note}
 
 
 @router.get("")
