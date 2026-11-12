@@ -35,5 +35,6 @@ jobs:
           python -m app.cli.import_curriculum ../data/curriculum/5-matematik-tymm-2024.json
           python -m app.cli.import_curriculum ../data/curriculum/5-sosyal-bilgiler-tymm-2024.json
           python -m app.cli.import_curriculum ../data/curriculum/5-fen-bilimleri-tymm-2024.json
+          python -m app.cli.import_curriculum ../data/curriculum/5-turkce-tymm-2024.json
       - name: Run tests
         run: pytest -q
