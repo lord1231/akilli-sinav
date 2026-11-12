@@ -58,6 +58,7 @@ class Settings(BaseSettings):
             app_url.scheme != "https"
             or not app_url.hostname
             or app_url.hostname.lower() in {"localhost", "127.0.0.1", "::1"}
+            or app_url.hostname.lower().endswith((".example", ".invalid", ".test"))
             or app_url.username
             or app_url.password
         ):
