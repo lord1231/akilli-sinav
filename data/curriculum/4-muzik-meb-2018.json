@@ -1,0 +1,116 @@
+{
+  "grade_level": 4,
+  "subject_name": "Müzik",
+  "curriculum_version": "MEB 2018 (2026-2027)",
+  "source_url": "https://mufredat.meb.gov.tr/Dosyalar/2018129173048695-1-8%20M%C3%BCzik%20%C3%96%C4%9Fretim%20Program%C4%B1%2020180123.pdf",
+  "units": [
+    {
+      "name": "Dinleme-Söyleme",
+      "order_no": 1,
+      "outcomes": [
+        {
+          "code": "Mü.4.A.1",
+          "description": "Birlikte söyleme kurallarına uyar."
+        },
+        {
+          "code": "Mü.4.A.2",
+          "description": "İstiklâl Marşı’nı doğru söylemeye özen gösterir."
+        },
+        {
+          "code": "Mü.4.A.3",
+          "description": "Farklı ritmik yapıdaki ezgileri seslendirir."
+        },
+        {
+          "code": "Mü.4.A.4",
+          "description": "Belirli gün ve haftaların anlamına uygun müzikler söyler."
+        },
+        {
+          "code": "Mü.4.A.5",
+          "description": "Müzik çalışmalarını sergiler."
+        }
+      ]
+    },
+    {
+      "name": "Müziksel Algı ve Bilgilenme",
+      "order_no": 2,
+      "outcomes": [
+        {
+          "code": "Mü.4.B.1",
+          "description": "Temel müzik yazı ve öğelerini tanır."
+        },
+        {
+          "code": "Mü.4.B.2",
+          "description": "Müzikteki ses yüksekliklerini grafikle gösterir."
+        },
+        {
+          "code": "Mü.4.B.3",
+          "description": "Şarkı, türkü ve oyun müziklerinde hız değişikliklerini fark eder."
+        },
+        {
+          "code": "Mü.4.B.4",
+          "description": "Öğrendiği seslerin temel özelliklerini ayırt eder."
+        },
+        {
+          "code": "Mü.4.B.5",
+          "description": "Dinlediği müziklerdeki gürlük değişikliklerini fark eder."
+        },
+        {
+          "code": "Mü.4.B.6",
+          "description": "Temel müzik yazı ve öğelerini (yükseklik, süre, hız, gürlük) bilişim destekli müzik teknolojilerini kullanarak ayırt eder."
+        }
+      ]
+    },
+    {
+      "name": "Müziksel Yaratıcılık",
+      "order_no": 3,
+      "outcomes": [
+        {
+          "code": "Mü.4.C.1",
+          "description": "Dinlediği müziklerle ilgili duygu ve düşüncelerini ifade eder."
+        },
+        {
+          "code": "Mü.4.C.2",
+          "description": "Müziklere kendi oluşturduğu ritim kalıpları ile eşlik eder."
+        },
+        {
+          "code": "Mü.4.C.3",
+          "description": "Kendi oluşturduğu ezgileri seslendirir."
+        },
+        {
+          "code": "Mü.4.C.4",
+          "description": "Farklı ritmik yapıdaki ezgilere uygun hareket eder."
+        },
+        {
+          "code": "Mü.4.C.5",
+          "description": "Müziklerde aynı ve farklı ezgi cümlelerini dansa dönüştürür."
+        }
+      ]
+    },
+    {
+      "name": "Müzik Kültürü",
+      "order_no": 4,
+      "outcomes": [
+        {
+          "code": "Mü.4.D.1",
+          "description": "Müzik arşivi oluşturmanın önemini fark eder."
+        },
+        {
+          "code": "Mü.4.D.2",
+          "description": "Sınıfça ortak müzik arşivi oluşturur."
+        },
+        {
+          "code": "Mü.4.D.3",
+          "description": "Farklı türlerdeki müzikleri dinleyerek müzik kültürünü geliştirir."
+        },
+        {
+          "code": "Mü.4.D.4",
+          "description": "Öğrenilen müzikler aracılığıyla millî ve manevi bilinç kazanır."
+        },
+        {
+          "code": "Mü.4.D.5",
+          "description": "Çevresindeki müzik etkinliklerine katılır."
+        }
+      ]
+    }
+  ]
+}
