@@ -1,86 +1,59 @@
 # MEB müfredat kaynakları ve veri giriş standardı
 
-Son kontrol: 12 Kasım 2026. Bu belge, kaynak envanteridir; resmî programların yerine geçmez.
+Son kontrol: 12 Kasım 2026. Bu belge resmî programların yerine geçmez; kaynak ve sürüm envanteridir.
 
 ## 2026-2027 uygulama notu
 
-MEB Türkiye Yüzyılı Maarif Modeli temel eğitim taslak yıllık planları sayfası, 2026-2027 yılında modelin 1, 2, 3, 5, 6 ve 7. sınıflarda uygulanacağını belirtir. Bu nedenle 4. sınıfı tüm dersler için otomatik olarak TYMM kabul etmeyin. 4. sınıfta ders bazında yürürlükteki program ve varsa özel güncelleme ayrıca doğrulanmalıdır.
+TYMM'nin genel uygulama kapsamı 2026-2027 yılında 1, 2, 3, 5, 6 ve 7. sınıflardır. 4. sınıfta mevcut programlar devam eder. Ders bazlı güncellemeler ayrıca kontrol edilmelidir.
 
 Resmî kaynaklar:
-- TYMM temel eğitim taslak yıllık planları: https://tymm.meb.gov.tr/taslak-cerceve-planlari/temel-egitim
-- TTKB öğretim programları kataloğu: https://mufredat.meb.gov.tr/Programlar.aspx
-- TYMM program arayüzü: https://tymm.meb.gov.tr/ogretim-programlari
+- TTKB kataloğu: https://mufredat.meb.gov.tr/Programlar.aspx
+- TYMM temel eğitim planları: https://tymm.meb.gov.tr/taslak-cerceve-planlari/temel-egitim
+- TTKB SSS: https://ttkb.meb.gov.tr/www/sss.php
 
-## Doğrulanmış örnek program kayıtları
+## Eklenen 4. sınıf kaydı
 
-| Ders | Sınıf kapsamı | Resmî program kaydı |
-|---|---:|---|
-| Ortaokul Matematik | 5-8 | TYMM 2024, PID 1978 |
-| Ortaokul Türkçe | 5-8 | TYMM 2024, PID 1979 |
-| Sosyal Bilgiler | 4-7 | TYMM 2024, PID 1981 |
-| İngilizce | 2-8 | TYMM 2025; 5. sınıf standart İngilizce programı, PID 1903 |
-| Din Kültürü ve Ahlak Bilgisi | 4-8 | TYMM 2026; 5. sınıf 2026-2027 uygulaması |
+### Sosyal Bilgiler — MEB 2018
 
-Program ayrıntıları:
-- Matematik: https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=1978
-- Türkçe: https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=1979
-- Sosyal Bilgiler: https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=1981
-- Matematik PDF: https://mufredat.meb.gov.tr/Dosyalar/202582516434252-ortaokul%20matematik.pdf
-- Sosyal Bilgiler PDF: https://mufredat.meb.gov.tr/Dosyalar/202582516728345-sosyal%20bilgiler.pdf
-- 5. sınıf İngilizce programı: https://tymm.meb.gov.tr/ogretim-programlari/ingilizce-dersi-temel-egitim/6
-- TTKB İngilizce program kaydı (PID 1903): https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=1903
-- TTKB'nin 13 Ağustos 2025 tarihli İngilizce program güncelleme duyurusu: https://ttkb.meb.gov.tr/www/ingilizce-dersi-ogretim-programlarinda-guncelleme-yapildi/icerik/795
-- DKAB 2026 kurul kararı ve PDF: https://dogm.meb.gov.tr/Programlar/Ortaokul/2026004-Dkab-orta.pdf
+Resmî 2018 programının 4. sınıf kazanımları yedi öğrenme alanında 33 kayıt olarak data/curriculum/4-sosyal-bilgiler-meb-2018.json dosyasına aktarılmıştır: Birey ve Toplum; Kültür ve Miras; İnsanlar, Yerler ve Çevreler; Bilim, Teknoloji ve Toplum; Üretim, Dağıtım ve Tüketim; Etkin Vatandaşlık; Küresel Bağlantılar.
 
-5. sınıf matematik programında altı tema yer alır: Sayılar ve Nicelikler, İşlemlerle Cebirsel Düşünme, Geometrik Şekiller, Geometrik Nicelikler, İstatistiksel Araştırma Süreci ve Veriden Olasılığa. Sosyal Bilgiler programı 4. sınıfta ve 5. sınıfta ayrı öğrenme alanları tanımlar.
+Kaynak PDF: https://mufredat.meb.gov.tr/Dosyalar/201812103847686-SOSYAL%20B%C4%B0LG%C4%B0LER%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI%20.pdf
 
-## 12 Kasım 2026 katalog kontrolü: sürüm uyuşmazlığı uyarısı
+## 4. sınıf için diğer resmî kaynaklar
 
-TTKB katalog arama görünümünde bazı temel eğitim dersleri için 2026 tarihli kayıtlar görünmektedir: İlkokul Türkçe (1-4), İlkokul Matematik (1-4), Fen Bilimleri (3-8), Ortaokul Matematik (5-8), Ortaokul Türkçe (5-8) ve Sosyal Bilgiler (4-7). Din Kültürü ve Ahlak Bilgisi için de 2026 programı listelenmektedir.
+- Türkçe 2019: https://mufredat.meb.gov.tr/Dosyalar/20195716392253-02-T%C3%BCrk%C3%A7e%20%C3%96%C4%9Fretim%20Program%C4%B1%202019.pdf
+- Matematik 2018: https://mufredat.meb.gov.tr/Dosyalar/201813017165445-MATEMAT%C4%B0K%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI%202018v.pdf
+- Fen Bilimleri 2018: https://mufredat.meb.gov.tr/Dosyalar/201812312311937-FEN%20B%C4%B0L%C4%B0MLER%C4%B0%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI2018.pdf
+- İngilizce 2025 güncellemesi: https://ttkb.meb.gov.tr/www/ingilizce-dersi-ogretim-programlarinda-guncelleme-yapildi/icerik/795
+- İngilizce 4. sınıf portalı: https://tymm.meb.gov.tr/ogretim-programlari/ingilizce-dersi-temel-egitim/5
+- DKAB 2026: https://mufredat.meb.gov.tr/Dosyalar/202631310725635-dkab48.pdf
+- Trafik Güvenliği 4. sınıf: https://tymm.meb.gov.tr/ogretim-programlari/ders/trafik-guvenligi-dersi
 
-Ancak katalog sayfasının önbelleğe alınmış metin görünümü bazı derslerde yalnızca 2024 sürümünü göstermektedir. Bu nedenle arama görünümünde görülen kayıtlar ile açılabilen program/PDF sürümü birebir eşleştirilmeden 2026 programına ait PID, kazanım kodu veya yürürlük tarihi varsayılmayacaktır.
+**DKAB yürürlük ayrımı:** 2026 DKAB programı 2026-2027'de 5, 6 ve 7. sınıflarda; tüm sınıf seviyelerinde 2027-2028'de uygulanacaktır. Bu nedenle 2026-2027 4. sınıf veri seti olarak 2026 programı kullanılmamalıdır.
 
-- Güncel katalog: https://mufredat.meb.gov.tr/Programlar.aspx
-- TYMM program portalı: https://tymm.meb.gov.tr/ogretim-programlari
-- Ayrıntılı sınıf/ders takip listesi: `docs/curriculum-roadmap-2026-2027.md`
+## 5. sınıf program kayıtları
 
-**Din Kültürü ve Ahlak Bilgisi yürürlük notu:** 2026 programına ilişkin kurul kararında 2026-2027 yılında 5, 6 ve 7. sınıflarda; 2027-2028 yılında tüm sınıf seviyelerinde uygulanacağı belirtilmektedir. Bu nedenle 4. sınıf için 2026 programı 2026-2027 yılında etkinleştirilmez. Resmî karar/PDF: https://dogm.meb.gov.tr/Programlar/Ortaokul/2026004-Dkab-orta.pdf
+- Matematik TYMM 2024: https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=1978
+- Türkçe TYMM 2024: https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=1979
+- Sosyal Bilgiler TYMM 2024: https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=1981
+- İngilizce 5. sınıf: https://tymm.meb.gov.tr/ogretim-programlari/ingilizce-dersi-temel-egitim/6
+- DKAB 2026: https://dogm.meb.gov.tr/Programlar/Ortaokul/2026004-Dkab-orta.pdf
 
-**Veri güvenliği:** Depodaki `5-matematik-tymm-2024.json` ve `5-sosyal-bilgiler-tymm-2024.json` dosyaları tarihsel 2024 kayıtlarıdır. Yeni programın resmî PDF'si, öğrenme çıktıları ve yürürlük takvimi doğrulanmadan eski dosyalar güncel program olarak işaretlenmeyecek ve yeni sürüm adına tahmini kazanım eklenmeyecektir.
+## Veri giriş kuralları
 
-## Sisteme veri girme kuralları
+1. Ders, sınıf seviyesi, sürüm ve yürürlük yılı birlikte kaydedilir.
+2. Ünite/tema, kazanım kodu ve açıklama resmî kaynaktan doğrulanır.
+3. Her veri dosyası resmî HTTPS MEB kaynağına işaret eder.
+4. Telifli soru bankaları veya ders kitabı soruları kopyalanmaz; doğrulanmış kazanımlardan özgün soru üretilir.
+5. Program değişince eski sürüm silinmez; yeni sürüm ayrı dosya olarak eklenir.
+6. Yürürlük tarihi kesinleşmeden otomatik sınav üretimi etkinleştirilmez.
 
-1. Ders, sınıf seviyesi ve müfredat sürümü birlikte kaydedilir.
-2. Ünite/tema adı, kazanım/öğrenme çıktısı kodu ve açıklaması resmî programdan doğrulanır.
-3. Her öğrenme çıktısına resmî MEB kaynak URL'si ve sürüm bilgisi eklenir.
-4. Programdaki kod ve açıklama aynen doğrulanmadan yapay zekâya soru ürettirilmez.
-5. Telifli soru bankaları, ders kitabı soruları veya yayımlanmış örnek sorular kopyalanmaz. Sistem yalnızca doğrulanmış öğrenme çıktısına dayalı özgün soru üretir.
-6. Program değiştiğinde eski sürüm silinmez; yeni sürüm ayrı kaydedilir ve eski sınavların hangi sürümle üretildiği korunur.
-7. Yeni programın yürürlük tarihi ve sınıf kapsamı resmî MEB duyurusundan kontrol edilmeden otomatik etkinleştirme yapılmaz.
+## Veri envanteri
 
-## 5. sınıf İngilizce — TYMM 2025
-
-TTKB, standart İngilizce Dersi (2-8. sınıflar) programı ile Çoklu Yabancı Dil Eğitim Modeli İngilizce programını 2025-2026'dan itibaren kademeli uygulanmak üzere ayrı programlar olarak kabul etmiştir. Bu projede standart İngilizce programının 5. sınıf portalı esas alınmıştır; özel çoklu yabancı dil modeli bu dosyayla karıştırılmamıştır. Portalda sekiz tema yer alır: School Life, Classroom Life, Personal Life, Family Life, Life in the Neighbourhood & City, Life in the World, Life in Nature ve Life in the Universe & Future. JSON'daki 184 açıklama, temalara ait resmî öğrenme çıktılarının beceri odaklı Türkçe özetleridir; alt süreç bileşenlerinin birebir aktarımı değildir.
-
-- 5. sınıf İngilizce temaları: https://tymm.meb.gov.tr/ogretim-programlari/ingilizce-dersi-temel-egitim/6
-- Standart ve çoklu yabancı dil programlarının 2025 güncellemesi: https://ttkb.meb.gov.tr/www/ingilizce-dersi-ogretim-programlarinda-guncelleme-yapildi/icerik/795
-
-## 5. sınıf Din Kültürü ve Ahlak Bilgisi — TYMM 2026
-
-Talim ve Terbiye Kurulunun 3 Mart 2026 tarihli karar eki, 4-8. sınıflar DKAB programının 2026-2027'de 5, 6 ve 7. sınıflarda; 2027-2028'de tüm sınıf seviyelerinde uygulanacağını belirtir. 5. sınıf portalında Allah İnancı, Namaz, Kur’an-ı Kerim, Peygamber Kıssaları ve Mimarimizde Dinî Motifler üniteleri yer alır. Bu dosyaya beş ünite ve 18 öğrenme çıktısı kısa açıklamalarla aktarılmıştır.
-
-- Kurul kararı ve program PDF: https://dogm.meb.gov.tr/Programlar/Ortaokul/2026004-Dkab-orta.pdf
-- 5. sınıf program sayfası: https://tymm.meb.gov.tr/ogretim-programlari/din-kulturu-ve-ahlak-bilgisi-dersi-temel-egitim/6
-
-## Depoda hazır içe aktarım dosyaları
-
-- `data/curriculum/5-matematik-tymm-2024.json`: 5. sınıf Matematik, 6 tema ve 23 öğrenme çıktısı.
-- `data/curriculum/5-sosyal-bilgiler-tymm-2024.json`: 5. sınıf Sosyal Bilgiler, 6 öğrenme alanı ve 19 öğrenme çıktısı.
-- `data/curriculum/5-ingilizce-tymm-2025.json`: 5. sınıf standart İngilizce, 8 tema ve 184 beceri odaklı öğrenme çıktısı özeti.
-- `data/curriculum/5-dkab-tymm-2026.json`: 5. sınıf Din Kültürü ve Ahlak Bilgisi, 5 ünite ve 18 öğrenme çıktısı.
-
-Bu iki dosya, yukarıdaki resmî MEB PDF programlarından alınan öğrenme çıktısı kodları ve kısa resmî açıklamalarla hazırlanmıştır. `backend/app.cli.import_curriculum` komutuyla veritabanına yüklenebilir.
-
-## Veri durumunun dürüst gösterimi
-
-Bu depoda müfredat yönetim API'si ve yönetici veri giriş ekranı bulunur. Resmî öğrenme çıktılarının tamamı henüz veri tabanına aktarılmış değildir. Bu nedenle ders listesi boşsa sistemin eksik veri durumu saklanmamalı; yönetici önce resmî kaynaktan veri girmelidir. Eksik veya tahmin edilmiş kazanımlarla sınav üretimi yapılmamalıdır.
+- data/curriculum/4-sosyal-bilgiler-meb-2018.json: 4. sınıf Sosyal Bilgiler, 7 öğrenme alanı ve 33 kazanım.
+- data/curriculum/5-matematik-tymm-2024.json
+- data/curriculum/5-sosyal-bilgiler-tymm-2024.json
+- data/curriculum/5-fen-bilimleri-tymm-2024.json
+- data/curriculum/5-turkce-tymm-2024.json
+- data/curriculum/5-ingilizce-tymm-2025.json
+- data/curriculum/5-dkab-tymm-2026.json
