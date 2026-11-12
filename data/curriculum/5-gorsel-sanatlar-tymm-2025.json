@@ -1,0 +1,90 @@
+{
+  "grade_level": 5,
+  "subject_name": "Görsel Sanatlar",
+  "curriculum_version": "TYMM 2025",
+  "source_url": "https://tymm.meb.gov.tr/upload/program/gorsel-sanatlar-ogretim-programi-temel-egitim.pdf",
+  "units": [
+    {
+      "name": "Hayat ve Sanat",
+      "order_no": 1,
+      "outcomes": [
+        {
+          "code": "GS.5.1.1",
+          "description": "Edebî metinlerden ve yazı düzeninden faydalanarak çevre duyarlılığını yansıtan resimleme yapabilme."
+        }
+      ]
+    },
+    {
+      "name": "Sanatın Görsel Dili",
+      "order_no": 2,
+      "outcomes": [
+        {
+          "code": "GS.5.2.1",
+          "description": "Anadolu Türk kültürüne ait motiflerdeki görsel mesajları okuyabilme."
+        },
+        {
+          "code": "GS.5.2.2",
+          "description": "Anadolu Türk kültürüne ait estetik motiflerle kolaj yapabilme."
+        }
+      ]
+    },
+    {
+      "name": "Sanatçılar ve Eserleri",
+      "order_no": 3,
+      "outcomes": [
+        {
+          "code": "GS.5.3.1",
+          "description": "Geleneksel minyatürlerle minyatür etkisi taşıyan çağdaş sanat eserlerini karşılaştırmalı olarak inceleyebilme."
+        },
+        {
+          "code": "GS.5.3.2",
+          "description": "Tarihî ve mitolojik konularda minyatür özelliği gösteren sanatsal üretim yapabilme."
+        }
+      ]
+    },
+    {
+      "name": "Çizim ve Görsel İfade",
+      "order_no": 4,
+      "outcomes": [
+        {
+          "code": "GS.5.4.1",
+          "description": "Doğal nesnelerin doku özelliklerini yansıtan desen yapabilme."
+        }
+      ]
+    },
+    {
+      "name": "Renk ve Estetik",
+      "order_no": 5,
+      "outcomes": [
+        {
+          "code": "GS.5.5.1",
+          "description": "Doğal ve yapay nesnelerin doku özelliklerini yansıtan iki renkli natürmort yapabilme."
+        }
+      ]
+    },
+    {
+      "name": "Millî Değerler ve Sanat",
+      "order_no": 6,
+      "outcomes": [
+        {
+          "code": "GS.5.6.1",
+          "description": "Millî bayramlarla ilgili değerleri geleneksel çocuk oyunlarıyla ilişkilendirerek sanatsal üretim yapabilme."
+        }
+      ]
+    },
+    {
+      "name": "Müze ve Kültür",
+      "order_no": 7,
+      "outcomes": [
+        {
+          "code": "GS.5.7.1",
+          "description": "Sergileme mekânlarına göre müzeleri karşılaştırabilme."
+        },
+        {
+          "code": "GS.5.7.2",
+          "description": "Okulunda arkeoloji müzesi yapabilme."
+        }
+      ]
+    }
+  ]
+}
