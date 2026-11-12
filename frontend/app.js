@@ -29,6 +29,14 @@ async function openExam(id){
  html+='<button class="primary" id="submit-exam">Sınavı teslim et</button></form>';
  $("exam-workspace").innerHTML=html;$("exam-workspace").hidden=false;
  const form=$("answer-form"),pending=new Set(),failed=new Map();let submitted=false;
+ for(const q of data.questions){
+  const local=sessionStorage.getItem("exam-pending-"+id+"-"+q.id);
+  if(local&&["A","B","C","D"].includes(local)){
+   const radio=form.querySelector('input[name="'+q.id+'"][value="'+local+'"]');
+   if(radio)radio.checked=true;
+   failed.set(q.id,local);
+  }
+ }
  async function saveChoice(questionId,choice){
   pending.add(questionId);$("save-status").textContent="Kaydediliyor…";
   try{await api("/api/exams/"+id+"/answers/"+questionId,{method:"POST",body:JSON.stringify({selected_option:choice})});failed.delete(questionId);sessionStorage.removeItem("exam-pending-"+id+"-"+questionId)}
