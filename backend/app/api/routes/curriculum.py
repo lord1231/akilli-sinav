@@ -16,10 +16,15 @@ OFFICIAL_MEB_HOSTS = {"tymm.meb.gov.tr", "mufredat.meb.gov.tr", "dogm.meb.gov.tr
 
 def validate_meb_source(value: str) -> str:
     parsed = urlparse(value)
-    if (parsed.scheme != "https" or parsed.hostname not in OFFICIAL_MEB_HOSTS\n            or parsed.username or parsed.password or parsed.port not in (None, 443)):
+    if (
+        parsed.scheme != "https"
+        or parsed.hostname not in OFFICIAL_MEB_HOSTS
+        or parsed.username
+        or parsed.password
+        or parsed.port not in (None, 443)
+    ):
         raise ValueError("Kaynak yalnızca HTTPS kullanan resmî TYMM, MEB müfredat veya Din Öğretimi Genel Müdürlüğü alan adlarından biri olabilir.")
     return value
-
 
 class SubjectInput(BaseModel):
     grade_level: int = Field(ge=4, le=5)
