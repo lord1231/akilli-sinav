@@ -14,7 +14,7 @@ MEB müfredatına dayalı, Gemini API destekli ve mobil uyumlu sınav platformu.
 2. Güçlü bir `SECRET_KEY`, veritabanı parolası ve sunucu ortamında `GEMINI_API_KEY` tanımlayın.
 3. `docker compose up --build` ile başlatın.
 4. API belgeleri: `/docs`; web arayüzü: `/app/`; sağlık kontrolü: `/health`; DB kontrolü: `/health/ready`.
-5. Hazır doğrulanmış 5. sınıf Matematik programını içe aktarmak için `docker compose exec api python -m app.cli.import_curriculum data/curriculum/5-matematik-tymm-2024.json` komutunu çalıştırın. Bu dosya MEB'in resmî TYMM 2024 programından derlenmiştir. 5. sınıf Sosyal Bilgiler için `docker compose exec api python -m app.cli.import_curriculum data/curriculum/5-sosyal-bilgiler-tymm-2024.json` komutuyla ikinci programı da aktarabilirsiniz.
+5. sınıf müfredat dosyalarını ayrı ayrı içe aktarın: `docker compose exec api python -m app.cli.import_curriculum data/curriculum/5-matematik-tymm-2024.json`, `docker compose exec api python -m app.cli.import_curriculum data/curriculum/5-sosyal-bilgiler-tymm-2024.json`, `docker compose exec api python -m app.cli.import_curriculum data/curriculum/5-fen-bilimleri-tymm-2024.json` ve `docker compose exec api python -m app.cli.import_curriculum data/curriculum/5-turkce-tymm-2024.json`. Dosyalar resmî TYMM 2024 program sayfalarından derlenmiştir; yeni program/yürürlük kararları ayrıca doğrulanmalıdır.
 6. İlk yönetici hesabını oluşturmak için `.env` içinde `ADMIN_EMAIL`, en az 14 karakterli `ADMIN_PASSWORD` ve `ADMIN_FULL_NAME` belirleyin; ardından `docker compose exec api python -m app.cli.create_admin` komutunu çalıştırın. Yönetici parolasını kurulumdan sonra güvenli biçimde saklayın.
 
 ## Uygulanan API
