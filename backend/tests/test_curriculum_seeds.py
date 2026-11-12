@@ -10,6 +10,7 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 CURRICULUM_DIR = REPOSITORY_ROOT / "data" / "curriculum"
 SEED_GRADES = {
     "4-sosyal-bilgiler-meb-2018.json": 4,
+    "4-matematik-meb-2018.json": 4,
     "5-matematik-tymm-2024.json": 5,
     "5-sosyal-bilgiler-tymm-2024.json": 5,
     "5-fen-bilimleri-tymm-2024.json": 5,
@@ -34,6 +35,8 @@ def test_curriculum_seed_matches_import_schema_and_official_source(
     assert payload.units
     if filename == "4-sosyal-bilgiler-meb-2018.json":
         assert sum(len(unit.outcomes) for unit in payload.units) == 33
+    if filename == "4-matematik-meb-2018.json":
+        assert sum(len(unit.outcomes) for unit in payload.units) == 71
 
     unit_names = [unit.name for unit in payload.units]
     unit_orders = [unit.order_no for unit in payload.units]
