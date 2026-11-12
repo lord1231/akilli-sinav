@@ -103,6 +103,28 @@ def test_parent_can_create_student_only_with_consent() -> None:
     assert report.headers["content-type"] == "application/pdf"
     assert report.content.startswith(b"%PDF")
 
+    unrelated_email = f"unrelated-{uuid4()}@example.com"
+    client.post("/api/auth/register", json={
+        "email": unrelated_email, "password": "Long-Test-Password-2026", "full_name": "Diğer Veli"
+    })
+    unrelated_token = client.post("/api/auth/login", json={
+        "email": unrelated_email, "password": "Long-Test-Password-2026"
+    }).json()["access_token"]
+    unrelated_headers = {"Authorization": f"Bearer {unrelated_token}"}
+    hidden_report = client.get(
+        "/api/auth/students/" + student_id + "/progress.pdf", headers=unrelated_headers
+    )
+    assert hidden_report.status_code == 404
+
+    student_token = client.post("/api/auth/login", json={
+        "email": created.json()["email"], "password": "Long-Child-Password-2026"
+    }).json()["access_token"]
+    student_headers = {"Authorization": f"Bearer {student_token}"}
+    forbidden_report = client.get(
+        "/api/auth/students/" + student_id + "/progress.pdf", headers=student_headers
+    )
+    assert forbidden_report.status_code == 403
+
 
 def test_curriculum_write_requires_admin() -> None:
     response = client.post("/api/curriculum/subjects", json={
