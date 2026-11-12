@@ -37,7 +37,76 @@ def login(request: Request, payload: LoginRequest, db: Session = Depends(get_db)
     return TokenResponse(access_token=create_access_token(user.id, user.role))
 
 
-@router.get("/me", response_model=UserResponse)
+
+
+def _password_reset_hash(token: str) -> str:
+    return hashlib.sha256(token.encode("utf-8")).hexdigest()
+
+
+@router.post("/password/forgot")
+@limiter.limit("3/hour")
+def request_password_reset(request: Request, payload: ForgotPasswordRequest,
+                           background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
+    # Identical response for existing and unknown addresses prevents account enumeration.
+    generic_response = {"message": "E-posta adresi kayıtlıysa parola yenileme bağlantısı gönderildi."}
+    user = db.scalar(select(User).where(User.email == payload.email.lower(), User.is_active.is_(True)))
+    if not user:
+        return generic_response
+
+    now = datetime.now(timezone.utc)
+    active_tokens = db.scalars(select(PasswordResetToken).where(
+        PasswordResetToken.user_id == user.id,
+        PasswordResetToken.used_at.is_(None)
+    )).all()
+    for old_token in active_tokens:
+        old_token.used_at = now
+
+    raw_token = secrets.token_urlsafe(32)
+    db.add(PasswordResetToken(
+        user_id=user.id,
+        token_hash=_password_reset_hash(raw_token),
+        expires_at=now + timedelta(minutes=30),
+    ))
+    db.commit()
+    reset_url = f"{settings.APP_BASE_URL.rstrip('/')}/app/?reset_token={raw_token}"
+    background_tasks.add_task(send_password_reset_email, user.email, reset_url)
+    return generic_response
+
+
+@router.post("/password/reset")
+@limiter.limit("5/minute")
+def reset_password(request: Request, payload: ResetPasswordRequest,
+                   db: Session = Depends(get_db)):
+    now = datetime.now(timezone.utc)
+    reset_record = db.scalar(select(PasswordResetToken).where(
+        PasswordResetToken.token_hash == _password_reset_hash(payload.token),
+        PasswordResetToken.used_at.is_(None),
+    ))
+    if not reset_record:
+        raise HTTPException(status_code=400, detail="Bağlantı geçersiz veya süresi dolmuş.")
+    expires_at = reset_record.expires_at
+    if expires_at.tzinfo is None:
+        expires_at = expires_at.replace(tzinfo=timezone.utc)
+    if expires_at <= now:
+        reset_record.used_at = now
+        db.commit()
+        raise HTTPException(status_code=400, detail="Bağlantı geçersiz veya süresi dolmuş.")
+
+    user = db.get(User, reset_record.user_id)
+    if not user or not user.is_active:
+        raise HTTPException(status_code=400, detail="Bağlantı geçersiz veya süresi dolmuş.")
+    user.password_hash = hash_password(payload.new_password)
+    reset_record.used_at = now
+    other_tokens = db.scalars(select(PasswordResetToken).where(
+        PasswordResetToken.user_id == user.id,
+        PasswordResetToken.used_at.is_(None),
+        PasswordResetToken.id != reset_record.id,
+    )).all()
+    for other in other_tokens:
+        other.used_at = now
+    db.commit()
+    return {"message": "Parolanız yenilendi. Yeni parolanızla giriş yapabilirsiniz."}
+\n\n@router.get("/me", response_model=UserResponse)
 def me(user: User = Depends(get_current_user)):
     return user
 
