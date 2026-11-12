@@ -98,3 +98,25 @@ def test_curriculum_write_requires_admin() -> None:
 def test_curriculum_import_rejects_non_meb_source() -> None:
     with pytest.raises(ValueError):
         validate_meb_source("https://example.com/fake-curriculum.pdf")
+
+
+
+@pytest.mark.parametrize("url", [
+    "https://tymm.meb.gov.tr/Programlar",
+    "https://mufredat.meb.gov.tr/Dosyalar/program.pdf",
+    "https://dogm.meb.gov.tr/Programlar/Ortaokul/2026004-Dkab-orta.pdf",
+])
+def test_official_meb_sources_are_accepted(url: str) -> None:
+    assert validate_meb_source(url) == url
+
+
+@pytest.mark.parametrize("url", [
+    "http://tymm.meb.gov.tr/program.pdf",
+    "https://example.com/fake-curriculum.pdf",
+    "https://tymm.meb.gov.tr.example.com/program.pdf",
+    "https://user:password@tymm.meb.gov.tr/program.pdf",
+    "https://tymm.meb.gov.tr:8443/program.pdf",
+])
+def test_unsafe_or_non_official_sources_are_rejected(url: str) -> None:
+    with pytest.raises(ValueError):
+        validate_meb_source(url)
