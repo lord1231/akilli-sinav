@@ -96,6 +96,12 @@ def test_parent_can_create_student_only_with_consent() -> None:
     progress = client.get("/api/auth/students/" + student_id + "/progress", headers=headers)
     assert progress.status_code == 200
     assert progress.json()["completed_exam_count"] == 0
+    assert progress.json()["total_questions"] == 0
+    assert progress.json()["unanswered_questions"] == 0
+    report = client.get("/api/auth/students/" + student_id + "/progress.pdf", headers=headers)
+    assert report.status_code == 200
+    assert report.headers["content-type"] == "application/pdf"
+    assert report.content.startswith(b"%PDF")
 
 
 def test_curriculum_write_requires_admin() -> None:
