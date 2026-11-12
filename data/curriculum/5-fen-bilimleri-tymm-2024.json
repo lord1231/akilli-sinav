@@ -1,0 +1,162 @@
+{
+  "grade_level": 5,
+  "subject_name": "Fen Bilimleri",
+  "curriculum_version": "TYMM 2024",
+  "source_url": "https://tymm.meb.gov.tr/ogretim-programlari/fen-bilimleri-dersi/6",
+  "units": [
+    {
+      "name": "Gökyüzündeki Komşularımız ve Biz",
+      "order_no": 1,
+      "outcomes": [
+        {
+          "code": "FB.5.1.1.1",
+          "description": "Güneş’in yapısı ve dönme hareketi ile ilgili bilgileri toplayabilme"
+        },
+        {
+          "code": "FB.5.1.2.1",
+          "description": "Ay’ın özellikleri, dönme ve dolanma hareketleri ile ilgili bilimsel çıkarım yapabilme"
+        },
+        {
+          "code": "FB.5.1.2.2",
+          "description": "Ay’ın evrelerini temsil eden bilimsel model oluşturabilme"
+        },
+        {
+          "code": "FB.5.1.3.1",
+          "description": "Güneş, Dünya ve Ay’ın birbirlerine göre hareketlerini ve hacimsel büyüklüklerini temsil eden bilimsel model oluşturabilme"
+        }
+      ]
+    },
+    {
+      "name": "Kuvveti Tanıyalım",
+      "order_no": 2,
+      "outcomes": [
+        {
+          "code": "FB.5.2.1.1",
+          "description": "Kuvveti büyüklüğü ile tanımlayabilme"
+        },
+        {
+          "code": "FB.5.2.1.2",
+          "description": "Basit araç gereçler kullanarak bir dinamometre modeli tasarlayabilme"
+        },
+        {
+          "code": "FB.5.2.2.1",
+          "description": "Kütleye etki eden yer çekimi kuvvetini ağırlık olarak tanımlayabilme"
+        },
+        {
+          "code": "FB.5.2.3.1",
+          "description": "Sürtünme kuvvetinin çeşitli ortamlardaki etkilerine yönelik tümevarımsal akıl yürütebilme"
+        },
+        {
+          "code": "FB.5.2.3.2",
+          "description": "Günlük yaşamda sürtünmeyi artırma veya azaltmaya yönelik bilimsel bir model tasarlayabilme"
+        }
+      ]
+    },
+    {
+      "name": "Canlıların Yapısına Yolculuk",
+      "order_no": 3,
+      "outcomes": [
+        {
+          "code": "FB.5.3.1.1",
+          "description": "Bitki ve hayvan hücrelerini temel kısımları ve özellikleri açısından karşılaştırabilme"
+        },
+        {
+          "code": "FB.5.3.1.2",
+          "description": "Hücre-doku-organ-sistem-organizma kavramlarını yapılandırabilme"
+        },
+        {
+          "code": "FB.5.3.2.1",
+          "description": "Destek ve hareket sistemine ait yapıları sınıflandırabilme"
+        },
+        {
+          "code": "FB.5.3.2.2",
+          "description": "Destek ve hareket sisteminin sağlığı için yapılması gerekenler konusunda bilgi toplayabilme"
+        }
+      ]
+    },
+    {
+      "name": "Işığın Dünyası",
+      "order_no": 4,
+      "outcomes": [
+        {
+          "code": "FB.5.4.1.1",
+          "description": "Bir kaynaktan çıkan ışığın her yönde doğrusal bir yol izlediğini gözlem yoluyla açıklayabilme"
+        },
+        {
+          "code": "FB.5.4.2.1",
+          "description": "Maddeleri ışığı geçirme durumlarına göre sınıflandırabilme"
+        },
+        {
+          "code": "FB.5.4.3.1",
+          "description": "Tam gölgeye yönelik bilimsel gözlem yapabilme"
+        }
+      ]
+    },
+    {
+      "name": "Maddenin Doğası",
+      "order_no": 5,
+      "outcomes": [
+        {
+          "code": "FB.5.5.1.1",
+          "description": "Maddeleri tanecikli, boşluklu ve hareketli yapısına göre sınıflandırabilme"
+        },
+        {
+          "code": "FB.5.5.2.1",
+          "description": "Isı ve sıcaklık kavramlarını karşılaştırabilme"
+        },
+        {
+          "code": "FB.5.5.2.2",
+          "description": "Sıcaklığı farklı olan sıvıların karıştırılması sonucu ısı alışverişi olduğuna yönelik bilimsel çıkarım yapabilme"
+        },
+        {
+          "code": "FB.5.5.3.1",
+          "description": "Maddenin ısı etkisiyle hâl değiştirebileceğini bilimsel gözleme dayalı tahmin edebilme"
+        },
+        {
+          "code": "FB.5.5.4.1",
+          "description": "Maddeleri ısı iletimi bakımından sınıflandırabilme"
+        },
+        {
+          "code": "FB.5.5.4.2",
+          "description": "Isı yalıtımını gösteren model oluşturabilme"
+        }
+      ]
+    },
+    {
+      "name": "Yaşamımızdaki Elektrik",
+      "order_no": 6,
+      "outcomes": [
+        {
+          "code": "FB.5.6.1.1",
+          "description": "Bir elektrik devresindeki elemanları sembollerinin olup olmamasına göre sınıflandırabilme"
+        },
+        {
+          "code": "FB.5.6.1.2",
+          "description": "Şemasını çizdiği elektrik devresine uygun deney yapabilme"
+        },
+        {
+          "code": "FB.5.6.2.1",
+          "description": "Bir elektrik devresindeki ampul parlaklığını etkileyen değişkenlerin neler olduğuna ilişkin hipotez oluşturabilme"
+        }
+      ]
+    },
+    {
+      "name": "Sürdürülebilir Yaşam ve Geri Dönüşüm",
+      "order_no": 7,
+      "outcomes": [
+        {
+          "code": "FB.5.7.1.1",
+          "description": "Evsel atıklarda geri dönüştürülebilen ve dönüştürülemeyen maddeleri sınıflandırabilme"
+        },
+        {
+          "code": "FB.5.7.1.2",
+          "description": "Kaynakların etkili kullanımı konusunda geri dönüşümün önemli olduğuna yönelik bilimsel çıkarımda bulunabilme"
+        },
+        {
+          "code": "FB.5.7.1.3",
+          "description": "Yakın çevresinde atık yönetiminin uygulanabilirliğine ilişkin deneyimlerini yansıtabilme"
+        }
+      ]
+    }
+  ]
+}
