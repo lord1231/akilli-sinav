@@ -63,3 +63,12 @@ class ExamRejectRequest(BaseModel):
         if len(cleaned) < 5:
             raise ValueError("Ret gerekçesi en az 5 karakter olmalıdır.")
         return cleaned
+
+
+class ForgotPasswordRequest(BaseModel):
+    email: EmailStr
+
+
+class ResetPasswordRequest(BaseModel):
+    token: str = Field(min_length=32, max_length=256)
+    new_password: str = Field(min_length=10, max_length=128)
