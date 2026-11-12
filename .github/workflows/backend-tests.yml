@@ -30,28 +30,7 @@ jobs:
         run: node --check ../frontend/app.js
       - name: Verify database migrations
         run: alembic upgrade head
-      - name: Import official curriculum seed files
-        run: |
-          python -m app.cli.import_curriculum ../data/curriculum/4-sosyal-bilgiler-meb-2018.json
-          python -m app.cli.import_curriculum ../data/curriculum/4-matematik-meb-2018.json
-          python -m app.cli.import_curriculum ../data/curriculum/4-fen-bilimleri-meb-2018.json
-          python -m app.cli.import_curriculum ../data/curriculum/4-turkce-meb-2019.json
-          python -m app.cli.import_curriculum ../data/curriculum/4-ingilizce-meb-2018.json
-          python -m app.cli.import_curriculum ../data/curriculum/4-dkab-meb-2018.json
-          python -m app.cli.import_curriculum ../data/curriculum/4-insan-haklari-tymm-2024.json
-          python -m app.cli.import_curriculum ../data/curriculum/4-trafik-guvenligi-meb-2018.json
-          python -m app.cli.import_curriculum ../data/curriculum/4-muzik-meb-2018.json
-          python -m app.cli.import_curriculum ../data/curriculum/4-gorsel-sanatlar-meb-2018.json
-          python -m app.cli.import_curriculum ../data/curriculum/4-beden-egitimi-ve-oyun-meb-2018.json
-          python -m app.cli.import_curriculum ../data/curriculum/5-muzik-tymm-2025.json
-          python -m app.cli.import_curriculum ../data/curriculum/5-gorsel-sanatlar-tymm-2025.json
-          python -m app.cli.import_curriculum ../data/curriculum/5-beden-egitimi-ve-spor-tymm-2025.json
-          python -m app.cli.import_curriculum ../data/curriculum/5-bilisim-teknolojileri-ve-yazilim-tymm-2025.json
-          python -m app.cli.import_curriculum ../data/curriculum/5-matematik-tymm-2024.json
-          python -m app.cli.import_curriculum ../data/curriculum/5-sosyal-bilgiler-tymm-2024.json
-          python -m app.cli.import_curriculum ../data/curriculum/5-fen-bilimleri-tymm-2024.json
-          python -m app.cli.import_curriculum ../data/curriculum/5-turkce-tymm-2024.json
-          python -m app.cli.import_curriculum ../data/curriculum/5-ingilizce-tymm-2025.json
-          python -m app.cli.import_curriculum ../data/curriculum/5-dkab-tymm-2026.json
+      - name: Import all official curriculum seed files
+        run: python -m app.cli.import_all_curriculum
       - name: Run tests
         run: pytest -q
