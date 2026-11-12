@@ -155,8 +155,8 @@ def get_exam(exam_id: UUID, user: User = Depends(get_current_user), db: Session 
     exam = db.get(Exam, exam_id)
     if not exam or not can_access_student(user, exam.student_id, db):
         raise HTTPException(status_code=404, detail="Sınav bulunamadı.")
-    if exam.status == "pending_review" and user.role != "admin":
-        raise HTTPException(status_code=409, detail="Sınav henüz yönetici incelemesinden geçmedi.")
+    if exam.status not in {"published", "completed"} and user.role != "admin":
+        raise HTTPException(status_code=409, detail="Sınav henüz yayımlanmadı veya erişime kapatıldı.")
     rows = db.execute(select(ExamQuestion, Question).join(
         Question, Question.id == ExamQuestion.question_id
     ).where(ExamQuestion.exam_id == exam.id).order_by(ExamQuestion.position)).all()
