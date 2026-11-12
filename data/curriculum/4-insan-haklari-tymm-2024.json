@@ -1,0 +1,84 @@
+{
+  "grade_level": 4,
+  "subject_name": "İnsan Hakları, Vatandaşlık ve Demokrasi",
+  "curriculum_version": "TYMM 2024",
+  "source_url": "https://tymm.meb.gov.tr/upload/program/2024programvat4Onayli.pdf",
+  "units": [
+    {
+      "name": "Çocuk Olarak Haklarımla Varım",
+      "order_no": 1,
+      "outcomes": [
+        {
+          "code": "İHVD.4.1.1",
+          "description": "Çocuk olmanın özelliklerini belirleyebilme."
+        },
+        {
+          "code": "İHVD.4.1.2",
+          "description": "Çocuk haklarıyla ilgili kanıta dayalı olarak oluşturduğu ürünü paylaşabilme."
+        },
+        {
+          "code": "İHVD.4.1.3",
+          "description": "İnsan olmanın getirdiği temel hak ve özgürlükleri yorumlayabilme."
+        }
+      ]
+    },
+    {
+      "name": "Hayatımda Eşitlik ve Adalet",
+      "order_no": 2,
+      "outcomes": [
+        {
+          "code": "İHVD.4.2.1",
+          "description": "Eşitlik kavramının anlamını sorgulayabilme."
+        },
+        {
+          "code": "İHVD.4.2.2",
+          "description": "Adalet ve eşitlik arasındaki ilişkiyi yorumlayabilme."
+        },
+        {
+          "code": "İHVD.4.2.3",
+          "description": "Fırsat eşitliğinin anlamını yorumlayabilme."
+        }
+      ]
+    },
+    {
+      "name": "Etkin Bir Vatandaşım",
+      "order_no": 3,
+      "outcomes": [
+        {
+          "code": "İHVD.4.3.1",
+          "description": "Vatandaş olmanın getirdiği hak ve özgürlükleri yorumlayabilme."
+        },
+        {
+          "code": "İHVD.4.3.2",
+          "description": "Etkin vatandaş olmanın gerektirdiği sorumlulukları belirleyebilme."
+        },
+        {
+          "code": "İHVD.4.3.3",
+          "description": "Dijital vatandaşlığın gerektirdiği özellikleri belirleyebilme."
+        },
+        {
+          "code": "İHVD.4.3.4",
+          "description": "Etkin bir vatandaş olarak toplumsal yardımlaşma faaliyetleri ile ilgili fikir üretebilme."
+        }
+      ]
+    },
+    {
+      "name": "Hayatımda Demokrasi",
+      "order_no": 4,
+      "outcomes": [
+        {
+          "code": "İHVD.4.4.1",
+          "description": "Grup çalışmalarında karar alma süreçlerine katılarak grup dinamiğini sağlayabilme."
+        },
+        {
+          "code": "İHVD.4.4.2",
+          "description": "Grup arkadaşları ile farklı fikirler hakkında müzakere edebilme."
+        },
+        {
+          "code": "İHVD.4.4.3",
+          "description": "Seçme ve seçilme hakkı konusunda fikir üretebilme."
+        }
+      ]
+    }
+  ]
+}
