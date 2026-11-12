@@ -88,6 +88,7 @@ class Exam(Base):
     status: Mapped[str] = mapped_column(String(20), default="draft", index=True)
     review_note: Mapped[str | None] = mapped_column(Text, nullable=True)
     question_count: Mapped[int] = mapped_column(Integer, default=25)
+    duration_minutes: Mapped[int] = mapped_column(Integer, default=30, nullable=False)
     score: Mapped[int | None] = mapped_column(Integer, nullable=True)
     started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
