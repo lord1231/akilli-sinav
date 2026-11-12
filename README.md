@@ -44,3 +44,7 @@ Mobil uyumlu web arayüzü, veli/öğrenci/yönetici ekranları, sınav akışı
 - Admin rolü açık kayıt endpoint'inden verilemez.
 - Çocuk verileri için KVKK, veri minimizasyonu, saklama süresi ve veli hakları ayrıca işletilmelidir.
 - MEB kazanımlarını resmî kaynak URL'si ve sürümüyle kaydedin; telifli soru bankalarını kopyalamayın.
+
+## Canlıya geçiş
+
+Canlı sunucuya dağıtım öncesi zorunlu yapılandırma, HTTPS, SMTP, yedekleme ve KVKK kontrolleri için [`docs/production-deployment.md`](docs/production-deployment.md) listesini izleyin. Uygulama henüz canlıya dağıtılmamıştır.
