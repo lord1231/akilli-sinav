@@ -1,6 +1,8 @@
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
+from slowapi import _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
@@ -8,9 +10,12 @@ from sqlalchemy.exc import SQLAlchemyError
 from app.api.routes import auth, curriculum, exams
 from app.core.config import settings
 from app.db.session import engine
+from app.core.rate_limit import limiter
 
 app = FastAPI(title=settings.APP_NAME, version="0.4.0",
               description="MEB kazanımlarına dayalı yapay zekâ destekli sınav platformu.")
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 app.include_router(auth.router)
 app.include_router(curriculum.router)
 app.include_router(exams.router)
