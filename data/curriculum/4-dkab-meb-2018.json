@@ -1,0 +1,114 @@
+{
+  "grade_level": 4,
+  "subject_name": "Din Kültürü ve Ahlak Bilgisi",
+  "curriculum_version": "MEB 2018 (2026-2027 uygulama kontrolü)",
+  "source_url": "https://mufredat.meb.gov.tr/Dosyalar/20221229134650712-DKAB_%284-8.%20S%C4%B1n%C4%B1f%29_DOP_%202018.pdf",
+  "units": [
+    {
+      "name": "Günlük Hayattaki Dinî İfadeler",
+      "order_no": 1,
+      "outcomes": [
+        {
+          "code": "4.1.1",
+          "description": "Dinî ifadeleri, günlük konuşmalarda doğru ve yerinde kullanır."
+        },
+        {
+          "code": "4.1.2",
+          "description": "Tekbir ve salavatı söyler."
+        },
+        {
+          "code": "4.1.3",
+          "description": "Dilek ve dualarda kullanılan dinî ifadelere örnekler verir."
+        },
+        {
+          "code": "4.1.4",
+          "description": "Sübhaneke duasını okur, anlamını söyler."
+        }
+      ]
+    },
+    {
+      "name": "İslam’ı Tanıyalım",
+      "order_no": 2,
+      "outcomes": [
+        {
+          "code": "4.2.1",
+          "description": "İslam’ın inanç esaslarını sıralar."
+        },
+        {
+          "code": "4.2.2",
+          "description": "İslam’ın şartlarını söyler."
+        },
+        {
+          "code": "4.2.3",
+          "description": "Kur’an-ı Kerim’in iç düzeni ile ilgili kavramları tanımlar."
+        },
+        {
+          "code": "4.2.4",
+          "description": "Âmentü duasını okur, anlamını söyler."
+        }
+      ]
+    },
+    {
+      "name": "Güzel Ahlak",
+      "order_no": 3,
+      "outcomes": [
+        {
+          "code": "4.3.1",
+          "description": "Bireyin güzel ahlaklı olmasında dinin rolünü fark eder."
+        },
+        {
+          "code": "4.3.2",
+          "description": "İnsani ilişkilerin gelişmesinde sevgi ve saygının önemini ve gerekliliğini savunur."
+        },
+        {
+          "code": "4.3.3",
+          "description": "Fâtiha suresini okur, anlamını söyler."
+        }
+      ]
+    },
+    {
+      "name": "Hz. Muhammed’i Tanıyalım",
+      "order_no": 4,
+      "outcomes": [
+        {
+          "code": "4.4.1",
+          "description": "Hz. Muhammed’in (s.a.v.) doğduğu çevrenin genel özelliklerini açıklar."
+        },
+        {
+          "code": "4.4.2",
+          "description": "Hz. Muhammed’in (s.a.v.) aile büyüklerini tanır."
+        },
+        {
+          "code": "4.4.3",
+          "description": "Hz. Muhammed’in (s.a.v.) doğumu, çocukluk ve gençlik yıllarını özetler."
+        },
+        {
+          "code": "4.4.4",
+          "description": "Hz. Muhammed’in (s.a.v.) çocukluk ve gençlik yıllarındaki davranışlarını kendi hayatı ile ilişkilendirir."
+        },
+        {
+          "code": "4.4.5",
+          "description": "Hz. Muhammed’in (s.a.v.) Mekke ve Medine yıllarını özetler."
+        },
+        {
+          "code": "4.4.6",
+          "description": "Salli ve Barik dualarını okur, anlamını söyler."
+        }
+      ]
+    },
+    {
+      "name": "Din ve Temizlik",
+      "order_no": 5,
+      "outcomes": [
+        {
+          "code": "4.5.1",
+          "description": "İslam dininin temizliğe verdiği öneme örnekler verir."
+        },
+        {
+          "code": "4.5.2",
+          "description": "Temiz ve düzenli olmaya özen gösterir."
+        }
+      ]
+    }
+  ]
+}
