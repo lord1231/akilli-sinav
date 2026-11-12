@@ -281,3 +281,44 @@ def exam_results(exam_id: UUID, user: User = Depends(get_current_user), db: Sess
                         "correct_option": q.correct_option, "is_correct": answer.is_correct if answer else False,
                         "explanation": q.explanation})
     return {"score": exam.score, "question_count": len(rows), "details": details}
+
+
+@router.get("/{exam_id}/results.pdf")
+def download_exam_result_pdf(exam_id: UUID, user: User = Depends(get_current_user),
+                             db: Session = Depends(get_db)):
+    from fastapi.responses import Response
+    from app.services.pdf_reports import build_exam_result_pdf
+
+    exam = db.get(Exam, exam_id)
+    if not exam or not can_access_student(user, exam.student_id, db):
+        raise HTTPException(status_code=404, detail="Sınav bulunamadı.")
+    if exam.status != "completed":
+        raise HTTPException(status_code=409, detail="PDF sonuç raporu yalnızca tamamlanan sınavlar için hazırlanır.")
+    student = db.get(User, exam.student_id)
+    rows = db.execute(select(ExamQuestion, Question).join(
+        Question, Question.id == ExamQuestion.question_id
+    ).where(ExamQuestion.exam_id == exam.id).order_by(ExamQuestion.position)).all()
+    details = []
+    for eq, question in rows:
+        answer = db.scalar(select(StudentAnswer).where(StudentAnswer.exam_question_id == eq.id))
+        details.append({
+            "position": eq.position,
+            "prompt": question.prompt,
+            "options": question.options,
+            "selected_option": answer.selected_option if answer else None,
+            "correct_option": question.correct_option,
+            "is_correct": answer.is_correct if answer else False,
+            "explanation": question.explanation,
+        })
+    pdf = build_exam_result_pdf(
+        exam_title=exam.title,
+        student_name=student.full_name if student else "Öğrenci",
+        score=exam.score,
+        details=details,
+        completed_at=exam.completed_at.isoformat() if exam.completed_at else None,
+    )
+    return Response(
+        content=pdf,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f'attachment; filename="sinav-sonucu-{exam.id}.pdf"'},
+    )
