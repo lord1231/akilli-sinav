@@ -39,6 +39,7 @@ jobs:
           python -m app.cli.import_curriculum ../data/curriculum/4-ingilizce-meb-2018.json
           python -m app.cli.import_curriculum ../data/curriculum/4-dkab-meb-2018.json
           python -m app.cli.import_curriculum ../data/curriculum/4-insan-haklari-tymm-2024.json
+          python -m app.cli.import_curriculum ../data/curriculum/4-trafik-guvenligi-meb-2018.json
           python -m app.cli.import_curriculum ../data/curriculum/5-matematik-tymm-2024.json
           python -m app.cli.import_curriculum ../data/curriculum/5-sosyal-bilgiler-tymm-2024.json
           python -m app.cli.import_curriculum ../data/curriculum/5-fen-bilimleri-tymm-2024.json
