@@ -102,6 +102,6 @@ $("curriculum-import-form").onsubmit=async e=>{e.preventDefault();try{const payl
 
 $("forgot-toggle").onclick=()=>{$("forgot-form").hidden=!$("forgot-form").hidden;$("reset-form").hidden=true};
 $("forgot-form").onsubmit=async e=>{e.preventDefault();try{const email=val(e.currentTarget,"email");await api("/api/auth/password/forgot",{method:"POST",body:JSON.stringify({email})});msg("auth-message","E-posta adresi kayıtlıysa parola yenileme bağlantısı gönderildi.");e.currentTarget.reset()}catch(x){msg("auth-message",x.message)}};
-const resetToken=new URLSearchParams(window.location.search).get("reset_token");
+const resetToken=new URLSearchParams(window.location.hash.slice(1)).get("reset_token")||new URLSearchParams(window.location.search).get("reset_token");
 if(resetToken){$("auth-panel").hidden=false;$("reset-form").hidden=false;$("forgot-form").hidden=true;$("forgot-toggle").hidden=true;msg("auth-message","Yeni parolanızı belirleyin.");}
 $("reset-form").onsubmit=async e=>{e.preventDefault();try{await api("/api/auth/password/reset",{method:"POST",body:JSON.stringify({token:resetToken,new_password:val(e.currentTarget,"new_password")})});history.replaceState(null,"",window.location.pathname);$("reset-form").hidden=true;$("forgot-toggle").hidden=false;msg("auth-message","Parolanız yenilendi. Yeni parolanızla giriş yapabilirsiniz.");e.currentTarget.reset()}catch(x){msg("auth-message",x.message)}};
