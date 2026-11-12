@@ -11,13 +11,13 @@ from app.db.session import get_db
 from app.models import LearningOutcome, Subject, Unit, User
 
 router = APIRouter(prefix="/api/curriculum", tags=["MEB Müfredatı"])
-OFFICIAL_MEB_HOSTS = {"tymm.meb.gov.tr", "mufredat.meb.gov.tr"}
+OFFICIAL_MEB_HOSTS = {"tymm.meb.gov.tr", "mufredat.meb.gov.tr", "dogm.meb.gov.tr"}
 
 
 def validate_meb_source(value: str) -> str:
     parsed = urlparse(value)
-    if parsed.scheme != "https" or parsed.hostname not in OFFICIAL_MEB_HOSTS:
-        raise ValueError("Kaynak yalnızca https://tymm.meb.gov.tr veya https://mufredat.meb.gov.tr olabilir.")
+    if (parsed.scheme != "https" or parsed.hostname not in OFFICIAL_MEB_HOSTS\n            or parsed.username or parsed.password or parsed.port not in (None, 443)):
+        raise ValueError("Kaynak yalnızca HTTPS kullanan resmî TYMM, MEB müfredat veya Din Öğretimi Genel Müdürlüğü alan adlarından biri olabilir.")
     return value
 
 
