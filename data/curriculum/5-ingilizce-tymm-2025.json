@@ -1,0 +1,793 @@
+{
+  "grade_level": 5,
+  "subject_name": "İngilizce",
+  "curriculum_version": "TYMM 2025",
+  "source_url": "https://tymm.meb.gov.tr/ogretim-programlari/ingilizce-dersi-temel-egitim/6",
+  "notes": "Standart İngilizce Dersi (2-8. sınıflar) programının 5. sınıf TYMM portalındaki sekiz tema sayfasına dayalıdır. Çoklu Yabancı Dil Eğitim Modeli ayrı bir programdır ve bu dosyaya dahil değildir. Açıklamalar, portalda yayımlanan öğrenme çıktılarının beceri odaklı Türkçe özetleridir; alt süreç bileşenlerinin tamamının birebir transkripsiyonu değildir.",
+  "units": [
+    {
+      "name": "School Life",
+      "order_no": 1,
+      "outcomes": [
+        {
+          "code": "ENG.5.1.L1",
+          "description": "Dinleme/izleme öncesinde tema içeriğiyle ilgili ön bilgilerini etkinleştirir ve tahminlerde bulunur. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.L2",
+          "description": "Tema bağlamındaki dinleme/izleme içeriğinin ana konusunu ve önemli ayrıntılarını belirler. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.L3",
+          "description": "Dinlediği/izlediği içerikteki ipuçlarından yararlanarak anlam çıkarır ve bilgileri ilişkilendirir. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.L4",
+          "description": "Dinleme/izleme sürecine ilişkin düşünce ve deneyimlerini uygun biçimde paylaşır. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.P1",
+          "description": "Tema içeriğindeki hedef sesletim, vurgu ve tonlama özelliklerini iletişimde doğru ve doğal kullanır. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.R1",
+          "description": "Okuma öncesinde ön bilgilerini etkinleştirir, görsel ve bağlamsal ipuçlarından hareketle tahmin yapar. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.R2",
+          "description": "Metni göz gezdirme ve tarama yoluyla inceleyerek ana düşünceyi ve önemli ayrıntıları bulur. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.R3",
+          "description": "Okuduğu metindeki bilgileri sınıflandırır, karşılaştırır ve bağlamdan anlam çıkarır. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.R4",
+          "description": "Okuma sürecinde edindiği bilgi ve düşünceleri kendisiyle ilişkilendirerek paylaşır veya yeniden düzenler. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.V1",
+          "description": "Tema bağlamındaki hedef kelime ve ifadeleri bağlamdan tanır, anlamlandırır ve iletişimde uygun kullanır. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.G1",
+          "description": "Tema bağlamında sunulan hedef dil yapılarını anlamlı sözlü ve yazılı iletişim durumlarında uygun kullanır. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.W1",
+          "description": "Yazma görevinin amacını ve içeriğini anlar; ön bilgilerini yazma göreviyle ilişkilendirir. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.W2",
+          "description": "Yazma görevi için sunulan örnek metnin biçimini, bileşenlerini ve ayrıntılarını inceler. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.W3",
+          "description": "Örnekten yararlanarak yazılı içeriğini planlar, taslak oluşturur ve gerekli materyalleri düzenler. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.W4",
+          "description": "Hedef kelime ve dil yapılarını kullanarak yaşına ve dil düzeyine uygun yazılı içerik oluşturur. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.W5",
+          "description": "Edindiği bilgileri yeni yazılı iletişim durumlarına aktarır ve başkalarıyla paylaşır. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.W6",
+          "description": "Yazma sürecine ilişkin çalışmasını gözden geçirir, yansıtır ve gerektiğinde yeniden düzenler. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.S1",
+          "description": "Konuşma öncesinde önceki bilgi ve deneyimlerini etkinleştirerek konuya hazırlanır. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.S2",
+          "description": "Sözlü içerik üretmek için sunulan model veya örnekten yararlanır. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.S3",
+          "description": "Hazırlıklı veya hazırlıksız konuşma için içeriği amaca ve bağlama uygun biçimde düzenler. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.S4",
+          "description": "Hedef kelime, telaffuz ve dil yapılarını kullanarak anlaşılır sözlü içerik üretir. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.S5",
+          "description": "Edindiği bilgileri farklı sözlü iletişim durumlarına aktarır ve başkalarıyla paylaşır. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        },
+        {
+          "code": "ENG.5.1.S6",
+          "description": "Konuşma sürecine ilişkin düşünce ve deneyimlerini değerlendirir ve paylaşır. Bağlam: People, places and rules at school; school clubs; countries; national days and celebrations."
+        }
+      ]
+    },
+    {
+      "name": "Classroom Life",
+      "order_no": 2,
+      "outcomes": [
+        {
+          "code": "ENG.5.2.L1",
+          "description": "Dinleme/izleme öncesinde tema içeriğiyle ilgili ön bilgilerini etkinleştirir ve tahminlerde bulunur. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.L2",
+          "description": "Tema bağlamındaki dinleme/izleme içeriğinin ana konusunu ve önemli ayrıntılarını belirler. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.L3",
+          "description": "Dinlediği/izlediği içerikteki ipuçlarından yararlanarak anlam çıkarır ve bilgileri ilişkilendirir. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.L4",
+          "description": "Dinleme/izleme sürecine ilişkin düşünce ve deneyimlerini uygun biçimde paylaşır. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.P1",
+          "description": "Tema içeriğindeki hedef sesletim, vurgu ve tonlama özelliklerini iletişimde doğru ve doğal kullanır. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.R1",
+          "description": "Okuma öncesinde ön bilgilerini etkinleştirir, görsel ve bağlamsal ipuçlarından hareketle tahmin yapar. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.R2",
+          "description": "Metni göz gezdirme ve tarama yoluyla inceleyerek ana düşünceyi ve önemli ayrıntıları bulur. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.R3",
+          "description": "Okuduğu metindeki bilgileri sınıflandırır, karşılaştırır ve bağlamdan anlam çıkarır. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.R4",
+          "description": "Okuma sürecinde edindiği bilgi ve düşünceleri kendisiyle ilişkilendirerek paylaşır veya yeniden düzenler. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.V1",
+          "description": "Tema bağlamındaki hedef kelime ve ifadeleri bağlamdan tanır, anlamlandırır ve iletişimde uygun kullanır. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.G1",
+          "description": "Tema bağlamında sunulan hedef dil yapılarını anlamlı sözlü ve yazılı iletişim durumlarında uygun kullanır. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.W1",
+          "description": "Yazma görevinin amacını ve içeriğini anlar; ön bilgilerini yazma göreviyle ilişkilendirir. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.W2",
+          "description": "Yazma görevi için sunulan örnek metnin biçimini, bileşenlerini ve ayrıntılarını inceler. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.W3",
+          "description": "Örnekten yararlanarak yazılı içeriğini planlar, taslak oluşturur ve gerekli materyalleri düzenler. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.W4",
+          "description": "Hedef kelime ve dil yapılarını kullanarak yaşına ve dil düzeyine uygun yazılı içerik oluşturur. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.W5",
+          "description": "Edindiği bilgileri yeni yazılı iletişim durumlarına aktarır ve başkalarıyla paylaşır. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.W6",
+          "description": "Yazma sürecine ilişkin çalışmasını gözden geçirir, yansıtır ve gerektiğinde yeniden düzenler. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.S1",
+          "description": "Konuşma öncesinde önceki bilgi ve deneyimlerini etkinleştirerek konuya hazırlanır. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.S2",
+          "description": "Sözlü içerik üretmek için sunulan model veya örnekten yararlanır. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.S3",
+          "description": "Hazırlıklı veya hazırlıksız konuşma için içeriği amaca ve bağlama uygun biçimde düzenler. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.S4",
+          "description": "Hedef kelime, telaffuz ve dil yapılarını kullanarak anlaşılır sözlü içerik üretir. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.S5",
+          "description": "Edindiği bilgileri farklı sözlü iletişim durumlarına aktarır ve başkalarıyla paylaşır. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        },
+        {
+          "code": "ENG.5.2.S6",
+          "description": "Konuşma sürecine ilişkin düşünce ve deneyimlerini değerlendirir ve paylaşır. Bağlam: Classroom rules and language; school subjects; timetables; classroom objects; days of the week; time."
+        }
+      ]
+    },
+    {
+      "name": "Personal Life",
+      "order_no": 3,
+      "outcomes": [
+        {
+          "code": "ENG.5.3.L1",
+          "description": "Dinleme/izleme öncesinde tema içeriğiyle ilgili ön bilgilerini etkinleştirir ve tahminlerde bulunur. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.L2",
+          "description": "Tema bağlamındaki dinleme/izleme içeriğinin ana konusunu ve önemli ayrıntılarını belirler. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.L3",
+          "description": "Dinlediği/izlediği içerikteki ipuçlarından yararlanarak anlam çıkarır ve bilgileri ilişkilendirir. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.L4",
+          "description": "Dinleme/izleme sürecine ilişkin düşünce ve deneyimlerini uygun biçimde paylaşır. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.P1",
+          "description": "Tema içeriğindeki hedef sesletim, vurgu ve tonlama özelliklerini iletişimde doğru ve doğal kullanır. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.R1",
+          "description": "Okuma öncesinde ön bilgilerini etkinleştirir, görsel ve bağlamsal ipuçlarından hareketle tahmin yapar. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.R2",
+          "description": "Metni göz gezdirme ve tarama yoluyla inceleyerek ana düşünceyi ve önemli ayrıntıları bulur. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.R3",
+          "description": "Okuduğu metindeki bilgileri sınıflandırır, karşılaştırır ve bağlamdan anlam çıkarır. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.R4",
+          "description": "Okuma sürecinde edindiği bilgi ve düşünceleri kendisiyle ilişkilendirerek paylaşır veya yeniden düzenler. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.V1",
+          "description": "Tema bağlamındaki hedef kelime ve ifadeleri bağlamdan tanır, anlamlandırır ve iletişimde uygun kullanır. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.G1",
+          "description": "Tema bağlamında sunulan hedef dil yapılarını anlamlı sözlü ve yazılı iletişim durumlarında uygun kullanır. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.W1",
+          "description": "Yazma görevinin amacını ve içeriğini anlar; ön bilgilerini yazma göreviyle ilişkilendirir. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.W2",
+          "description": "Yazma görevi için sunulan örnek metnin biçimini, bileşenlerini ve ayrıntılarını inceler. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.W3",
+          "description": "Örnekten yararlanarak yazılı içeriğini planlar, taslak oluşturur ve gerekli materyalleri düzenler. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.W4",
+          "description": "Hedef kelime ve dil yapılarını kullanarak yaşına ve dil düzeyine uygun yazılı içerik oluşturur. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.W5",
+          "description": "Edindiği bilgileri yeni yazılı iletişim durumlarına aktarır ve başkalarıyla paylaşır. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.W6",
+          "description": "Yazma sürecine ilişkin çalışmasını gözden geçirir, yansıtır ve gerektiğinde yeniden düzenler. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.S1",
+          "description": "Konuşma öncesinde önceki bilgi ve deneyimlerini etkinleştirerek konuya hazırlanır. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.S2",
+          "description": "Sözlü içerik üretmek için sunulan model veya örnekten yararlanır. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.S3",
+          "description": "Hazırlıklı veya hazırlıksız konuşma için içeriği amaca ve bağlama uygun biçimde düzenler. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.S4",
+          "description": "Hedef kelime, telaffuz ve dil yapılarını kullanarak anlaşılır sözlü içerik üretir. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.S5",
+          "description": "Edindiği bilgileri farklı sözlü iletişim durumlarına aktarır ve başkalarıyla paylaşır. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        },
+        {
+          "code": "ENG.5.3.S6",
+          "description": "Konuşma sürecine ilişkin düşünce ve deneyimlerini değerlendirir ve paylaşır. Bağlam: Basic body parts and physical features; clothes; daily routines and activities."
+        }
+      ]
+    },
+    {
+      "name": "Family Life",
+      "order_no": 4,
+      "outcomes": [
+        {
+          "code": "ENG.5.4.L1",
+          "description": "Dinleme/izleme öncesinde tema içeriğiyle ilgili ön bilgilerini etkinleştirir ve tahminlerde bulunur. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.L2",
+          "description": "Tema bağlamındaki dinleme/izleme içeriğinin ana konusunu ve önemli ayrıntılarını belirler. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.L3",
+          "description": "Dinlediği/izlediği içerikteki ipuçlarından yararlanarak anlam çıkarır ve bilgileri ilişkilendirir. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.L4",
+          "description": "Dinleme/izleme sürecine ilişkin düşünce ve deneyimlerini uygun biçimde paylaşır. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.P1",
+          "description": "Tema içeriğindeki hedef sesletim, vurgu ve tonlama özelliklerini iletişimde doğru ve doğal kullanır. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.R1",
+          "description": "Okuma öncesinde ön bilgilerini etkinleştirir, görsel ve bağlamsal ipuçlarından hareketle tahmin yapar. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.R2",
+          "description": "Metni göz gezdirme ve tarama yoluyla inceleyerek ana düşünceyi ve önemli ayrıntıları bulur. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.R3",
+          "description": "Okuduğu metindeki bilgileri sınıflandırır, karşılaştırır ve bağlamdan anlam çıkarır. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.R4",
+          "description": "Okuma sürecinde edindiği bilgi ve düşünceleri kendisiyle ilişkilendirerek paylaşır veya yeniden düzenler. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.V1",
+          "description": "Tema bağlamındaki hedef kelime ve ifadeleri bağlamdan tanır, anlamlandırır ve iletişimde uygun kullanır. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.G1",
+          "description": "Tema bağlamında sunulan hedef dil yapılarını anlamlı sözlü ve yazılı iletişim durumlarında uygun kullanır. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.W1",
+          "description": "Yazma görevinin amacını ve içeriğini anlar; ön bilgilerini yazma göreviyle ilişkilendirir. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.W2",
+          "description": "Yazma görevi için sunulan örnek metnin biçimini, bileşenlerini ve ayrıntılarını inceler. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.W3",
+          "description": "Örnekten yararlanarak yazılı içeriğini planlar, taslak oluşturur ve gerekli materyalleri düzenler. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.W4",
+          "description": "Hedef kelime ve dil yapılarını kullanarak yaşına ve dil düzeyine uygun yazılı içerik oluşturur. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.W5",
+          "description": "Edindiği bilgileri yeni yazılı iletişim durumlarına aktarır ve başkalarıyla paylaşır. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.W6",
+          "description": "Yazma sürecine ilişkin çalışmasını gözden geçirir, yansıtır ve gerektiğinde yeniden düzenler. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.S1",
+          "description": "Konuşma öncesinde önceki bilgi ve deneyimlerini etkinleştirerek konuya hazırlanır. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.S2",
+          "description": "Sözlü içerik üretmek için sunulan model veya örnekten yararlanır. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.S3",
+          "description": "Hazırlıklı veya hazırlıksız konuşma için içeriği amaca ve bağlama uygun biçimde düzenler. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.S4",
+          "description": "Hedef kelime, telaffuz ve dil yapılarını kullanarak anlaşılır sözlü içerik üretir. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.S5",
+          "description": "Edindiği bilgileri farklı sözlü iletişim durumlarına aktarır ve başkalarıyla paylaşır. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        },
+        {
+          "code": "ENG.5.4.S6",
+          "description": "Konuşma sürecine ilişkin düşünce ve deneyimlerini değerlendirir ve paylaşır. Bağlam: Family members’ routines; family members’ hobbies and activities."
+        }
+      ]
+    },
+    {
+      "name": "Life in the Neighbourhood & City",
+      "order_no": 5,
+      "outcomes": [
+        {
+          "code": "ENG.5.5.L1",
+          "description": "Dinleme/izleme öncesinde tema içeriğiyle ilgili ön bilgilerini etkinleştirir ve tahminlerde bulunur. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.L2",
+          "description": "Tema bağlamındaki dinleme/izleme içeriğinin ana konusunu ve önemli ayrıntılarını belirler. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.L3",
+          "description": "Dinlediği/izlediği içerikteki ipuçlarından yararlanarak anlam çıkarır ve bilgileri ilişkilendirir. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.L4",
+          "description": "Dinleme/izleme sürecine ilişkin düşünce ve deneyimlerini uygun biçimde paylaşır. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.P1",
+          "description": "Tema içeriğindeki hedef sesletim, vurgu ve tonlama özelliklerini iletişimde doğru ve doğal kullanır. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.R1",
+          "description": "Okuma öncesinde ön bilgilerini etkinleştirir, görsel ve bağlamsal ipuçlarından hareketle tahmin yapar. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.R2",
+          "description": "Metni göz gezdirme ve tarama yoluyla inceleyerek ana düşünceyi ve önemli ayrıntıları bulur. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.R3",
+          "description": "Okuduğu metindeki bilgileri sınıflandırır, karşılaştırır ve bağlamdan anlam çıkarır. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.R4",
+          "description": "Okuma sürecinde edindiği bilgi ve düşünceleri kendisiyle ilişkilendirerek paylaşır veya yeniden düzenler. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.V1",
+          "description": "Tema bağlamındaki hedef kelime ve ifadeleri bağlamdan tanır, anlamlandırır ve iletişimde uygun kullanır. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.G1",
+          "description": "Tema bağlamında sunulan hedef dil yapılarını anlamlı sözlü ve yazılı iletişim durumlarında uygun kullanır. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.W1",
+          "description": "Yazma görevinin amacını ve içeriğini anlar; ön bilgilerini yazma göreviyle ilişkilendirir. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.W2",
+          "description": "Yazma görevi için sunulan örnek metnin biçimini, bileşenlerini ve ayrıntılarını inceler. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.W3",
+          "description": "Örnekten yararlanarak yazılı içeriğini planlar, taslak oluşturur ve gerekli materyalleri düzenler. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.W4",
+          "description": "Hedef kelime ve dil yapılarını kullanarak yaşına ve dil düzeyine uygun yazılı içerik oluşturur. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.W5",
+          "description": "Edindiği bilgileri yeni yazılı iletişim durumlarına aktarır ve başkalarıyla paylaşır. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.W6",
+          "description": "Yazma sürecine ilişkin çalışmasını gözden geçirir, yansıtır ve gerektiğinde yeniden düzenler. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.S1",
+          "description": "Konuşma öncesinde önceki bilgi ve deneyimlerini etkinleştirerek konuya hazırlanır. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.S2",
+          "description": "Sözlü içerik üretmek için sunulan model veya örnekten yararlanır. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.S3",
+          "description": "Hazırlıklı veya hazırlıksız konuşma için içeriği amaca ve bağlama uygun biçimde düzenler. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.S4",
+          "description": "Hedef kelime, telaffuz ve dil yapılarını kullanarak anlaşılır sözlü içerik üretir. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.S5",
+          "description": "Edindiği bilgileri farklı sözlü iletişim durumlarına aktarır ve başkalarıyla paylaşır. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        },
+        {
+          "code": "ENG.5.5.S6",
+          "description": "Konuşma sürecine ilişkin düşünce ve deneyimlerini değerlendirir ve paylaşır. Bağlam: Places for recreation and attractions in the neighbourhood and city; different types of houses."
+        }
+      ]
+    },
+    {
+      "name": "Life in the World",
+      "order_no": 6,
+      "outcomes": [
+        {
+          "code": "ENG.5.6.L1",
+          "description": "Dinleme/izleme öncesinde tema içeriğiyle ilgili ön bilgilerini etkinleştirir ve tahminlerde bulunur. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.L2",
+          "description": "Tema bağlamındaki dinleme/izleme içeriğinin ana konusunu ve önemli ayrıntılarını belirler. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.L3",
+          "description": "Dinlediği/izlediği içerikteki ipuçlarından yararlanarak anlam çıkarır ve bilgileri ilişkilendirir. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.L4",
+          "description": "Dinleme/izleme sürecine ilişkin düşünce ve deneyimlerini uygun biçimde paylaşır. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.P1",
+          "description": "Tema içeriğindeki hedef sesletim, vurgu ve tonlama özelliklerini iletişimde doğru ve doğal kullanır. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.R1",
+          "description": "Okuma öncesinde ön bilgilerini etkinleştirir, görsel ve bağlamsal ipuçlarından hareketle tahmin yapar. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.R2",
+          "description": "Metni göz gezdirme ve tarama yoluyla inceleyerek ana düşünceyi ve önemli ayrıntıları bulur. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.R3",
+          "description": "Okuduğu metindeki bilgileri sınıflandırır, karşılaştırır ve bağlamdan anlam çıkarır. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.R4",
+          "description": "Okuma sürecinde edindiği bilgi ve düşünceleri kendisiyle ilişkilendirerek paylaşır veya yeniden düzenler. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.V1",
+          "description": "Tema bağlamındaki hedef kelime ve ifadeleri bağlamdan tanır, anlamlandırır ve iletişimde uygun kullanır. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.G1",
+          "description": "Tema bağlamında sunulan hedef dil yapılarını anlamlı sözlü ve yazılı iletişim durumlarında uygun kullanır. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.W1",
+          "description": "Yazma görevinin amacını ve içeriğini anlar; ön bilgilerini yazma göreviyle ilişkilendirir. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.W2",
+          "description": "Yazma görevi için sunulan örnek metnin biçimini, bileşenlerini ve ayrıntılarını inceler. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.W3",
+          "description": "Örnekten yararlanarak yazılı içeriğini planlar, taslak oluşturur ve gerekli materyalleri düzenler. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.W4",
+          "description": "Hedef kelime ve dil yapılarını kullanarak yaşına ve dil düzeyine uygun yazılı içerik oluşturur. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.W5",
+          "description": "Edindiği bilgileri yeni yazılı iletişim durumlarına aktarır ve başkalarıyla paylaşır. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.W6",
+          "description": "Yazma sürecine ilişkin çalışmasını gözden geçirir, yansıtır ve gerektiğinde yeniden düzenler. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.S1",
+          "description": "Konuşma öncesinde önceki bilgi ve deneyimlerini etkinleştirerek konuya hazırlanır. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.S2",
+          "description": "Sözlü içerik üretmek için sunulan model veya örnekten yararlanır. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.S3",
+          "description": "Hazırlıklı veya hazırlıksız konuşma için içeriği amaca ve bağlama uygun biçimde düzenler. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.S4",
+          "description": "Hedef kelime, telaffuz ve dil yapılarını kullanarak anlaşılır sözlü içerik üretir. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.S5",
+          "description": "Edindiği bilgileri farklı sözlü iletişim durumlarına aktarır ve başkalarıyla paylaşır. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        },
+        {
+          "code": "ENG.5.6.S6",
+          "description": "Konuşma sürecine ilişkin düşünce ve deneyimlerini değerlendirir ve paylaşır. Bağlam: Basic food types; ordering in a restaurant; food events in the city."
+        }
+      ]
+    },
+    {
+      "name": "Life in Nature",
+      "order_no": 7,
+      "outcomes": [
+        {
+          "code": "ENG.5.7.L1",
+          "description": "Dinleme/izleme öncesinde tema içeriğiyle ilgili ön bilgilerini etkinleştirir ve tahminlerde bulunur. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.L2",
+          "description": "Tema bağlamındaki dinleme/izleme içeriğinin ana konusunu ve önemli ayrıntılarını belirler. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.L3",
+          "description": "Dinlediği/izlediği içerikteki ipuçlarından yararlanarak anlam çıkarır ve bilgileri ilişkilendirir. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.L4",
+          "description": "Dinleme/izleme sürecine ilişkin düşünce ve deneyimlerini uygun biçimde paylaşır. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.P1",
+          "description": "Tema içeriğindeki hedef sesletim, vurgu ve tonlama özelliklerini iletişimde doğru ve doğal kullanır. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.R1",
+          "description": "Okuma öncesinde ön bilgilerini etkinleştirir, görsel ve bağlamsal ipuçlarından hareketle tahmin yapar. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.R2",
+          "description": "Metni göz gezdirme ve tarama yoluyla inceleyerek ana düşünceyi ve önemli ayrıntıları bulur. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.R3",
+          "description": "Okuduğu metindeki bilgileri sınıflandırır, karşılaştırır ve bağlamdan anlam çıkarır. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.R4",
+          "description": "Okuma sürecinde edindiği bilgi ve düşünceleri kendisiyle ilişkilendirerek paylaşır veya yeniden düzenler. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.V1",
+          "description": "Tema bağlamındaki hedef kelime ve ifadeleri bağlamdan tanır, anlamlandırır ve iletişimde uygun kullanır. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.G1",
+          "description": "Tema bağlamında sunulan hedef dil yapılarını anlamlı sözlü ve yazılı iletişim durumlarında uygun kullanır. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.W1",
+          "description": "Yazma görevinin amacını ve içeriğini anlar; ön bilgilerini yazma göreviyle ilişkilendirir. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.W2",
+          "description": "Yazma görevi için sunulan örnek metnin biçimini, bileşenlerini ve ayrıntılarını inceler. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.W3",
+          "description": "Örnekten yararlanarak yazılı içeriğini planlar, taslak oluşturur ve gerekli materyalleri düzenler. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.W4",
+          "description": "Hedef kelime ve dil yapılarını kullanarak yaşına ve dil düzeyine uygun yazılı içerik oluşturur. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.W5",
+          "description": "Edindiği bilgileri yeni yazılı iletişim durumlarına aktarır ve başkalarıyla paylaşır. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.W6",
+          "description": "Yazma sürecine ilişkin çalışmasını gözden geçirir, yansıtır ve gerektiğinde yeniden düzenler. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.S1",
+          "description": "Konuşma öncesinde önceki bilgi ve deneyimlerini etkinleştirerek konuya hazırlanır. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.S2",
+          "description": "Sözlü içerik üretmek için sunulan model veya örnekten yararlanır. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.S3",
+          "description": "Hazırlıklı veya hazırlıksız konuşma için içeriği amaca ve bağlama uygun biçimde düzenler. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.S4",
+          "description": "Hedef kelime, telaffuz ve dil yapılarını kullanarak anlaşılır sözlü içerik üretir. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.S5",
+          "description": "Edindiği bilgileri farklı sözlü iletişim durumlarına aktarır ve başkalarıyla paylaşır. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        },
+        {
+          "code": "ENG.5.7.S6",
+          "description": "Konuşma sürecine ilişkin düşünce ve deneyimlerini değerlendirir ve paylaşır. Bağlam: Types of animals in nature; wild animals in nature; their habitats."
+        }
+      ]
+    },
+    {
+      "name": "Life in the Universe & Future",
+      "order_no": 8,
+      "outcomes": [
+        {
+          "code": "ENG.5.8.L1",
+          "description": "Dinleme/izleme öncesinde tema içeriğiyle ilgili ön bilgilerini etkinleştirir ve tahminlerde bulunur. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.L2",
+          "description": "Tema bağlamındaki dinleme/izleme içeriğinin ana konusunu ve önemli ayrıntılarını belirler. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.L3",
+          "description": "Dinlediği/izlediği içerikteki ipuçlarından yararlanarak anlam çıkarır ve bilgileri ilişkilendirir. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.L4",
+          "description": "Dinleme/izleme sürecine ilişkin düşünce ve deneyimlerini uygun biçimde paylaşır. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.P1",
+          "description": "Tema içeriğindeki hedef sesletim, vurgu ve tonlama özelliklerini iletişimde doğru ve doğal kullanır. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.R1",
+          "description": "Okuma öncesinde ön bilgilerini etkinleştirir, görsel ve bağlamsal ipuçlarından hareketle tahmin yapar. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.R2",
+          "description": "Metni göz gezdirme ve tarama yoluyla inceleyerek ana düşünceyi ve önemli ayrıntıları bulur. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.R3",
+          "description": "Okuduğu metindeki bilgileri sınıflandırır, karşılaştırır ve bağlamdan anlam çıkarır. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.R4",
+          "description": "Okuma sürecinde edindiği bilgi ve düşünceleri kendisiyle ilişkilendirerek paylaşır veya yeniden düzenler. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.V1",
+          "description": "Tema bağlamındaki hedef kelime ve ifadeleri bağlamdan tanır, anlamlandırır ve iletişimde uygun kullanır. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.G1",
+          "description": "Tema bağlamında sunulan hedef dil yapılarını anlamlı sözlü ve yazılı iletişim durumlarında uygun kullanır. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.W1",
+          "description": "Yazma görevinin amacını ve içeriğini anlar; ön bilgilerini yazma göreviyle ilişkilendirir. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.W2",
+          "description": "Yazma görevi için sunulan örnek metnin biçimini, bileşenlerini ve ayrıntılarını inceler. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.W3",
+          "description": "Örnekten yararlanarak yazılı içeriğini planlar, taslak oluşturur ve gerekli materyalleri düzenler. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.W4",
+          "description": "Hedef kelime ve dil yapılarını kullanarak yaşına ve dil düzeyine uygun yazılı içerik oluşturur. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.W5",
+          "description": "Edindiği bilgileri yeni yazılı iletişim durumlarına aktarır ve başkalarıyla paylaşır. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.W6",
+          "description": "Yazma sürecine ilişkin çalışmasını gözden geçirir, yansıtır ve gerektiğinde yeniden düzenler. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.S1",
+          "description": "Konuşma öncesinde önceki bilgi ve deneyimlerini etkinleştirerek konuya hazırlanır. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.S2",
+          "description": "Sözlü içerik üretmek için sunulan model veya örnekten yararlanır. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.S3",
+          "description": "Hazırlıklı veya hazırlıksız konuşma için içeriği amaca ve bağlama uygun biçimde düzenler. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.S4",
+          "description": "Hedef kelime, telaffuz ve dil yapılarını kullanarak anlaşılır sözlü içerik üretir. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.S5",
+          "description": "Edindiği bilgileri farklı sözlü iletişim durumlarına aktarır ve başkalarıyla paylaşır. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        },
+        {
+          "code": "ENG.5.8.S6",
+          "description": "Konuşma sürecine ilişkin düşünce ve deneyimlerini değerlendirir ve paylaşır. Bağlam: Planet Earth; holidays; school holidays, places, activities, and plans for holidays."
+        }
+      ]
+    }
+  ]
+}
