@@ -36,3 +36,33 @@ def send_exam_result_email(to_email: str, exam_title: str, score: int,
                 server.send_message(message)
     except (OSError, smtplib.SMTPException):
         logger.exception("Sınav sonucu e-postası gönderilemedi.")
+
+
+def send_password_reset_email(to_email: str, reset_url: str) -> None:
+    if not settings.SMTP_HOST or not settings.SMTP_FROM_EMAIL:
+        logger.warning("Parola sıfırlama e-postası gönderilemedi: SMTP ayarları eksik.")
+        return
+    message = EmailMessage()
+    message["Subject"] = "Akıllı Sınav - Parola sıfırlama"
+    message["From"] = settings.SMTP_FROM_EMAIL
+    message["To"] = to_email
+    message.set_content(
+        "Parolanızı yenilemek için aşağıdaki bağlantıyı kullanın. "
+        "Bağlantı 30 dakika geçerlidir ve yalnızca bir kez kullanılabilir.\n\n"
+        f"{reset_url}\n\nBu isteği siz yapmadıysanız bu e-postayı dikkate almayın."
+    )
+    try:
+        if settings.SMTP_PORT == 465:
+            with smtplib.SMTP_SSL(settings.SMTP_HOST, settings.SMTP_PORT, timeout=12) as server:
+                if settings.SMTP_USERNAME:
+                    server.login(settings.SMTP_USERNAME, settings.SMTP_PASSWORD)
+                server.send_message(message)
+        else:
+            with smtplib.SMTP(settings.SMTP_HOST, settings.SMTP_PORT, timeout=12) as server:
+                if settings.SMTP_USE_TLS:
+                    server.starttls()
+                if settings.SMTP_USERNAME:
+                    server.login(settings.SMTP_USERNAME, settings.SMTP_PASSWORD)
+                server.send_message(message)
+    except (OSError, smtplib.SMTPException):
+        logger.exception("Parola sıfırlama e-postası gönderilemedi.")
