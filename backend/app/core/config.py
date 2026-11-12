@@ -11,7 +11,8 @@ class Settings(BaseSettings):
     DATABASE_URL: str = "postgresql+psycopg://sinav_user:change_me@localhost:5432/akilli_sinav"
     GEMINI_API_KEY: str = ""
     GEMINI_MODEL: str = "gemini-2.5-flash"
-    APP_BASE_URL: str = "http://localhost:8000"\n    SMTP_HOST: str = ""
+    APP_BASE_URL: str = "http://localhost:8000"
+    SMTP_HOST: str = ""
     SMTP_PORT: int = 587
     SMTP_USERNAME: str = ""
     SMTP_PASSWORD: str = ""
