@@ -146,7 +146,7 @@ def list_exams(user: User = Depends(get_current_user), db: Session = Depends(get
     elif user.role != "admin":
         raise HTTPException(status_code=403, detail="Yetkiniz yok.")
     return [{"id": str(e.id), "title": e.title, "status": e.status,
-             "question_count": e.question_count, "score": e.score}
+             "question_count": e.question_count, "score": e.score, "review_note": e.review_note}
             for e in db.scalars(query.order_by(Exam.id.desc())).all()]
 
 
