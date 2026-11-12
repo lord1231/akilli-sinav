@@ -16,6 +16,7 @@ SEED_GRADES = {
     "4-ingilizce-meb-2018.json": 4,
     "4-dkab-meb-2018.json": 4,
     "4-insan-haklari-tymm-2024.json": 4,
+    "4-trafik-guvenligi-meb-2018.json": 4,
     "5-matematik-tymm-2024.json": 5,
     "5-sosyal-bilgiler-tymm-2024.json": 5,
     "5-fen-bilimleri-tymm-2024.json": 5,
@@ -53,6 +54,8 @@ def test_curriculum_seed_matches_import_schema_and_official_source(
         assert sum(len(unit.outcomes) for unit in payload.units) == 19
     if filename == "4-insan-haklari-tymm-2024.json":
         assert sum(len(unit.outcomes) for unit in payload.units) == 13
+    if filename == "4-trafik-guvenligi-meb-2018.json":
+        assert sum(len(unit.outcomes) for unit in payload.units) == 21
 
     unit_names = [unit.name for unit in payload.units]
     unit_orders = [unit.order_no for unit in payload.units]
