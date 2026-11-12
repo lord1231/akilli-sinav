@@ -1,0 +1,104 @@
+{
+  "grade_level": 4,
+  "subject_name": "Trafik Güvenliği",
+  "curriculum_version": "MEB 2018 (2026-2027)",
+  "source_url": "https://mufredat.meb.gov.tr/Dosyalar/2018120202936103-TRAFIK%20GUVENLIGI%20OGRETIM%20PROGRAMI.pdf",
+  "units": [
+    {
+      "name": "Trafikte Güvenlik",
+      "order_no": 1,
+      "outcomes": [
+        {
+          "code": "TG.4.1.1",
+          "description": "Trafikte kendisinin ve başkalarının hayatının önemli olduğunu fark eder."
+        },
+        {
+          "code": "TG.4.1.2",
+          "description": "Trafikle ilgili temel kavramları açıklar."
+        },
+        {
+          "code": "TG.4.1.3",
+          "description": "Trafik işaretleri ve işaret levhalarının önemini araştırır."
+        },
+        {
+          "code": "TG.4.1.4",
+          "description": "Yaya olarak trafik kurallarına uyar."
+        },
+        {
+          "code": "TG.4.1.5",
+          "description": "Günlük yaşantısında çevresindeki güvenli yolları kullanır."
+        },
+        {
+          "code": "TG.4.1.6",
+          "description": "Taşıt trafiğine kapalı alanlarda oyun araçlarını güvenli kullanır."
+        },
+        {
+          "code": "TG.4.1.7",
+          "description": "Ulaşım araçlarını çeşitli özellikleri açısından karşılaştırır."
+        },
+        {
+          "code": "TG.4.1.8",
+          "description": "Trafikte geçiş üstünlüğü olan taşıtları tanır."
+        },
+        {
+          "code": "TG.4.1.9",
+          "description": "Trafikle ilgili meslekleri ve kurumları araştırır."
+        },
+        {
+          "code": "TG.4.1.10",
+          "description": "Trafikte toplu taşıma araçlarını kullanmanın önemini kavrar."
+        },
+        {
+          "code": "TG.4.1.11",
+          "description": "Taşıtlara binerken, taşıtlardan inerken ve taşıtlarda yolculuk ederken kurallara uyar."
+        },
+        {
+          "code": "TG.4.1.12",
+          "description": "Trafikte karşılaşılabilecek tehlikelere örnekler verir."
+        },
+        {
+          "code": "TG.4.1.13",
+          "description": "Trafikte karşılaşabileceği tehlikelere karşı alınması gereken önlemleri nedenleriyle açıklar."
+        },
+        {
+          "code": "TG.4.1.14",
+          "description": "Taşıt trafiğinde tehlikeli hareketlerden kaçınır."
+        },
+        {
+          "code": "TG.4.1.15",
+          "description": "Trafikte sorumlu, saygılı ve sabırlı olmanın gerekliliğini sorgular."
+        },
+        {
+          "code": "TG.4.1.16",
+          "description": "Trafik kurallarına uymanın birey ve toplum hayatına etkilerini tartışır."
+        },
+        {
+          "code": "TG.4.1.17",
+          "description": "Trafik kurallarının etkin bir şekilde uygulanmasına yönelik önerilerde bulunur."
+        }
+      ]
+    },
+    {
+      "name": "Trafikte İlk Yardım",
+      "order_no": 2,
+      "outcomes": [
+        {
+          "code": "TG.4.2.1",
+          "description": "Taşıtlarda bulunması gereken ilk yardım malzemelerini tanır."
+        },
+        {
+          "code": "TG.4.2.2",
+          "description": "Trafikte ilk yardım gerektiren durumlarda kimlerden ve nasıl yardım istenmesi gerektiğini açıklar."
+        },
+        {
+          "code": "TG.4.2.3",
+          "description": "İlk yardım uygulamalarında doğru müdahalenin önemini tartışır."
+        },
+        {
+          "code": "TG.4.2.4",
+          "description": "Hafif yaralanmalarda yapılacak ilk yardım uygulamalarını araştırır."
+        }
+      ]
+    }
+  ]
+}
