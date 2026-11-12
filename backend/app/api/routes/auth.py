@@ -1,6 +1,6 @@
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Request, status
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -9,6 +9,7 @@ from app.core.security import create_access_token, hash_password, verify_passwor
 from app.db.session import get_db
 from app.models import (Exam, ExamQuestion, LearningOutcome, ParentStudentLink,
                         Question, StudentAnswer, User)
+from app.core.rate_limit import limiter
 from app.schemas import CreateStudent, LoginRequest, RegisterParent, TokenResponse, UserResponse
 
 router = APIRouter(prefix="/api/auth", tags=["Kimlik doğrulama"])
@@ -28,7 +29,8 @@ def register_parent(payload: RegisterParent, db: Session = Depends(get_db)):
 
 
 @router.post("/login", response_model=TokenResponse)
-def login(payload: LoginRequest, db: Session = Depends(get_db)):
+@limiter.limit("5/minute")
+def login(request: Request, payload: LoginRequest, db: Session = Depends(get_db)):
     user = db.scalar(select(User).where(User.email == payload.email.lower()))
     if not user or not user.is_active or not verify_password(payload.password, user.password_hash):
         raise HTTPException(status_code=401, detail="E-posta veya parola hatalı.")
