@@ -130,3 +130,12 @@ def test_exam_rejection_reason_validation() -> None:
     assert ExamRejectRequest(reason="  Eksik kazanım  ").reason == "Eksik kazanım"
     with pytest.raises(Exception):
         ExamRejectRequest(reason="   ")
+
+
+def test_students_can_open_only_published_or_completed_exams() -> None:
+    from app.api.routes.exams import student_can_open_exam
+
+    assert student_can_open_exam("published") is True
+    assert student_can_open_exam("completed") is True
+    assert student_can_open_exam("pending_review") is False
+    assert student_can_open_exam("rejected") is False
