@@ -38,7 +38,7 @@ docker compose up -d --build
 docker compose ps
 ```
 
-API konteyneri başlangıçta Alembic migration'larını uygular. Hazır olma kontrolü:
+API konteyneri başlangıçta Alembic migration'larını uygular. İlk yönetici hesabı için `.env` içinde `ADMIN_EMAIL`, en az 14 karakterli `ADMIN_PASSWORD` ve `ADMIN_FULL_NAME` belirleyin; sonra `docker compose exec api python -m app.cli.create_admin` komutunu yalnızca bir kez çalıştırın. Müfredatları topluca içe aktarmak için `docker compose exec api python -m app.cli.import_all_curriculum` komutunu kullanın. Hazır olma kontrolü:
 
 ```bash
 curl https://GERCEK-ALAN-ADINIZ/health/ready
