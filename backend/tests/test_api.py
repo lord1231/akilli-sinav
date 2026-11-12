@@ -90,6 +90,52 @@ def test_security_headers_are_present():
     api_response = client.get("/api/auth/me")
     assert api_response.headers["cache-control"] == "no-store"
 
+
+def test_exam_generation_is_rate_limited(monkeypatch):
+    from app.db.session import SessionLocal
+    from app.models import LearningOutcome, Subject, Unit
+    from app.api.routes import exams as exam_routes
+
+    parent_email = f"exam-limit-parent-{uuid4()}@example.com"
+    client.post("/api/auth/register", json={
+        "email": parent_email, "password": "Long-Test-Password-2026", "full_name": "Sınav Veli"
+    })
+    parent_token = client.post("/api/auth/login", json={
+        "email": parent_email, "password": "Long-Test-Password-2026"
+    }).json()["access_token"]
+    headers = {"Authorization": f"Bearer {parent_token}"}
+    student = client.post("/api/auth/students", headers=headers, json={
+        "email": f"exam-limit-student-{uuid4()}@example.com",
+        "password": "Long-Child-Password-2026", "full_name": "Sınav Öğrenci",
+        "grade_level": 4, "consent_confirmed": True,
+    })
+    assert student.status_code == 201
+
+    with SessionLocal() as db:
+        subject = Subject(grade_level=4, name=f"Test Matematik {uuid4()}",
+                          curriculum_version="test")
+        db.add(subject)
+        db.flush()
+        unit = Unit(subject_id=subject.id, name="Test Ünitesi", order_no=1)
+        db.add(unit)
+        db.flush()
+        outcome = LearningOutcome(unit_id=unit.id, code="TEST.4.1",
+                                  description="Test kazanımı")
+        db.add(outcome)
+        db.commit()
+        outcome_id = str(outcome.id)
+
+    def reject_generation(*args, **kwargs):
+        raise ValueError("mock generation")
+
+    monkeypatch.setattr(exam_routes, "generate_questions", reject_generation)
+    payload = {"student_id": student.json()["id"], "learning_outcome_id": outcome_id,
+               "title": "Limit testi"}
+    responses = [client.post("/api/exams/generate", headers=headers, json=payload)
+                 for _ in range(11)]
+    assert all(response.status_code == 502 for response in responses[:10])
+    assert responses[10].status_code == 429
+
 def test_parent_can_create_student_only_with_consent() -> None:
     email = f"parent-{uuid4()}@example.com"
     client.post("/api/auth/register", json={
