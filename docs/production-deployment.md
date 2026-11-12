@@ -52,7 +52,7 @@ Yanıt `{"status":"ready","database":"connected"}` olmalıdır.
 - Uygulama, veritabanı, ters vekil ve e-posta gönderim günlüklerini izleyin; parola sıfırlama tokenlarını ve öğrenci yanıtlarını günlüklerde tutmayın.
 - Gemini API kullanımını, kota ve maliyet limitlerini izleyin.
 - Bağımlılık ve Docker temel imajı güncellemelerini düzenli uygulayın.
-- Çoklu API worker/replica kullanılırsa mevcut IP tabanlı hız sınırı deposu süreçler arasında paylaşılmaz; üretimde Redis tabanlı ortak limiter kullanın.
+- Veli kaydı IP başına saatte 5, Gemini sınav üretimi saatte 10 istekle sınırlandırılır. Çoklu API worker/replica kullanılırsa mevcut IP tabanlı hız sınırı deposu süreçler arasında paylaşılmaz; üretimde Redis tabanlı ortak limiter kullanın.
 
 ## 5. Yayına çıkış öncesi zorunlu kontroller
 
