@@ -176,6 +176,6 @@ def test_password_reset_token_hash_is_one_way_and_stable() -> None:
 
 
 def test_password_recovery_routes_are_registered() -> None:
-    routes = {route.path for route in app.routes}
+    routes = set(app.openapi()["paths"])
     assert "/api/auth/password/forgot" in routes
     assert "/api/auth/password/reset" in routes
