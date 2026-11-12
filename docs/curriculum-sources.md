@@ -18,6 +18,7 @@ Resmî kaynaklar:
 | Ortaokul Matematik | 5-8 | TYMM 2024, PID 1978 |
 | Ortaokul Türkçe | 5-8 | TYMM 2024, PID 1979 |
 | Sosyal Bilgiler | 4-7 | TYMM 2024, PID 1981 |
+| İngilizce | 2-8 | TYMM 2025; 5. sınıf standart İngilizce programı |
 
 Program ayrıntıları:
 - Matematik: https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=1978
@@ -25,6 +26,8 @@ Program ayrıntıları:
 - Sosyal Bilgiler: https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=1981
 - Matematik PDF: https://mufredat.meb.gov.tr/Dosyalar/202582516434252-ortaokul%20matematik.pdf
 - Sosyal Bilgiler PDF: https://mufredat.meb.gov.tr/Dosyalar/202582516728345-sosyal%20bilgiler.pdf
+- 5. sınıf İngilizce programı: https://tymm.meb.gov.tr/ogretim-programlari/ingilizce-dersi-temel-egitim/6
+- TTKB'nin 13 Ağustos 2025 tarihli İngilizce program güncelleme duyurusu: https://ttkb.meb.gov.tr/www/ingilizce-dersi-ogretim-programlarinda-guncelleme-yapildi/icerik/795
 
 5. sınıf matematik programında altı tema yer alır: Sayılar ve Nicelikler, İşlemlerle Cebirsel Düşünme, Geometrik Şekiller, Geometrik Nicelikler, İstatistiksel Araştırma Süreci ve Veriden Olasılığa. Sosyal Bilgiler programı 4. sınıfta ve 5. sınıfta ayrı öğrenme alanları tanımlar.
 
@@ -52,10 +55,18 @@ Ancak katalog sayfasının önbelleğe alınmış metin görünümü bazı dersl
 6. Program değiştiğinde eski sürüm silinmez; yeni sürüm ayrı kaydedilir ve eski sınavların hangi sürümle üretildiği korunur.
 7. Yeni programın yürürlük tarihi ve sınıf kapsamı resmî MEB duyurusundan kontrol edilmeden otomatik etkinleştirme yapılmaz.
 
+## 5. sınıf İngilizce — TYMM 2025
+
+TTKB, standart İngilizce Dersi (2-8. sınıflar) programı ile Çoklu Yabancı Dil Eğitim Modeli İngilizce programını 2025-2026'dan itibaren kademeli uygulanmak üzere ayrı programlar olarak kabul etmiştir. Bu projede standart İngilizce programının 5. sınıf portalı esas alınmıştır; özel çoklu yabancı dil modeli bu dosyayla karıştırılmamıştır. Portalda sekiz tema yer alır: School Life, Classroom Life, Personal Life, Family Life, Life in the Neighbourhood & City, Life in the World, Life in Nature ve Life in the Universe & Future. JSON'daki 184 açıklama, temalara ait resmî öğrenme çıktılarının beceri odaklı Türkçe özetleridir; alt süreç bileşenlerinin birebir aktarımı değildir.
+
+- 5. sınıf İngilizce temaları: https://tymm.meb.gov.tr/ogretim-programlari/ingilizce-dersi-temel-egitim/6
+- Standart ve çoklu yabancı dil programlarının 2025 güncellemesi: https://ttkb.meb.gov.tr/www/ingilizce-dersi-ogretim-programlarinda-guncelleme-yapildi/icerik/795
+
 ## Depoda hazır içe aktarım dosyaları
 
 - `data/curriculum/5-matematik-tymm-2024.json`: 5. sınıf Matematik, 6 tema ve 23 öğrenme çıktısı.
 - `data/curriculum/5-sosyal-bilgiler-tymm-2024.json`: 5. sınıf Sosyal Bilgiler, 6 öğrenme alanı ve 19 öğrenme çıktısı.
+- `data/curriculum/5-ingilizce-tymm-2025.json`: 5. sınıf standart İngilizce, 8 tema ve 184 beceri odaklı öğrenme çıktısı özeti.
 
 Bu iki dosya, yukarıdaki resmî MEB PDF programlarından alınan öğrenme çıktısı kodları ve kısa resmî açıklamalarla hazırlanmıştır. `backend/app.cli.import_curriculum` komutuyla veritabanına yüklenebilir.
 
