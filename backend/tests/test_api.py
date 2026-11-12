@@ -259,7 +259,9 @@ def test_password_reset_flow_sends_single_use_link_and_changes_password(monkeypa
     assert requested.json()["message"] == "E-posta adresi kayıtlıysa parola yenileme bağlantısı gönderildi."
     assert len(sent) == 1 and sent[0][0] == email
 
-    token = parse_qs(urlparse(sent[0][1]).query)["reset_token"][0]
+    parsed_reset_url = urlparse(sent[0][1])
+    assert parsed_reset_url.query == ""
+    token = parse_qs(parsed_reset_url.fragment)["reset_token"][0]
     reset = client.post("/api/auth/password/reset", json={
         "token": token, "new_password": new_password
     })
