@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta, timezone
 from uuid import UUID
 
-from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -13,6 +13,7 @@ from app.schemas import AnswerRequest, ExamGenerateRequest, ExamRejectRequest
 from app.services.question_generator import generate_questions
 from app.services.email import send_exam_result_email
 from app.services.audit import record_admin_action
+from app.core.rate_limit import limiter
 
 router = APIRouter(prefix="/api/exams", tags=["Sınavlar"])
 
@@ -59,7 +60,8 @@ def require_admin(user: User) -> None:
 
 
 @router.post("/generate", status_code=201)
-def create_exam(payload: ExamGenerateRequest, user: User = Depends(get_current_user),
+@limiter.limit("10/hour")
+def create_exam(request: Request, payload: ExamGenerateRequest, user: User = Depends(get_current_user),
                 db: Session = Depends(get_db)):
     student = db.get(User, payload.student_id)
     outcome = db.get(LearningOutcome, payload.learning_outcome_id)
