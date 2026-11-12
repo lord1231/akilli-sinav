@@ -1,0 +1,138 @@
+{
+  "grade_level": 4,
+  "subject_name": "Beden Eğitimi ve Oyun",
+  "curriculum_version": "MEB 2018 (2026-2027)",
+  "source_url": "https://mufredat.meb.gov.tr/Dosyalar/20181023115223781-06-Beden%20E%C4%9Ftimi%20ve%20Oyun%202018-124%20Eki%20%C3%96P.pdf.pdf",
+  "units": [
+    {
+      "name": "Hareket Becerileri",
+      "order_no": 1,
+      "outcomes": [
+        {
+          "code": "BO.4.1.1.1",
+          "description": "Yer değiştirme hareketlerini artan kuvvet, hız ve çeviklikle yapar."
+        },
+        {
+          "code": "BO.4.1.1.2",
+          "description": "Oyunlarda dengeleme gerektiren hareketleri etkili kullanır."
+        },
+        {
+          "code": "BO.4.1.1.3",
+          "description": "Oyunlarda nesne kontrolü gerektiren hareketleri etkili kullanır."
+        },
+        {
+          "code": "BO.4.1.1.4",
+          "description": "Özgün danslar yapar."
+        },
+        {
+          "code": "BO.4.1.1.5",
+          "description": "Kurallı takım oyunları oynar."
+        }
+      ]
+    },
+    {
+      "name": "Hareket Kavramları, İlkeleri, Stratejileri ve Taktikleri",
+      "order_no": 2,
+      "outcomes": [
+        {
+          "code": "BO.4.1.2.1",
+          "description": "Hareket becerileri ile ilgili kavramları yerinde kullanır."
+        },
+        {
+          "code": "BO.4.1.2.2",
+          "description": "Oynadığı oyunların içindeki hareket becerilerini tanımlar."
+        },
+        {
+          "code": "BO.4.1.2.3",
+          "description": "Oyun ve fiziki etkinliklerde kendisinin ve arkadaşlarının performanslarını değerlendirir."
+        },
+        {
+          "code": "BO.4.1.3.1",
+          "description": "Çeşitli stratejileri ve taktikleri kullanarak oyunlar tasarlar."
+        },
+        {
+          "code": "BO.4.1.3.2",
+          "description": "Çeşitli stratejileri ve taktikleri kullanarak tasarladığı oyunları arkadaşlarıyla oynar."
+        }
+      ]
+    },
+    {
+      "name": "Düzenli Fiziksel Etkinlik",
+      "order_no": 3,
+      "outcomes": [
+        {
+          "code": "BO.4.2.1.1",
+          "description": "Okul dışında oyun ve fiziki etkinliklere düzenli olarak katılır."
+        },
+        {
+          "code": "BO.4.2.1.2",
+          "description": "Fiziksel uygunluğunu geliştirmek için hazırladığı programları uygular."
+        }
+      ]
+    },
+    {
+      "name": "Fiziksel Etkinlik Kavramları, İlkeleri ve İlgili Hayat Becerileri",
+      "order_no": 4,
+      "outcomes": [
+        {
+          "code": "BO.4.2.2.1",
+          "description": "Fiziksel uygunluğunu geliştirecek uygun programlar tasarlar."
+        },
+        {
+          "code": "BO.4.2.2.2",
+          "description": "Sağlığını korumak için günlük ve haftalık beslenme listesi hazırlar."
+        },
+        {
+          "code": "BO.4.2.2.3",
+          "description": "Oyun ve fiziki etkinliklere uygun spor kıyafetiyle katılır."
+        },
+        {
+          "code": "BO.4.2.2.4",
+          "description": "Oyun ve fiziki etkinliklerde kendinin ve başkalarının güvenliğiyle ilgili sorumluluk alır."
+        },
+        {
+          "code": "BO.4.2.2.5",
+          "description": "Oyun ve fiziki etkinliklerde zamanını etkili kullanır."
+        },
+        {
+          "code": "BO.4.2.2.6",
+          "description": "Oyun ve fiziki etkinliklerde çevreye duyarlılık gösterir."
+        },
+        {
+          "code": "BO.4.2.2.7",
+          "description": "Oyun ve fiziki etkinliklerde iş birliği yapar."
+        },
+        {
+          "code": "BO.4.2.2.8",
+          "description": "Oyun ve fiziki etkinliklerde adil oyun anlayışı sergiler."
+        },
+        {
+          "code": "BO.4.2.2.9",
+          "description": "Oyun ve fiziki etkinliklerde karşılaştığı problemleri çözer."
+        }
+      ]
+    },
+    {
+      "name": "Kültürel Birikimlerimiz ve Değerlerimiz",
+      "order_no": 5,
+      "outcomes": [
+        {
+          "code": "BO.4.2.3.1",
+          "description": "Bayram, kutlama ve törenlerde sorumluluk alır."
+        },
+        {
+          "code": "BO.4.2.3.2",
+          "description": "Kültürümüze ve diğer kültürlere ait halk danslarını yapar."
+        },
+        {
+          "code": "BO.4.2.3.3",
+          "description": "Kültürümüze ve diğer kültürlere ait çocuk oyunlarını oynar."
+        },
+        {
+          "code": "BO.4.2.3.4",
+          "description": "Uluslararası müsabakalarda başarılı olmuş Türk sporcularını araştırır."
+        }
+      ]
+    }
+  ]
+}
