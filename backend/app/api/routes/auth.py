@@ -112,7 +112,9 @@ def reset_password(request: Request, payload: ResetPasswordRequest,
         other.used_at = now
     db.commit()
     return {"message": "Parolanız yenilendi. Yeni parolanızla giriş yapabilirsiniz."}
-\n\n@router.get("/me", response_model=UserResponse)
+
+
+@router.get("/me", response_model=UserResponse)
 def me(user: User = Depends(get_current_user)):
     return user
 
