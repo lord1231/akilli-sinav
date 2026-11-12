@@ -218,3 +218,17 @@ def test_password_reset_flow_sends_single_use_link_and_changes_password(monkeypa
     assert client.post("/api/auth/login", json={
         "email": email, "password": new_password
     }).status_code == 200
+
+def test_exam_deadline_uses_server_start_time_and_duration():
+    from datetime import datetime, timedelta, timezone
+    from app.api.routes.exams import exam_deadline
+
+    started = datetime(2026, 11, 12, 12, 0, tzinfo=timezone.utc)
+    exam = SimpleNamespace(started_at=started, duration_minutes=30)
+    assert exam_deadline(exam) == started + timedelta(minutes=30)
+
+
+def test_exam_deadline_is_missing_before_student_starts_exam():
+    from app.api.routes.exams import exam_deadline
+
+    assert exam_deadline(SimpleNamespace(started_at=None, duration_minutes=30)) is None
