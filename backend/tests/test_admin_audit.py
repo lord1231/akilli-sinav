@@ -57,3 +57,17 @@ def test_admin_audit_endpoint_requires_authentication():
 
 def test_admin_audit_endpoint_is_registered():
     assert "/api/admin/audit-logs" in app.openapi()["paths"]
+
+
+
+def test_parent_cannot_read_admin_audit_logs():
+    email = f"audit-parent-{uuid4()}@example.com"
+    registered = client.post("/api/auth/register", json={
+        "email": email, "password": "Long-Test-Password-2026", "full_name": "Denetim Velisi"
+    })
+    assert registered.status_code == 201
+    token = client.post("/api/auth/login", json={
+        "email": email, "password": "Long-Test-Password-2026"
+    }).json()["access_token"]
+    response = client.get("/api/admin/audit-logs", headers={"Authorization": f"Bearer {token}"})
+    assert response.status_code == 403
