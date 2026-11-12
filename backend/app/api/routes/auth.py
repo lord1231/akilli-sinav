@@ -22,7 +22,8 @@ router = APIRouter(prefix="/api/auth", tags=["Kimlik doğrulama"])
 
 
 @router.post("/register", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
-def register_parent(payload: RegisterParent, db: Session = Depends(get_db)):
+@limiter.limit("5/hour")
+def register_parent(request: Request, payload: RegisterParent, db: Session = Depends(get_db)):
     email = payload.email.lower()
     if db.scalar(select(User).where(User.email == email)):
         raise HTTPException(status_code=409, detail="Bu e-posta zaten kayıtlı.")
@@ -74,7 +75,7 @@ def request_password_reset(request: Request, payload: ForgotPasswordRequest,
         expires_at=now + timedelta(minutes=30),
     ))
     db.commit()
-    reset_url = f"{settings.APP_BASE_URL.rstrip('/')}/app/?reset_token={raw_token}"
+    reset_url = f"{settings.APP_BASE_URL.rstrip('/')}/app/#reset_token={raw_token}"
     background_tasks.add_task(send_password_reset_email, user.email, reset_url)
     return generic_response
 
