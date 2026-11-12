@@ -1,0 +1,222 @@
+{
+  "grade_level": 4,
+  "subject_name": "Fen Bilimleri",
+  "curriculum_version": "MEB 2018 (2026-2027 uygulama kontrolü)",
+  "source_url": "https://mufredat.meb.gov.tr/Dosyalar/201812312311937-FEN%20B%C4%B0L%C4%B0MLER%C4%B0%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI2018.pdf",
+  "units": [
+    {
+      "name": "Yer Kabuğu ve Dünya’mızın Hareketleri",
+      "order_no": 1,
+      "outcomes": [
+        {
+          "code": "F.4.1.1.1",
+          "description": "Yer kabuğunun kara tabakasının kayaçlardan oluştuğunu belirtir."
+        },
+        {
+          "code": "F.4.1.1.2",
+          "description": "Kayaçlarla madenleri ilişkilendirir ve kayaçların ham madde olarak önemini tartışır."
+        },
+        {
+          "code": "F.4.1.1.3",
+          "description": "Fosillerin oluşumunu açıklar."
+        },
+        {
+          "code": "F.4.1.2.1",
+          "description": "Dünya’nın dönme ve dolanma hareketleri arasındaki farkı açıklar."
+        },
+        {
+          "code": "F.4.1.2.2",
+          "description": "Dünya’nın hareketleri sonucu gerçekleşen olayları açıklar."
+        }
+      ]
+    },
+    {
+      "name": "Besinlerimiz",
+      "order_no": 2,
+      "outcomes": [
+        {
+          "code": "F.4.2.1.1",
+          "description": "Canlı yaşamı ve besin içerikleri arasındaki ilişkiyi açıklar."
+        },
+        {
+          "code": "F.4.2.1.2",
+          "description": "Su ve minerallerin bütün besinlerde bulunduğu çıkarımını yapar."
+        },
+        {
+          "code": "F.4.2.1.3",
+          "description": "Sağlıklı bir yaşam için besinlerin tazeliğinin ve doğallığının önemini, araştırma verilerine dayalı olarak tartışır."
+        },
+        {
+          "code": "F.4.2.1.4",
+          "description": "İnsan sağlığı ile dengeli beslenmeyi ilişkilendirir."
+        },
+        {
+          "code": "F.4.2.1.5",
+          "description": "Alkol ve sigara kullanımının insan sağlığına olan olumsuz etkilerinin farkına varır."
+        },
+        {
+          "code": "F.4.2.1.6",
+          "description": "Yakın çevresinde sigara kullanımını azaltmaya yönelik sorumluluk üstlenir."
+        }
+      ]
+    },
+    {
+      "name": "Kuvvetin Etkileri",
+      "order_no": 3,
+      "outcomes": [
+        {
+          "code": "F.4.3.1.1",
+          "description": "Kuvvetin, cisimlere hareket kazandırmasına ve cisimlerin şekillerini değiştirmesine yönelik deneyler yapar."
+        },
+        {
+          "code": "F.4.3.2.1",
+          "description": "Mıknatısı tanır ve kutupları olduğunu keşfeder."
+        },
+        {
+          "code": "F.4.3.2.2",
+          "description": "Mıknatısın etki ettiği maddeleri deney yaparak keşfeder."
+        },
+        {
+          "code": "F.4.3.2.3",
+          "description": "Mıknatısların günlük yaşamdaki kullanım alanlarına örnekler verir."
+        },
+        {
+          "code": "F.4.3.2.4",
+          "description": "Mıknatısların yeni kullanım alanları konusunda fikirlerini açıklar."
+        }
+      ]
+    },
+    {
+      "name": "Maddenin Özellikleri",
+      "order_no": 4,
+      "outcomes": [
+        {
+          "code": "F.4.4.1.1",
+          "description": "Beş duyu organını kullanarak maddeyi niteleyen temel özellikleri açıklar."
+        },
+        {
+          "code": "F.4.4.2.1",
+          "description": "Farklı maddelerin kütle ve hacimlerini ölçerek karşılaştırır."
+        },
+        {
+          "code": "F.4.4.2.2",
+          "description": "Ölçülebilir özelliklerini kullanarak maddeyi tanımlar."
+        },
+        {
+          "code": "F.4.4.3.1",
+          "description": "Maddelerin hâllerine ait temel özellikleri karşılaştırır."
+        },
+        {
+          "code": "F.4.4.3.2",
+          "description": "Aynı maddenin farklı hâllerine örnekler verir."
+        },
+        {
+          "code": "F.4.4.4.1",
+          "description": "Maddelerin ısınıp soğumasına yönelik deneyler tasarlar."
+        },
+        {
+          "code": "F.4.4.4.2",
+          "description": "Maddelerin ısı etkisiyle hâl değiştirebileceğine yönelik deney tasarlar."
+        },
+        {
+          "code": "F.4.4.5.1",
+          "description": "Günlük yaşamında sıklıkla kullandığı maddeleri saf madde ve karışım şeklinde sınıflandırarak aralarındaki farkları açıklar."
+        },
+        {
+          "code": "F.4.4.5.2",
+          "description": "Günlük yaşamda karşılaştığı karışımların ayrılmasında kullanılabilecek yöntemlerden uygun olanı seçer."
+        },
+        {
+          "code": "F.4.4.5.3",
+          "description": "Karışımların ayrılmasını, ülke ekonomisine katkısı ve kaynakların etkili kullanımı bakımından tartışır."
+        }
+      ]
+    },
+    {
+      "name": "Aydınlatma ve Ses Teknolojileri",
+      "order_no": 5,
+      "outcomes": [
+        {
+          "code": "F.4.5.1.1",
+          "description": "Geçmişte ve günümüzde kullanılan aydınlatma araçlarını karşılaştırır."
+        },
+        {
+          "code": "F.4.5.1.2",
+          "description": "Gelecekte kullanılabilecek aydınlatma araçlarına yönelik tasarım yapar."
+        },
+        {
+          "code": "F.4.5.2.1",
+          "description": "Uygun aydınlatma hakkında araştırma yapar."
+        },
+        {
+          "code": "F.4.5.2.2",
+          "description": "Aydınlatma araçlarının tasarruflu kullanımının aile ve ülke ekonomisi bakımından önemini tartışır."
+        },
+        {
+          "code": "F.4.5.3.1",
+          "description": "Işık kirliliğinin nedenlerini sorgular."
+        },
+        {
+          "code": "F.4.5.3.2",
+          "description": "Işık kirliliğinin, doğal hayata ve gök cisimlerinin gözlenmesine olan olumsuz etkilerini açıklar."
+        },
+        {
+          "code": "F.4.5.3.3",
+          "description": "Işık kirliliğini azaltmaya yönelik çözümler üretir."
+        },
+        {
+          "code": "F.4.5.4.1",
+          "description": "Geçmişte ve günümüzde kullanılan ses teknolojilerini karşılaştırır."
+        },
+        {
+          "code": "F.4.5.4.2",
+          "description": "Şiddetli sese sahip teknolojik araçların olumlu ve olumsuz etkilerini araştırır."
+        },
+        {
+          "code": "F.4.5.5.1",
+          "description": "Ses kirliliğinin nedenlerini sorgular."
+        },
+        {
+          "code": "F.4.5.5.2",
+          "description": "Ses kirliliğinin insan sağlığı ve çevre üzerindeki olumsuz etkilerini açıklar."
+        },
+        {
+          "code": "F.4.5.5.3",
+          "description": "Ses kirliliğini azaltmaya yönelik çözümler üretir."
+        }
+      ]
+    },
+    {
+      "name": "İnsan ve Çevre",
+      "order_no": 6,
+      "outcomes": [
+        {
+          "code": "F.4.6.1.1",
+          "description": "Kaynakların kullanımında tasarruflu davranmaya özen gösterir."
+        },
+        {
+          "code": "F.4.6.1.2",
+          "description": "Yaşam için gerekli olan kaynakların ve geri dönüşümün önemini fark eder."
+        }
+      ]
+    },
+    {
+      "name": "Basit Elektrik Devreleri",
+      "order_no": 7,
+      "outcomes": [
+        {
+          "code": "F.4.7.1.1",
+          "description": "Basit elektrik devresini oluşturan devre elemanlarını işlevleri ile tanır."
+        },
+        {
+          "code": "F.4.7.1.2",
+          "description": "Çalışan bir elektrik devresi kurar."
+        },
+        {
+          "code": "F.4.7.1.3",
+          "description": "Evde ve okuldaki elektrik düğmelerinin ve kabloların birer devre elemanı olduğunu bilir."
+        }
+      ]
+    }
+  ]
+}
