@@ -32,6 +32,8 @@ def test_curriculum_seed_matches_import_schema_and_official_source(
     assert payload.curriculum_version.strip()
     assert validate_meb_source(payload.source_url) == payload.source_url
     assert payload.units
+    if filename == "4-sosyal-bilgiler-meb-2018.json":
+        assert sum(len(unit.outcomes) for unit in payload.units) == 33
 
     unit_names = [unit.name for unit in payload.units]
     unit_orders = [unit.order_no for unit in payload.units]
