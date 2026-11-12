@@ -1,16 +1,16 @@
-from uuid import UUID
+from uuid import UUID\nfrom datetime import datetime, timedelta, timezone\nimport hashlib\nimport secrets
 
-from fastapi import APIRouter, Depends, HTTPException, Request, status
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request, status
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_user
-from app.core.security import create_access_token, hash_password, verify_password
+from app.core.security import create_access_token, hash_password, verify_password\nfrom app.core.config import settings
 from app.db.session import get_db
 from app.models import (Exam, ExamQuestion, LearningOutcome, ParentStudentLink,
                         Question, StudentAnswer, User)
 from app.core.rate_limit import limiter
-from app.schemas import CreateStudent, LoginRequest, RegisterParent, TokenResponse, UserResponse
+from app.schemas import (CreateStudent, ForgotPasswordRequest, LoginRequest,\n                          RegisterParent, ResetPasswordRequest, TokenResponse, UserResponse)
 
 router = APIRouter(prefix="/api/auth", tags=["Kimlik doğrulama"])
 
