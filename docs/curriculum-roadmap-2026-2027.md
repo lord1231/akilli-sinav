@@ -29,7 +29,7 @@ Aşağıdaki liste, katalog arama görünümünde tespit edilen program adları/
 | 5 | Fen Bilimleri | Fen Bilimleri (3-8), 2026 kaydı katalog görünümünde | TYMM 2024 portalındaki 5. sınıf programı doğrulandı; 7 ünite ve 28 öğrenme çıktısı veri dosyasına eklendi |
 | 5 | Sosyal Bilgiler | Sosyal Bilgiler (4-7), 2026 kaydı katalog görünümünde | PDF/kurul kararı doğrulaması bekliyor |
 | 5 | İngilizce | İngilizce (2-8), 2025 | Standart TYMM 2025 programının 8 teması ve 184 beceri odaklı öğrenme çıktısı özeti eklendi; çoklu yabancı dil modeli ayrı tutuldu |
-| 5 | Din Kültürü ve Ahlak Bilgisi | 4-8, 2026 | 2026-2027'de 5. sınıfta uygulanacak; program PDF'si ayrıca eşleştirilmeli |
+| 5 | Din Kültürü ve Ahlak Bilgisi | 4-8, 2026 | 2026-2027'de 5. sınıfta uygulanır; resmî PDF ve 5 ünite/18 öğrenme çıktısı eklendi |
 
 ## 12 Kasım 2026 canlı katalog görünümü
 
@@ -67,5 +67,6 @@ Kaynaklar:
 - `data/curriculum/5-fen-bilimleri-tymm-2024.json`: TYMM 2024; resmî 5. sınıf portalındaki 7 ünite ve 28 öğrenme çıktısı.
 - `data/curriculum/5-turkce-tymm-2024.json`: TYMM 2024; resmî 5. sınıf portalındaki 6 tema ve tema bazlı öğrenme çıktıları.
 - `data/curriculum/5-ingilizce-tymm-2025.json`: standart İngilizce TYMM 2025; resmî 5. sınıf portalındaki 8 tema ve öğrenme çıktılarının 184 beceri odaklı Türkçe özeti. Çoklu Yabancı Dil Eğitim Modeli bu dosyaya dahil değildir.
+- `data/curriculum/5-dkab-tymm-2026.json`: 2026 kurul kararıyla kabul edilen DKAB programı; 5. sınıf için 5 ünite ve 18 öğrenme çıktısı.
 
 Mevcut 2024 dosyaları silinmeyecek veya yeni programmış gibi yeniden adlandırılmayacaktır. 5. sınıf Fen Bilimleri dosyası, TYMM portalındaki 5. sınıf ünite ve öğrenme çıktılarından derlenmiştir. Diğer derslerde yeni program PDF'si ve yürürlük kararı doğrulandığında ayrı sürüm dosyaları eklenecektir.
