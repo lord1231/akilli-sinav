@@ -1,0 +1,344 @@
+{
+  "grade_level": 4,
+  "subject_name": "Türkçe",
+  "curriculum_version": "MEB 2019 (2026-2027 uygulama kontrolü)",
+  "source_url": "https://mufredat.meb.gov.tr/Dosyalar/20195716392253-02-T%C3%BCrk%C3%A7e%20%C3%96%C4%9Fretim%20Program%C4%B1%202019.pdf",
+  "units": [
+    {
+      "name": "Dinleme/İzleme",
+      "order_no": 1,
+      "outcomes": [
+        {
+          "code": "T.4.1.1",
+          "description": "Görselden/görsellerden hareketle dinleyeceği/izleyeceği metnin konusunu tahmin eder."
+        },
+        {
+          "code": "T.4.1.2",
+          "description": "Dinlediklerinde/izlediklerinde geçen olayların gelişimi ve sonucu hakkında tahminde bulunur."
+        },
+        {
+          "code": "T.4.1.3",
+          "description": "Dinlediği/izlediği metni ana hatlarıyla anlatır."
+        },
+        {
+          "code": "T.4.1.4",
+          "description": "Dinlediklerinde/izlediklerinde geçen, bilmediği kelimelerin anlamını tahmin eder."
+        },
+        {
+          "code": "T.4.1.5",
+          "description": "Dinlediklerinin/izlediklerinin konusunu belirler."
+        },
+        {
+          "code": "T.4.1.6",
+          "description": "Dinlediklerinin/izlediklerinin ana fikrini/ana duygusunu belirler."
+        },
+        {
+          "code": "T.4.1.7",
+          "description": "Dinlediklerine/izlediklerine yönelik sorulara cevap verir."
+        },
+        {
+          "code": "T.4.1.8",
+          "description": "Dinlediklerine/izlediklerine farklı başlıklar önerir."
+        },
+        {
+          "code": "T.4.1.9",
+          "description": "Dinledikleriyle/izledikleriyle ilgili görüşlerini ifade eder."
+        },
+        {
+          "code": "T.4.1.10",
+          "description": "Dinlediği/izlediği hikâye edici metinleri canlandırır."
+        },
+        {
+          "code": "T.4.1.11",
+          "description": "Dinlediklerinin/izlediklerinin içeriğini değerlendirir."
+        },
+        {
+          "code": "T.4.1.12",
+          "description": "Dinleme stratejilerini uygular."
+        },
+        {
+          "code": "T.4.1.13",
+          "description": "Konuşmacının sözlü olmayan mesajlarını kavrar."
+        }
+      ]
+    },
+    {
+      "name": "Konuşma",
+      "order_no": 2,
+      "outcomes": [
+        {
+          "code": "T.4.2.1",
+          "description": "Kelimeleri anlamlarına uygun kullanır."
+        },
+        {
+          "code": "T.4.2.2",
+          "description": "Hazırlıksız konuşmalar yapar."
+        },
+        {
+          "code": "T.4.2.3",
+          "description": "Hazırlıklı konuşmalar yapar."
+        },
+        {
+          "code": "T.4.2.4",
+          "description": "Konuşma stratejilerini uygular."
+        },
+        {
+          "code": "T.4.2.5",
+          "description": "Sınıf içindeki tartışma ve konuşmalara katılır."
+        },
+        {
+          "code": "T.4.2.6",
+          "description": "Konuşmalarında yabancı dillerden alınmış, dilimize henüz yerleşmemiş kelimelerin Türkçelerini kullanır."
+        }
+      ]
+    },
+    {
+      "name": "Okuma",
+      "order_no": 3,
+      "outcomes": [
+        {
+          "code": "T.4.3.1",
+          "description": "Noktalama işaretlerine dikkat ederek sesli ve sessiz okur."
+        },
+        {
+          "code": "T.4.3.2",
+          "description": "Vurgu, tonlama ve telaffuza dikkat ederek okur."
+        },
+        {
+          "code": "T.4.3.3",
+          "description": "Şiir okur."
+        },
+        {
+          "code": "T.4.3.4",
+          "description": "Metinleri türün özelliklerine uygun biçimde okur."
+        },
+        {
+          "code": "T.4.3.5",
+          "description": "Farklı yazı karakterleri ile yazılmış yazıları okur."
+        },
+        {
+          "code": "T.4.3.6",
+          "description": "Okuma stratejilerini uygular."
+        },
+        {
+          "code": "T.4.3.7",
+          "description": "Kelimelerin zıt anlamlılarını bulur."
+        },
+        {
+          "code": "T.4.3.8",
+          "description": "Kelimelerin eş anlamlılarını bulur."
+        },
+        {
+          "code": "T.4.3.9",
+          "description": "Eş sesli kelimelerin anlamlarını ayırt eder."
+        },
+        {
+          "code": "T.4.3.10",
+          "description": "Okuduğu metindeki gerçek, mecaz ve terim anlamlı sözcükleri belirler."
+        },
+        {
+          "code": "T.4.3.11",
+          "description": "Deyim ve atasözlerinin metnin anlamına katkısını kavrar."
+        },
+        {
+          "code": "T.4.3.12",
+          "description": "Bağlamdan yararlanarak bilmediği kelime ve kelime gruplarının anlamını tahmin eder."
+        },
+        {
+          "code": "T.4.3.13",
+          "description": "Görsellerle ilgili soruları cevaplar."
+        },
+        {
+          "code": "T.4.3.14",
+          "description": "Görsellerden ve başlıktan hareketle okuyacağı metnin konusunu tahmin eder."
+        },
+        {
+          "code": "T.4.3.15",
+          "description": "Okuduklarını ana hatlarıyla anlatır."
+        },
+        {
+          "code": "T.4.3.16",
+          "description": "Okuduğu metnin konusunu belirler."
+        },
+        {
+          "code": "T.4.3.17",
+          "description": "Metnin ana fikri/ana duygusunu belirler."
+        },
+        {
+          "code": "T.4.3.18",
+          "description": "Okuduğu metinle ilgili soruları cevaplar."
+        },
+        {
+          "code": "T.4.3.19",
+          "description": "Metinle ilgili sorular sorar."
+        },
+        {
+          "code": "T.4.3.20",
+          "description": "Okuduğu metinlerdeki hikâye unsurlarını belirler."
+        },
+        {
+          "code": "T.4.3.21",
+          "description": "Okuduğu metin içeriğine uygun başlık belirler."
+        },
+        {
+          "code": "T.4.3.22",
+          "description": "Şekil, sembol ve işaretlerin anlamlarını kavrar."
+        },
+        {
+          "code": "T.4.3.23",
+          "description": "Metin türlerini ayırt eder."
+        },
+        {
+          "code": "T.4.3.24",
+          "description": "Hikâye edici ve bilgilendirici metinleri oluşturan öğeleri tanır."
+        },
+        {
+          "code": "T.4.3.25",
+          "description": "Yönergeleri kavrar."
+        },
+        {
+          "code": "T.4.3.26",
+          "description": "Metindeki gerçek ve hayalî öğeleri ayırt eder."
+        },
+        {
+          "code": "T.4.3.27",
+          "description": "Okuduğu metindeki kahramanların özelliklerini karşılaştırır."
+        },
+        {
+          "code": "T.4.3.28",
+          "description": "Okudukları ile ilgili çıkarımlar yapar."
+        },
+        {
+          "code": "T.4.3.29",
+          "description": "Görsellerle okuduğu metnin içeriğini ilişkilendirir."
+        },
+        {
+          "code": "T.4.3.30",
+          "description": "Metindeki renkli, altı çizili, koyu ifadelerin önemli noktaları vurguladığını kavrar."
+        },
+        {
+          "code": "T.4.3.31",
+          "description": "Metinler arasında karşılaştırma yapar."
+        },
+        {
+          "code": "T.4.3.32",
+          "description": "Kısa ve basit dijital metinlerdeki mesajı kavrar."
+        },
+        {
+          "code": "T.4.3.33",
+          "description": "Medya metinlerini değerlendirir."
+        },
+        {
+          "code": "T.4.3.34",
+          "description": "Grafik, tablo ve çizelgelerle ilgili soruları cevaplar."
+        },
+        {
+          "code": "T.4.3.35",
+          "description": "Bilgi kaynaklarını etkili bir şekilde kullanır."
+        },
+        {
+          "code": "T.4.3.36",
+          "description": "Bilgi kaynaklarının güvenilirliğini sorgular."
+        },
+        {
+          "code": "T.4.3.37",
+          "description": "Okuduğu metindeki olaylara ilişkin düşüncelerini ifade eder."
+        }
+      ]
+    },
+    {
+      "name": "Yazma",
+      "order_no": 4,
+      "outcomes": [
+        {
+          "code": "T.4.4.1",
+          "description": "Şiir yazar."
+        },
+        {
+          "code": "T.4.4.2",
+          "description": "Bir işin işlem basamaklarına ilişkin yönergeler yazar."
+        },
+        {
+          "code": "T.4.4.3",
+          "description": "Hikâye edici metin yazar."
+        },
+        {
+          "code": "T.4.4.4",
+          "description": "Bilgilendirici metin yazar."
+        },
+        {
+          "code": "T.4.4.5",
+          "description": "Hayalî ögeler barındıran kısa metin yazar."
+        },
+        {
+          "code": "T.4.4.6",
+          "description": "Görselleri ilişkilendirerek bir olayı anlatır."
+        },
+        {
+          "code": "T.4.4.7",
+          "description": "Yazdıklarının içeriğine uygun başlık belirler."
+        },
+        {
+          "code": "T.4.4.8",
+          "description": "Yazdıklarında yabancı dillerden alınmış, dilimize henüz yerleşmemiş kelimelerin Türkçelerini kullanır."
+        },
+        {
+          "code": "T.4.4.9",
+          "description": "Formları yönergelerine uygun doldurur."
+        },
+        {
+          "code": "T.4.4.10",
+          "description": "Büyük harfleri ve noktalama işaretlerini uygun yerlerde kullanır."
+        },
+        {
+          "code": "T.4.4.11",
+          "description": "Yazılarını düzenler."
+        },
+        {
+          "code": "T.4.4.12",
+          "description": "Yazılarını paylaşır."
+        },
+        {
+          "code": "T.4.4.13",
+          "description": "Yazılarında eş sesli kelimeleri anlamlarına uygun kullanır."
+        },
+        {
+          "code": "T.4.4.14",
+          "description": "Yazılarını zenginleştirmek için çizim, grafik ve görseller kullanır."
+        },
+        {
+          "code": "T.4.4.15",
+          "description": "İmza atar."
+        },
+        {
+          "code": "T.4.4.16",
+          "description": "Kısaltmaları ve kısaltmalara gelen ekleri doğru yazar."
+        },
+        {
+          "code": "T.4.4.17",
+          "description": "Sayıları doğru yazar."
+        },
+        {
+          "code": "T.4.4.18",
+          "description": "Yazılarında bağlaçları kuralına uygun kullanır."
+        },
+        {
+          "code": "T.4.4.19",
+          "description": "Yazılarında kelimeleri gerçek, mecaz ve terim anlamları ile kullanır."
+        },
+        {
+          "code": "T.4.4.20",
+          "description": "Harflerin yapısal özelliklerine uygun metin yazar."
+        },
+        {
+          "code": "T.4.4.21",
+          "description": "Yazma stratejilerini uygular."
+        },
+        {
+          "code": "T.4.4.22",
+          "description": "Pekiştirmeli sözcükleri doğru yazar."
+        }
+      ]
+    }
+  ]
+}
