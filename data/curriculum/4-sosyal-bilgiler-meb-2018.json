@@ -1,0 +1,83 @@
+{
+  "grade_level": 4,
+  "subject_name": "Sosyal Bilgiler",
+  "curriculum_version": "MEB 2018 (2026-2027 uygulama kontrolü)",
+  "source_url": "https://mufredat.meb.gov.tr/Dosyalar/201812103847686-SOSYAL%20B%C4%B0LG%C4%B0LER%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI%20.pdf",
+  "units": [
+    {
+      "name": "Birey ve Toplum",
+      "order_no": 1,
+      "outcomes": [
+        {"code":"SB.4.1.1","description":"Resmî kimlik belgesini inceleyerek kişisel kimliğine ilişkin çıkarımlarda bulunur."},
+        {"code":"SB.4.1.2","description":"Yaşamına ilişkin belli başlı olayları kronolojik sıraya koyar."},
+        {"code":"SB.4.1.3","description":"Bireysel ilgi, ihtiyaç ve yeteneklerini tanır."},
+        {"code":"SB.4.1.4","description":"Kendisini farklı özelliklere sahip diğer bireylerin yerine koyar."},
+        {"code":"SB.4.1.5","description":"Diğer bireylerin farklı özelliklerini saygı ile karşılar."}
+      ]
+    },
+    {
+      "name": "Kültür ve Miras",
+      "order_no": 2,
+      "outcomes": [
+        {"code":"SB.4.2.1","description":"Sözlü, yazılı, görsel kaynaklar ve nesnelerden yararlanarak aile tarihi çalışması yapar."},
+        {"code":"SB.4.2.2","description":"Ailesi ve çevresindeki millî kültürü yansıtan ögeleri araştırarak örnekler verir."},
+        {"code":"SB.4.2.3","description":"Geleneksel çocuk oyunlarını değişim ve süreklilik açısından günümüzdeki oyunlarla karşılaştırır."},
+        {"code":"SB.4.2.4","description":"Millî Mücadele kahramanlarının hayatlarından hareketle Millî Mücadele’nin önemini kavrar."}
+      ]
+    },
+    {
+      "name": "İnsanlar, Yerler ve Çevreler",
+      "order_no": 3,
+      "outcomes": [
+        {"code":"SB.4.3.1","description":"Çevresindeki herhangi bir yerin konumu ile ilgili çıkarımlarda bulunur."},
+        {"code":"SB.4.3.2","description":"Günlük yaşamında kullandığı mekânların krokisini çizer."},
+        {"code":"SB.4.3.3","description":"Yaşadığı çevredeki doğal ve beşerî unsurları ayırt eder."},
+        {"code":"SB.4.3.4","description":"Çevresinde meydana gelen hava olaylarını gözlemleyerek bulgularını resimli grafiklere aktarır."},
+        {"code":"SB.4.3.5","description":"Yaşadığı yer ve çevresindeki yer şekilleri ve nüfus özellikleri hakkında çıkarımlarda bulunur."},
+        {"code":"SB.4.3.6","description":"Doğal afetlere yönelik gerekli hazırlıkları yapar."}
+      ]
+    },
+    {
+      "name": "Bilim, Teknoloji ve Toplum",
+      "order_no": 4,
+      "outcomes": [
+        {"code":"SB.4.4.1","description":"Çevresindeki teknolojik ürünleri, kullanım alanlarına göre sınıflandırır."},
+        {"code":"SB.4.4.2","description":"Teknolojik ürünlerin geçmişteki ve bugünkü kullanımlarını karşılaştırır."},
+        {"code":"SB.4.4.3","description":"Kullandığı teknolojik ürünlerin mucitlerini ve bu ürünlerin zaman içerisindeki gelişimini araştırır."},
+        {"code":"SB.4.4.4","description":"Çevresindeki ihtiyaçlardan yola çıkarak kendine özgü ürünler tasarlamaya yönelik fikirler geliştirir."},
+        {"code":"SB.4.4.5","description":"Teknolojik ürünleri kendisine, başkalarına ve doğaya zarar vermeden kullanır."}
+      ]
+    },
+    {
+      "name": "Üretim, Dağıtım ve Tüketim",
+      "order_no": 5,
+      "outcomes": [
+        {"code":"SB.4.5.1","description":"İstek ve ihtiyaçlarını ayırt ederek ikisi arasında bilinçli seçimler yapar."},
+        {"code":"SB.4.5.2","description":"Ailesi ve yakın çevresindeki başlıca ekonomik faaliyetleri tanır."},
+        {"code":"SB.4.5.3","description":"Sorumluluk sahibi bir birey olarak bilinçli tüketici davranışları sergiler."},
+        {"code":"SB.4.5.4","description":"Kendine ait örnek bir bütçe oluşturur."},
+        {"code":"SB.4.5.5","description":"Çevresindeki kaynakları israf etmeden kullanır."}
+      ]
+    },
+    {
+      "name": "Etkin Vatandaşlık",
+      "order_no": 6,
+      "outcomes": [
+        {"code":"SB.4.6.1","description":"Çocuk olarak sahip olduğu haklara örnekler verir."},
+        {"code":"SB.4.6.2","description":"Aile ve okul yaşamındaki söz ve eylemlerinin sorumluluğunu alır."},
+        {"code":"SB.4.6.3","description":"Okul yaşamında gerekli gördüğü eğitsel sosyal etkinlikleri önerir."},
+        {"code":"SB.4.6.4","description":"Ülkesinin bağımsızlığı ile bireysel özgürlüğü arasındaki ilişkiyi açıklar."}
+      ]
+    },
+    {
+      "name": "Küresel Bağlantılar",
+      "order_no": 7,
+      "outcomes": [
+        {"code":"SB.4.7.1","description":"Dünya üzerindeki çeşitli ülkeleri tanıtır."},
+        {"code":"SB.4.7.2","description":"Türkiye’nin komşuları ve diğer Türk Cumhuriyetleri ile olan ilişkilerini kavrar."},
+        {"code":"SB.4.7.3","description":"Farklı ülkelere ait kültürel unsurlarla ülkemizin sahip olduğu kültürel unsurları karşılaştırır."},
+        {"code":"SB.4.7.4","description":"Farklı kültürlere saygı gösterir."}
+      ]
+    }
+  ]
+}
