@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from html import escape
 from io import BytesIO
 from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape
@@ -126,6 +125,7 @@ def build_parent_progress_pdf(*, student_name: str, progress: dict) -> bytes:
         _p(f"Öğrenci: {student_name}", styles["AkilliBody"]),
         _p(f"Tamamlanan sınav: {progress.get('completed_exam_count', 0)}", styles["AkilliBody"]),
         _p(f"Sınav puan ortalaması: {progress.get('average_score') if progress.get('average_score') is not None else 'Henüz yok'}", styles["AkilliBody"]),
+        _p(f"Toplam soru: {progress.get('total_questions', 0)} • Cevaplanan: {progress.get('answered_questions', 0)} • Doğru: {progress.get('correct_answers', 0)} • Boş: {progress.get('unanswered_questions', 0)}", styles["AkilliBody"]),
         Paragraph("Son sınavlar", styles["AkilliHeading"]),
     ]
     exams = progress.get("recent_exams") or []
@@ -149,9 +149,13 @@ def build_parent_progress_pdf(*, student_name: str, progress: dict) -> bytes:
     story.append(Paragraph("Geliştirilmesi gereken kazanımlar", styles["AkilliHeading"]))
     outcomes = progress.get("learning_outcomes") or []
     if outcomes:
+        current_subject = None
         for outcome in outcomes:
+            if outcome.get("subject") != current_subject:
+                current_subject = outcome.get("subject")
+                story.append(Paragraph(xml_escape(str(current_subject or "Ders")), styles["AkilliHeading"]))
             story.append(_p(f"{outcome.get('code')}: {outcome.get('description')}", styles["AkilliBody"]))
-            story.append(_p(f"Başarı: %{outcome.get('success_rate', 0)} • Doğru: {outcome.get('correct', 0)} / Cevaplanan: {outcome.get('answered', 0)}", styles["AkilliSmall"]))
+            story.append(_p(f"Ünite: {outcome.get('unit', '—')} • Başarı: %{outcome.get('success_rate', 0)} • Doğru: {outcome.get('correct', 0)} / Cevaplanan: {outcome.get('answered', 0)} • Boş: {outcome.get('unanswered', 0)}", styles["AkilliSmall"]))
     else:
         story.append(_p("Henüz yeterli kazanım verisi yok.", styles["AkilliBody"]))
     doc.build(story)
