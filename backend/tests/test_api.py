@@ -40,6 +40,13 @@ def test_protected_profile_requires_token() -> None:
     assert response.status_code == 401
 
 
+def test_pdf_routes_require_authentication() -> None:
+    exam_response = client.get("/api/exams/" + str(uuid4()) + "/results.pdf")
+    parent_response = client.get("/api/auth/students/" + str(uuid4()) + "/progress.pdf")
+    assert exam_response.status_code == 401
+    assert parent_response.status_code == 401
+
+
 def test_exam_routes_are_registered() -> None:
     response = client.get("/api/exams")
     assert response.status_code == 401
