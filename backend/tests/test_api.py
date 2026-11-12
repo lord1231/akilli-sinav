@@ -69,6 +69,25 @@ def test_parent_registration_and_login() -> None:
     assert login.json()["access_token"]
 
 
+
+def test_parent_registration_is_rate_limited():
+    responses = []
+    for index in range(6):
+        responses.append(client.post("/api/auth/register", json={
+            "email": f"rate-parent-{uuid4()}@example.com",
+            "password": "Long-Test-Password-2026",
+            "full_name": f"Rate Test {index}",
+        }))
+    assert [response.status_code for response in responses[:5]] == [201] * 5
+    assert responses[5].status_code == 429
+
+
+def test_security_headers_are_present():
+    response = client.get("/health")
+    assert response.headers["x-content-type-options"] == "nosniff"
+    assert response.headers["x-frame-options"] == "DENY"
+    assert response.headers["referrer-policy"] == "no-referrer"
+
 def test_parent_can_create_student_only_with_consent() -> None:
     email = f"parent-{uuid4()}@example.com"
     client.post("/api/auth/register", json={
