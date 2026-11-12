@@ -87,6 +87,8 @@ def test_security_headers_are_present():
     assert response.headers["x-content-type-options"] == "nosniff"
     assert response.headers["x-frame-options"] == "DENY"
     assert response.headers["referrer-policy"] == "no-referrer"
+    api_response = client.get("/api/auth/me")
+    assert api_response.headers["cache-control"] == "no-store"
 
 def test_parent_can_create_student_only_with_consent() -> None:
     email = f"parent-{uuid4()}@example.com"
