@@ -163,3 +163,19 @@ def test_student_exam_question_payload_never_exposes_answer_key() -> None:
     assert "correct_option" not in payload
     assert "explanation" not in payload
     assert "is_reviewed" not in payload
+
+
+def test_password_reset_token_hash_is_one_way_and_stable() -> None:
+    from app.api.routes.auth import _password_reset_hash
+
+    token = "a-long-random-reset-token-value"
+    digest = _password_reset_hash(token)
+    assert digest == _password_reset_hash(token)
+    assert digest != token
+    assert len(digest) == 64
+
+
+def test_password_recovery_routes_are_registered() -> None:
+    routes = {route.path for route in app.routes}
+    assert "/api/auth/password/forgot" in routes
+    assert "/api/auth/password/reset" in routes
