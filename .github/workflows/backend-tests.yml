@@ -46,6 +46,7 @@ jobs:
           python -m app.cli.import_curriculum ../data/curriculum/5-muzik-tymm-2025.json
           python -m app.cli.import_curriculum ../data/curriculum/5-gorsel-sanatlar-tymm-2025.json
           python -m app.cli.import_curriculum ../data/curriculum/5-beden-egitimi-ve-spor-tymm-2025.json
+          python -m app.cli.import_curriculum ../data/curriculum/5-bilisim-teknolojileri-ve-yazilim-tymm-2025.json
           python -m app.cli.import_curriculum ../data/curriculum/5-matematik-tymm-2024.json
           python -m app.cli.import_curriculum ../data/curriculum/5-sosyal-bilgiler-tymm-2024.json
           python -m app.cli.import_curriculum ../data/curriculum/5-fen-bilimleri-tymm-2024.json
