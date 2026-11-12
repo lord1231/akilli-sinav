@@ -7,7 +7,7 @@ from fastapi.staticfiles import StaticFiles
 from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 
-from app.api.routes import auth, curriculum, exams
+from app.api.routes import admin, auth, curriculum, exams
 from app.core.config import settings
 from app.db.session import engine
 from app.core.rate_limit import limiter
@@ -19,6 +19,7 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 app.include_router(auth.router)
 app.include_router(curriculum.router)
 app.include_router(exams.router)
+app.include_router(admin.router)
 
 
 @app.get("/health", tags=["Sistem"])
