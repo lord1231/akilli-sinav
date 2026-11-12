@@ -179,3 +179,42 @@ def test_password_recovery_routes_are_registered() -> None:
     routes = set(app.openapi()["paths"])
     assert "/api/auth/password/forgot" in routes
     assert "/api/auth/password/reset" in routes
+
+
+def test_password_reset_flow_sends_single_use_link_and_changes_password(monkeypatch) -> None:
+    from urllib.parse import parse_qs, urlparse
+    from app.api.routes import auth as auth_routes
+
+    email = f"recovery-{uuid4()}@example.com"
+    old_password = "Old-Long-Password-2026"
+    new_password = "New-Long-Password-2026"
+    registered = client.post("/api/auth/register", json={
+        "email": email, "password": old_password, "full_name": "Recovery Test"
+    })
+    assert registered.status_code == 201
+
+    sent = []
+    monkeypatch.setattr(
+        auth_routes, "send_password_reset_email",
+        lambda to_email, reset_url: sent.append((to_email, reset_url)),
+    )
+    requested = client.post("/api/auth/password/forgot", json={"email": email})
+    assert requested.status_code == 200
+    assert requested.json()["message"] == "E-posta adresi kayıtlıysa parola yenileme bağlantısı gönderildi."
+    assert len(sent) == 1 and sent[0][0] == email
+
+    token = parse_qs(urlparse(sent[0][1]).query)["reset_token"][0]
+    reset = client.post("/api/auth/password/reset", json={
+        "token": token, "new_password": new_password
+    })
+    assert reset.status_code == 200
+    assert client.post("/api/auth/password/reset", json={
+        "token": token, "new_password": "Another-Long-Password-2026"
+    }).status_code == 400
+
+    assert client.post("/api/auth/login", json={
+        "email": email, "password": old_password
+    }).status_code == 401
+    assert client.post("/api/auth/login", json={
+        "email": email, "password": new_password
+    }).status_code == 200
