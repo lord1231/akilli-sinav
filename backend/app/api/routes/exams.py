@@ -16,6 +16,10 @@ from app.services.email import send_exam_result_email
 router = APIRouter(prefix="/api/exams", tags=["Sınavlar"])
 
 
+def student_can_open_exam(status: str) -> bool:
+    return status in {"published", "completed"}
+
+
 def can_access_student(user: User, student_id: UUID, db: Session) -> bool:
     if user.role == "admin":
         return True
@@ -155,7 +159,7 @@ def get_exam(exam_id: UUID, user: User = Depends(get_current_user), db: Session 
     exam = db.get(Exam, exam_id)
     if not exam or not can_access_student(user, exam.student_id, db):
         raise HTTPException(status_code=404, detail="Sınav bulunamadı.")
-    if exam.status not in {"published", "completed"} and user.role != "admin":
+    if not student_can_open_exam(exam.status) and user.role != "admin":
         raise HTTPException(status_code=409, detail="Sınav henüz yayımlanmadı veya erişime kapatıldı.")
     rows = db.execute(select(ExamQuestion, Question).join(
         Question, Question.id == ExamQuestion.question_id
