@@ -12,6 +12,7 @@ from app.models import (Exam, ExamQuestion, LearningOutcome, ParentStudentLink,
 from app.schemas import AnswerRequest, ExamGenerateRequest, ExamRejectRequest
 from app.services.question_generator import generate_questions
 from app.services.email import send_exam_result_email
+from app.services.audit import record_admin_action
 
 router = APIRouter(prefix="/api/exams", tags=["Sınavlar"])
 
@@ -128,6 +129,7 @@ def approve_exam(exam_id: UUID, user: User = Depends(get_current_user),
     for question in questions:
         question.is_reviewed = True
     exam.status = "published"
+    record_admin_action(db, user, "exam.approve", "exam", exam.id, "Sınav yönetici incelemesinden geçerek yayımlandı.")
     db.commit()
     return {"id": str(exam.id), "status": exam.status, "question_count": 25}
 
@@ -143,6 +145,7 @@ def reject_exam(exam_id: UUID, payload: ExamRejectRequest,
         raise HTTPException(status_code=409, detail="Yalnızca incelemedeki sınav reddedilebilir.")
     exam.status = "rejected"
     exam.review_note = payload.reason
+    record_admin_action(db, user, "exam.reject", "exam", exam.id, "Sınav reddedildi; gerekçe sınav kaydında saklanır.")
     db.commit()
     return {"id": str(exam.id), "status": exam.status, "review_note": exam.review_note}
 
