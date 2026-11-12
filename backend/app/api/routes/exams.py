@@ -20,6 +20,16 @@ def student_can_open_exam(status: str) -> bool:
     return status in {"published", "completed"}
 
 
+def student_question_payload(exam_question: ExamQuestion, question: Question) -> dict:
+    """Return only exam content; never expose the answer key before submission."""
+    return {
+        "id": str(exam_question.id),
+        "position": exam_question.position,
+        "prompt": question.prompt,
+        "options": question.options,
+    }
+
+
 def can_access_student(user: User, student_id: UUID, db: Session) -> bool:
     if user.role == "admin":
         return True
@@ -165,8 +175,7 @@ def get_exam(exam_id: UUID, user: User = Depends(get_current_user), db: Session 
         Question, Question.id == ExamQuestion.question_id
     ).where(ExamQuestion.exam_id == exam.id).order_by(ExamQuestion.position)).all()
     return {"id": str(exam.id), "title": exam.title, "status": exam.status,
-            "questions": [{"id": str(eq.id), "position": eq.position,
-                           "prompt": q.prompt, "options": q.options} for eq, q in rows]}
+            "questions": [student_question_payload(eq, q) for eq, q in rows]}
 
 
 @router.post("/{exam_id}/answers/{exam_question_id}")
