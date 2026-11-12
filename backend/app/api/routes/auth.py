@@ -164,7 +164,10 @@ def student_progress(student_id: UUID, parent: User = Depends(get_current_user),
     ).order_by(Exam.completed_at.desc())).all()
     scores = [exam.score for exam in exams if exam.score is not None]
     rows = db.execute(
-        select(LearningOutcome.code, LearningOutcome.description, StudentAnswer.is_correct)
+        select(LearningOutcome.code, LearningOutcome.description, StudentAnswer.is_correct,
+               Subject.name, Unit.name)
+        .join(Unit, Unit.id == LearningOutcome.unit_id)
+        .join(Subject, Subject.id == Unit.subject_id)
         .join(Question, Question.learning_outcome_id == LearningOutcome.id)
         .join(ExamQuestion, ExamQuestion.question_id == Question.id)
         .join(Exam, Exam.id == ExamQuestion.exam_id)
@@ -172,21 +175,32 @@ def student_progress(student_id: UUID, parent: User = Depends(get_current_user),
         .where(Exam.student_id == student_id, Exam.status == "completed")
     ).all()
     outcome_stats = {}
-    for code, description, is_correct in rows:
-        stat = outcome_stats.setdefault(code, {"code": code, "description": description,
-                                               "answered": 0, "correct": 0})
+    for code, description, is_correct, subject_name, unit_name in rows:
+        stat = outcome_stats.setdefault(code, {
+            "code": code, "description": description, "subject": subject_name,
+            "unit": unit_name, "total": 0, "answered": 0, "correct": 0,
+        })
+        stat["total"] += 1
         if is_correct is not None:
             stat["answered"] += 1
             stat["correct"] += int(is_correct)
     outcomes = []
     for stat in outcome_stats.values():
+        stat["unanswered"] = stat["total"] - stat["answered"]
         stat["success_rate"] = round(100 * stat["correct"] / stat["answered"]) if stat["answered"] else 0
         outcomes.append(stat)
-    outcomes.sort(key=lambda x: x["success_rate"])
+    outcomes.sort(key=lambda x: (x["success_rate"], x["subject"], x["code"]))
+    total_questions = sum(item["total"] for item in outcome_stats.values())
+    total_answered = sum(item["answered"] for item in outcome_stats.values())
+    total_correct = sum(item["correct"] for item in outcome_stats.values())
     return {
         "student_id": str(student_id),
         "completed_exam_count": len(exams),
         "average_score": round(sum(scores) / len(scores)) if scores else None,
+        "total_questions": total_questions,
+        "answered_questions": total_answered,
+        "correct_answers": total_correct,
+        "unanswered_questions": total_questions - total_answered,
         "recent_exams": [{"title": e.title, "score": e.score,
                           "completed_at": e.completed_at.isoformat() if e.completed_at else None}
                          for e in exams[:10]],
