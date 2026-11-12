@@ -9,6 +9,7 @@ from sqlalchemy.orm import Session
 from app.api.deps import get_current_user
 from app.db.session import get_db
 from app.models import LearningOutcome, Subject, Unit, User
+from app.services.audit import record_admin_action
 
 router = APIRouter(prefix="/api/curriculum", tags=["MEB Müfredatı"])
 OFFICIAL_MEB_HOSTS = {"tymm.meb.gov.tr", "mufredat.meb.gov.tr", "dogm.meb.gov.tr"}
@@ -147,6 +148,8 @@ def import_curriculum(payload: CurriculumImport, user: User = Depends(get_curren
                     outcome.description = outcome_data.description
                     outcome.source_url = payload.source_url
                     outcome.source_version = payload.curriculum_version
+        record_admin_action(db, user, "curriculum.import", "subject", subject.id,
+                             f"Müfredat içe aktarıldı: {unit_count} ünite, {outcome_count} yeni kazanım.")
         db.commit()
     except Exception:
         db.rollback()
@@ -162,6 +165,8 @@ def create_subject(payload: SubjectInput, user: User = Depends(get_current_user)
     require_admin(user)
     item = Subject(**payload.model_dump())
     db.add(item)
+    db.flush()
+    record_admin_action(db, user, "curriculum.subject.create", "subject", item.id, "Ders oluşturuldu.")
     db.commit()
     db.refresh(item)
     return {"id": str(item.id)}
@@ -175,6 +180,8 @@ def create_unit(payload: UnitInput, user: User = Depends(get_current_user),
         raise HTTPException(status_code=404, detail="Ders bulunamadı.")
     item = Unit(**payload.model_dump())
     db.add(item)
+    db.flush()
+    record_admin_action(db, user, "curriculum.unit.create", "unit", item.id, "Ünite oluşturuldu.")
     db.commit()
     db.refresh(item)
     return {"id": str(item.id)}
@@ -188,6 +195,8 @@ def create_outcome(payload: OutcomeInput, user: User = Depends(get_current_user)
         raise HTTPException(status_code=404, detail="Ünite bulunamadı.")
     item = LearningOutcome(**payload.model_dump())
     db.add(item)
+    db.flush()
+    record_admin_action(db, user, "curriculum.outcome.create", "learning_outcome", item.id, "Kazanım oluşturuldu.")
     db.commit()
     db.refresh(item)
     return {"id": str(item.id)}
