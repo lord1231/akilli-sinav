@@ -25,7 +25,7 @@ Aşağıdaki liste, katalog arama görünümünde tespit edilen program adları/
 | 4 | Trafik Güvenliği | 4. sınıf, 2025 | Ders bazlı program ve yürürlük kontrolü gerekli |
 | 4 | Din Kültürü ve Ahlak Bilgisi | 4-8, 2026 | 4. sınıfta 2027-2028'de uygulanacak; 2026-2027 için yeni program etkinleştirilmez |
 | 5 | Matematik | Ortaokul Matematik (5-8), 2026 kaydı katalog görünümünde | PDF/kurul kararı doğrulaması bekliyor |
-| 5 | Türkçe | Ortaokul Türkçe (5-8), 2026 kaydı katalog görünümünde | PDF/kurul kararı doğrulaması bekliyor |
+| 5 | Türkçe | Ortaokul Türkçe (5-8), 2026 kaydı katalog görünümünde | TYMM portalındaki 6 tema ve tema bazlı öğrenme çıktıları veri dosyasına eklendi; 2026 katalog kaydı/kurul kararı sürüm eşleştirmesi ayrıca izleniyor |
 | 5 | Fen Bilimleri | Fen Bilimleri (3-8), 2026 kaydı katalog görünümünde | TYMM 2024 portalındaki 5. sınıf programı doğrulandı; 7 ünite ve 28 öğrenme çıktısı veri dosyasına eklendi |
 | 5 | Sosyal Bilgiler | Sosyal Bilgiler (4-7), 2026 kaydı katalog görünümünde | PDF/kurul kararı doğrulaması bekliyor |
 | 5 | İngilizce | İngilizce (2-8), 2025 | Sınıf bazlı yürürlük ve kapsam kontrolü bekliyor |
@@ -65,5 +65,6 @@ Kaynaklar:
 - `data/curriculum/5-matematik-tymm-2024.json`: tarihsel 2024 sürümü; 6 tema, 23 öğrenme çıktısı.
 - `data/curriculum/5-sosyal-bilgiler-tymm-2024.json`: TYMM 2024; 6 öğrenme alanı, 19 öğrenme çıktısı.
 - `data/curriculum/5-fen-bilimleri-tymm-2024.json`: TYMM 2024; resmî 5. sınıf portalındaki 7 ünite ve 28 öğrenme çıktısı.
+- `data/curriculum/5-turkce-tymm-2024.json`: TYMM 2024; resmî 5. sınıf portalındaki 6 tema ve tema bazlı öğrenme çıktıları.
 
 Mevcut 2024 dosyaları silinmeyecek veya yeni programmış gibi yeniden adlandırılmayacaktır. 5. sınıf Fen Bilimleri dosyası, TYMM portalındaki 5. sınıf ünite ve öğrenme çıktılarından derlenmiştir. Diğer derslerde yeni program PDF'si ve yürürlük kararı doğrulandığında ayrı sürüm dosyaları eklenecektir.
