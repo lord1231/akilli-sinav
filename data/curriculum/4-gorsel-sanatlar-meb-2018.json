@@ -1,0 +1,90 @@
+{
+  "grade_level": 4,
+  "subject_name": "Görsel Sanatlar",
+  "curriculum_version": "MEB 2018 (2026-2027)",
+  "source_url": "https://mufredat.meb.gov.tr/Dosyalar/2018121111026326-GORSEL%20SANATLAR.pdf",
+  "units": [
+    {
+      "name": "Görsel İletişim ve Biçimlendirme",
+      "order_no": 1,
+      "outcomes": [
+        {
+          "code": "G.4.1.1",
+          "description": "Görsel sanat çalışmasını oluştururken biçimlendirme basamaklarını kullanır."
+        },
+        {
+          "code": "G.4.1.2",
+          "description": "Deneyimlerini farklı fikirler, sanat formları ve kültürel temalarla ilişkilendirerek görsel sanat çalışması oluşturur."
+        },
+        {
+          "code": "G.4.1.3",
+          "description": "Görsel sanat çalışmasında kompozisyon birliğini oluşturmak için seçimler yapar."
+        },
+        {
+          "code": "G.4.1.4",
+          "description": "İki boyutlu yüzey üzerinde derinlik etkisi oluşturur."
+        },
+        {
+          "code": "G.4.1.5",
+          "description": "Gözleme dayalı çizimlerinde kontur çizgisini ve gölgeleme tekniklerini kullanır."
+        },
+        {
+          "code": "G.4.1.6",
+          "description": "Farklı materyalleri kullanarak üç boyutlu çalışmalar yapar."
+        },
+        {
+          "code": "G.4.1.7",
+          "description": "Görsel sanat çalışmalarını oluştururken sanat elemanları ve tasarım ilkelerini kullanır."
+        }
+      ]
+    },
+    {
+      "name": "Kültürel Miras",
+      "order_no": 2,
+      "outcomes": [
+        {
+          "code": "G.4.2.1",
+          "description": "Sanatçı ve zanaatkârın rollerini söyler."
+        },
+        {
+          "code": "G.4.2.2",
+          "description": "Türk kültürüne ve diğer kültürlere ait mimari yapıların belirgin özelliklerini karşılaştırır."
+        },
+        {
+          "code": "G.4.2.3",
+          "description": "Farklı kültürlerde yapılmış sanat eserlerinin genel özelliklerini karşılaştırır."
+        },
+        {
+          "code": "G.4.2.4",
+          "description": "Müzedeki farklı kültürlere ait sanat eserlerindeki ortak özellikleri söyler."
+        },
+        {
+          "code": "G.4.2.5",
+          "description": "Görsel sanat alanındaki meslekleri söyler."
+        }
+      ]
+    },
+    {
+      "name": "Sanat Eleştirisi ve Estetik",
+      "order_no": 3,
+      "outcomes": [
+        {
+          "code": "G.4.3.1",
+          "description": "Soyut, gerçekçi ve figüratif sanat eserleri arasındaki farkları açıklar."
+        },
+        {
+          "code": "G.4.3.2",
+          "description": "Bir sanat eserini seçmesindeki tercih sebebini açıklar."
+        },
+        {
+          "code": "G.4.3.3",
+          "description": "Estetik tercihlerin kişilere göre nasıl değiştiğini ifade eder."
+        },
+        {
+          "code": "G.4.3.4",
+          "description": "Görsel sanat alanındaki etik kurallara uyar."
+        }
+      ]
+    }
+  ]
+}
