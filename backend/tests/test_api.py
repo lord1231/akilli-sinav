@@ -1,3 +1,4 @@
+from types import SimpleNamespace
 from uuid import uuid4
 
 import pytest
@@ -139,3 +140,26 @@ def test_students_can_open_only_published_or_completed_exams() -> None:
     assert student_can_open_exam("completed") is True
     assert student_can_open_exam("pending_review") is False
     assert student_can_open_exam("rejected") is False
+
+
+
+def test_student_exam_question_payload_never_exposes_answer_key() -> None:
+    from app.api.routes.exams import student_question_payload
+
+    exam_question = SimpleNamespace(id=uuid4(), position=1)
+    question = SimpleNamespace(
+        prompt="2 + 2 kaçtır?",
+        options=[{"key": "A", "text": "3"}, {"key": "B", "text": "4"}],
+        correct_option="B",
+        explanation="Toplama işleminin sonucu 4'tür.",
+        is_reviewed=True,
+    )
+
+    payload = student_question_payload(exam_question, question)
+
+    assert payload["prompt"] == "2 + 2 kaçtır?"
+    assert payload["options"] == question.options
+    assert set(payload) == {"id", "position", "prompt", "options"}
+    assert "correct_option" not in payload
+    assert "explanation" not in payload
+    assert "is_reviewed" not in payload
