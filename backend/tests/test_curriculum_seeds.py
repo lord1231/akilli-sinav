@@ -23,6 +23,7 @@ SEED_GRADES = {
     "5-muzik-tymm-2025.json": 5,
     "5-gorsel-sanatlar-tymm-2025.json": 5,
     "5-beden-egitimi-ve-spor-tymm-2025.json": 5,
+    "5-bilisim-teknolojileri-ve-yazilim-tymm-2025.json": 5,
     "5-matematik-tymm-2024.json": 5,
     "5-sosyal-bilgiler-tymm-2024.json": 5,
     "5-fen-bilimleri-tymm-2024.json": 5,
@@ -74,6 +75,8 @@ def test_curriculum_seed_matches_import_schema_and_official_source(
         assert sum(len(unit.outcomes) for unit in payload.units) == 10
     if filename == "5-beden-egitimi-ve-spor-tymm-2025.json":
         assert sum(len(unit.outcomes) for unit in payload.units) == 16
+    if filename == "5-bilisim-teknolojileri-ve-yazilim-tymm-2025.json":
+        assert sum(len(unit.outcomes) for unit in payload.units) == 24
 
     unit_names = [unit.name for unit in payload.units]
     unit_orders = [unit.order_no for unit in payload.units]
