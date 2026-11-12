@@ -51,3 +51,15 @@ class ExamGenerateRequest(BaseModel):
 
 class AnswerRequest(BaseModel):
     selected_option: str = Field(pattern="^[ABCD]$")
+
+
+class ExamRejectRequest(BaseModel):
+    reason: str = Field(min_length=5, max_length=500)
+
+    @field_validator("reason")
+    @classmethod
+    def reason_must_not_be_blank(cls, value: str) -> str:
+        cleaned = value.strip()
+        if len(cleaned) < 5:
+            raise ValueError("Ret gerekçesi en az 5 karakter olmalıdır.")
+        return cleaned
