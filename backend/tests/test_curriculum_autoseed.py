@@ -86,10 +86,6 @@ def test_seed_repairs_subject_that_has_no_units(factory):
 def test_seed_repairs_partial_subject_without_overwriting_existing_outcomes(factory):
     path = CURRICULUM_DIR / "5-turkce-tymm-2024.json"
     exp = expected(path)
-    with factory() as db:
-        subject = db.scalar(select(Subject).where(
-            Subject.grade_level == exp["grade"], Subject.name == exp["name"],
-            Subject.curriculum_version == exp["version"]))
     seed_missing_curriculum(CURRICULUM_DIR, session_factory=factory)
     with factory() as db:
         subject = db.scalar(select(Subject).where(
@@ -99,7 +95,7 @@ def test_seed_repairs_partial_subject_without_overwriting_existing_outcomes(fact
         deleted = db.scalar(select(LearningOutcome).where(LearningOutcome.unit_id == first_unit.id))
         missing_code = deleted.code
         db.delete(deleted)
-        preserved = db.scalars(select(LearningOutcome).where(LearningOutcome.unit_id == first_unit.id)).first()
+        preserved = db.scalars(select(LearningOutcome).join(Unit).where(Unit.subject_id == subject.id)).first()
         preserved.description = "Yönetici tarafından korunması gereken özel açıklama."
         preserved_id = preserved.id
         db.commit()
@@ -124,6 +120,11 @@ def test_seed_reports_invalid_file_but_imports_the_rest(tmp_path, factory):
     good.write_text((CURRICULUM_DIR / "5-turkce-tymm-2024.json").read_text(encoding="utf-8"), encoding="utf-8")
     result = seed_missing_curriculum(tmp_path, session_factory=factory)
     assert result.imported == 1 and len(result.errors) == 1 and "bozuk.json" in result.errors[0]
+
+def test_seed_reports_missing_json_files(tmp_path, factory):
+    result = seed_missing_curriculum(tmp_path, session_factory=factory)
+    assert result.files == 0
+    assert result.errors and "JSON" in result.errors[0]
 
 
 def test_every_lesson_is_visible_through_the_api(client, factory):
