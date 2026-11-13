@@ -95,8 +95,21 @@ def test_seed_repairs_partial_subject_without_overwriting_existing_outcomes(fact
         first_unit = db.scalar(select(Unit).where(Unit.subject_id == subject.id).order_by(Unit.order_no))
         deleted = db.scalar(select(LearningOutcome).where(LearningOutcome.unit_id == first_unit.id))
         missing_code = deleted.code
+        deleted_id = deleted.id
         db.delete(deleted)
-        preserved = db.scalars(select(LearningOutcome).join(Unit).where(Unit.subject_id == subject.id)).first()
+        # Silinen kaydı oturum sorgusunda yeniden seçmemek için DELETE'i
+        # veritabanına gönder ve farklı bir kazanımı açıkça seç.
+        db.flush()
+        preserved = db.scalars(
+            select(LearningOutcome)
+            .join(Unit)
+            .where(
+                Unit.subject_id == subject.id,
+                LearningOutcome.id != deleted_id,
+            )
+            .order_by(LearningOutcome.id)
+        ).first()
+        assert preserved is not None, "Korunacak ikinci kazanım bulunmalı"
         preserved.description = "Yönetici tarafından korunması gereken özel açıklama."
         preserved_id = preserved.id
         db.commit()
