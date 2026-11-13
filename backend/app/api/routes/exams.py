@@ -72,6 +72,7 @@ def expire_overdue_exams(db: Session, exams: list[Exam], background_tasks: Backg
     """
     now = datetime.now(timezone.utc)
     finished = 0
+    pending_notifications: list[tuple[str, str, int, int]] = []
     for exam in exams:
         if exam.status != "published":
             continue
@@ -83,10 +84,15 @@ def expire_overdue_exams(db: Session, exams: list[Exam], background_tasks: Backg
         except HTTPException:
             continue
         finished += 1
-        for email in parent_emails:
-            background_tasks.add_task(send_exam_result_email, email, exam.title, exam.score, correct, 25)
+        pending_notifications.extend(
+            (email, exam.title, exam.score, correct) for email in parent_emails
+        )
     if finished:
+        # Bildirimler yalnızca sonuçlar kalıcı olarak kaydedildikten sonra kuyruğa alınır.
+        # Commit başarısızsa e-posta gönderilmez ve sonraki tarama tekrar deneyebilir.
         db.commit()
+        for email, title, score, correct in pending_notifications:
+            background_tasks.add_task(send_exam_result_email, email, title, score, correct, 25)
     return finished
 
 

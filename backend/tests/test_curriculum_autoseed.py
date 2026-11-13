@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 import pytest
+from fastapi import HTTPException
 from fastapi.testclient import TestClient
 from sqlalchemy import func, select
 
@@ -83,6 +84,49 @@ def test_seed_repairs_subject_that_has_no_units(factory):
         subject = db.scalar(select(Subject).where(Subject.name == exp["name"], Subject.grade_level == 5))
         assert db.scalar(select(func.count(Unit.id)).where(Unit.subject_id == subject.id)) == exp["units"]
 
+def test_seed_repairs_partial_subject_without_overwriting_existing_outcomes(factory):
+    path = CURRICULUM_DIR / "5-turkce-tymm-2024.json"
+    exp = expected(path)
+    seed_missing_curriculum(CURRICULUM_DIR, session_factory=factory)
+    with factory() as db:
+        subject = db.scalar(select(Subject).where(
+            Subject.grade_level == exp["grade"], Subject.name == exp["name"],
+            Subject.curriculum_version == exp["version"]))
+        first_unit = db.scalar(select(Unit).where(Unit.subject_id == subject.id).order_by(Unit.order_no))
+        deleted = db.scalar(select(LearningOutcome).where(LearningOutcome.unit_id == first_unit.id))
+        missing_code = deleted.code
+        deleted_id = deleted.id
+        db.delete(deleted)
+        # Silinen kaydı oturum sorgusunda yeniden seçmemek için DELETE'i
+        # veritabanına gönder ve farklı bir kazanımı açıkça seç.
+        db.flush()
+        preserved = db.scalars(
+            select(LearningOutcome)
+            .join(Unit)
+            .where(
+                Unit.subject_id == subject.id,
+                LearningOutcome.id != deleted_id,
+            )
+            .order_by(LearningOutcome.id)
+        ).first()
+        assert preserved is not None, "Korunacak ikinci kazanım bulunmalı"
+        preserved.description = "Yönetici tarafından korunması gereken özel açıklama."
+        preserved_id = preserved.id
+        db.commit()
+
+    result = seed_missing_curriculum(CURRICULUM_DIR, session_factory=factory)
+    assert result.errors == []
+    assert result.outcomes_added >= 1
+    with factory() as db:
+        subject = db.scalar(select(Subject).where(
+            Subject.grade_level == exp["grade"], Subject.name == exp["name"],
+            Subject.curriculum_version == exp["version"]))
+        total = db.scalar(select(func.count(LearningOutcome.id)).join(Unit).where(Unit.subject_id == subject.id))
+        assert total == exp["outcomes"]
+        restored = db.scalar(select(LearningOutcome).where(LearningOutcome.code == missing_code))
+        assert restored is not None
+        assert db.get(LearningOutcome, preserved_id).description == "Yönetici tarafından korunması gereken özel açıklama."
+
 
 def test_seed_reports_invalid_file_but_imports_the_rest(tmp_path, factory):
     (tmp_path / "bozuk.json").write_text("{ bu json degil", encoding="utf-8")
@@ -90,6 +134,11 @@ def test_seed_reports_invalid_file_but_imports_the_rest(tmp_path, factory):
     good.write_text((CURRICULUM_DIR / "5-turkce-tymm-2024.json").read_text(encoding="utf-8"), encoding="utf-8")
     result = seed_missing_curriculum(tmp_path, session_factory=factory)
     assert result.imported == 1 and len(result.errors) == 1 and "bozuk.json" in result.errors[0]
+
+def test_seed_reports_missing_json_files(tmp_path, factory):
+    result = seed_missing_curriculum(tmp_path, session_factory=factory)
+    assert result.files == 0
+    assert result.errors and "JSON" in result.errors[0]
 
 
 def test_every_lesson_is_visible_through_the_api(client, factory):
@@ -119,6 +168,70 @@ def test_status_endpoint_reports_empty_then_populated(client, factory):
     assert full["outcomes"] == sum(expected(p)["outcomes"] for p in FILES)
     assert set(full["subjects_by_grade"]) == {"4", "5"}
 
+def test_readiness_rejects_database_without_curriculum(monkeypatch):
+    class Result:
+        def __init__(self, value):
+            self.value = value
+        def scalar_one(self):
+            return self.value
+
+    class Connection:
+        def __enter__(self):
+            return self
+        def __exit__(self, *args):
+            return False
+        def execute(self, statement):
+            query = str(statement)
+            if "subjects" in query:
+                return Result(0)
+            if "units" in query:
+                return Result(0)
+            if "learning_outcomes" in query:
+                return Result(0)
+            return Result(1)
+
+    class EmptyEngine:
+        def connect(self):
+            return Connection()
+
+    monkeypatch.setattr(main_module, "engine", EmptyEngine())
+    with pytest.raises(HTTPException) as error:
+        main_module.readiness_check()
+    assert error.value.status_code == 503
+    assert error.value.detail["curriculum"] == {"subjects": 0, "units": 0, "outcomes": 0}
+
+
+def test_readiness_accepts_populated_curriculum(monkeypatch):
+    class Result:
+        def __init__(self, value):
+            self.value = value
+        def scalar_one(self):
+            return self.value
+
+    class Connection:
+        def __enter__(self):
+            return self
+        def __exit__(self, *args):
+            return False
+        def execute(self, statement):
+            query = str(statement)
+            if "subjects" in query:
+                return Result(21)
+            if "units" in query:
+                return Result(120)
+            if "learning_outcomes" in query:
+                return Result(480)
+            return Result(1)
+
+    class ReadyEngine:
+        def connect(self):
+            return Connection()
+
+    monkeypatch.setattr(main_module, "engine", ReadyEngine())
+    result = main_module.readiness_check()
+    assert result["status"] == "ready"
+    assert result["curriculum"] == {"subjects": 21, "units": 120, "outcomes": 480}
+
 
 def test_application_startup_seeds_curriculum(monkeypatch, factory):
     monkeypatch.setattr(main_module, "seed_missing_curriculum",
@@ -130,13 +243,14 @@ def test_application_startup_seeds_curriculum(monkeypatch, factory):
         assert db.scalar(select(func.count(Subject.id))) == len(FILES)
 
 
-def test_startup_survives_seed_failure(monkeypatch):
+def test_startup_fails_when_seed_fails(monkeypatch):
     def boom():
         raise RuntimeError("veritabanı hazır değil")
     monkeypatch.setattr(main_module, "seed_missing_curriculum", boom)
     monkeypatch.setattr(settings, "AUTO_IMPORT_CURRICULUM", True)
-    with TestClient(app) as c:
-        assert c.get("/health").json()["status"] == "ok"
+    with pytest.raises(RuntimeError, match="veritabanı hazır değil"):
+        with TestClient(app):
+            pass
 
 
 def test_startup_seed_can_be_disabled(monkeypatch):

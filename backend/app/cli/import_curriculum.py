@@ -9,7 +9,7 @@ from app.db.session import SessionLocal
 from app.models import LearningOutcome, Subject, Unit
 
 
-def import_file(file_path: str | Path, session_factory=None) -> tuple[int, int]:
+def import_file(file_path: str | Path, session_factory=None, *, preserve_existing: bool = False) -> tuple[int, int]:
     payload = CurriculumImport.model_validate_json(Path(file_path).read_text(encoding="utf-8"))
     db = (session_factory or SessionLocal)()
     units_added = 0
@@ -49,7 +49,7 @@ def import_file(file_path: str | Path, session_factory=None) -> tuple[int, int]:
                     )
                     db.add(outcome)
                     outcomes_added += 1
-                else:
+                elif not preserve_existing:
                     outcome.description = outcome_data.description
                     outcome.source_url = payload.source_url
                     outcome.source_version = payload.curriculum_version

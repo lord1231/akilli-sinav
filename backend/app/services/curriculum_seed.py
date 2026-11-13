@@ -1,18 +1,17 @@
-"""Başlangıçta eksik müfredat dosyalarını güvenli ve tekrarlanabilir biçimde yükler.
+"""Eksik müfredat kayıtlarını güvenli ve tekrarlanabilir biçimde tamamlar.
 
-Yalnızca veritabanında bulunmayan (veya hiç ünitesi olmayan) dersler içe aktarılır.
-Yöneticinin sonradan düzenlediği mevcut kazanımların üzerine yazılmaz.
+Ünite ve kazanım bazında eksikleri ekler; mevcut yönetici düzenlemelerini korur.
 """
 import logging
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from sqlalchemy import func, select
+from sqlalchemy import select
 
 from app.api.routes.curriculum import CurriculumImport
 from app.cli.import_curriculum import import_file
 from app.db.session import SessionLocal
-from app.models import Subject, Unit
+from app.models import Subject
 
 logger = logging.getLogger(__name__)
 
@@ -45,24 +44,21 @@ def seed_missing_curriculum(directory: Path | None = None, session_factory=None)
     if directory is None:
         result.errors.append("data/curriculum dizini bulunamadı.")
         return result
-    for file_path in sorted(Path(directory).glob("*.json")):
+    files = sorted(Path(directory).glob("*.json"))
+    if not files:
+        result.errors.append("data/curriculum dizininde JSON dosyası bulunamadı.")
+        return result
+    for file_path in files:
         result.files += 1
         try:
             payload = CurriculumImport.model_validate_json(file_path.read_text(encoding="utf-8"))
-            with factory() as db:
-                subject_id = db.scalar(select(Subject.id).where(
-                    Subject.grade_level == payload.grade_level,
-                    Subject.name == payload.subject_name,
-                    Subject.curriculum_version == payload.curriculum_version,
-                ))
-                unit_count = 0
-                if subject_id is not None:
-                    unit_count = db.scalar(select(func.count(Unit.id)).where(Unit.subject_id == subject_id)) or 0
-            if unit_count > 0:
+            units, outcomes = import_file(
+                file_path, session_factory=factory, preserve_existing=True
+            )
+            if units == 0 and outcomes == 0:
                 result.skipped += 1
-                continue
-            units, outcomes = import_file(file_path, session_factory=factory)
-            result.imported += 1
+            else:
+                result.imported += 1
             result.units_added += units
             result.outcomes_added += outcomes
         except Exception as exc:  # tek dosya hatası diğer dersleri engellemesin
