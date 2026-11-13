@@ -66,3 +66,26 @@ def send_password_reset_email(to_email: str, reset_url: str) -> None:
                 server.send_message(message)
     except (OSError, smtplib.SMTPException):
         logger.exception("Parola sıfırlama e-postası gönderilemedi.")
+
+
+def send_test_email(to_email: str) -> None:
+    """SMTP ayarlarını doğrulamak için tek bir test e-postası gönderir; hata durumunda istisna fırlatır."""
+    if not settings.SMTP_HOST or not settings.SMTP_FROM_EMAIL:
+        raise RuntimeError("SMTP_HOST ve SMTP_FROM_EMAIL tanımlı değil.")
+    message = EmailMessage()
+    message["Subject"] = "Akıllı Sınav - SMTP test e-postası"
+    message["From"] = settings.SMTP_FROM_EMAIL
+    message["To"] = to_email
+    message.set_content("Bu e-posta, Akıllı Sınav SMTP ayarlarının çalıştığını doğrulamak için gönderildi.")
+    if settings.SMTP_PORT == 465:
+        with smtplib.SMTP_SSL(settings.SMTP_HOST, settings.SMTP_PORT, timeout=12) as server:
+            if settings.SMTP_USERNAME:
+                server.login(settings.SMTP_USERNAME, settings.SMTP_PASSWORD)
+            server.send_message(message)
+    else:
+        with smtplib.SMTP(settings.SMTP_HOST, settings.SMTP_PORT, timeout=12) as server:
+            if settings.SMTP_USE_TLS:
+                server.starttls()
+            if settings.SMTP_USERNAME:
+                server.login(settings.SMTP_USERNAME, settings.SMTP_PASSWORD)
+            server.send_message(message)

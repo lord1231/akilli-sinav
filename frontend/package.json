@@ -1,0 +1,12 @@
+{
+  "name": "akilli-sinav-frontend",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Akıllı Sınav web arayüzü için DOM testleri",
+  "scripts": {
+    "test": "node --test --test-timeout=20000 tests/*.test.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "26.1.0"
+  }
+}

@@ -1,12 +1,14 @@
+import logging
 from datetime import datetime, timedelta, timezone
 from uuid import UUID
 
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_user
-from app.db.session import get_db
+from app.core.config import settings
+from app.db.session import SessionLocal, get_db
 from app.models import (Exam, ExamQuestion, LearningOutcome, ParentStudentLink,
                         Question, StudentAnswer, User, Unit, Subject)
 from app.schemas import AnswerRequest, ExamGenerateRequest, ExamRejectRequest
@@ -16,6 +18,7 @@ from app.services.audit import record_admin_action
 from app.core.rate_limit import limiter
 
 router = APIRouter(prefix="/api/exams", tags=["Sınavlar"])
+logger = logging.getLogger(__name__)
 
 
 def student_can_open_exam(status: str) -> bool:
@@ -29,6 +32,90 @@ def exam_deadline(exam: Exam) -> datetime | None:
     if started.tzinfo is None:
         started = started.replace(tzinfo=timezone.utc)
     return started + timedelta(minutes=exam.duration_minutes or 30)
+
+
+OVERDUE_GRACE = timedelta(seconds=60)  # istemcinin otomatik teslimi için süre tanınır
+
+
+def finalize_exam(db: Session, exam: Exam) -> tuple[int, list[str]]:
+    """Puanı hesaplar ve sınavı tamamlar. Commit çağıranın sorumluluğundadır.
+
+    Döndürür: (doğru sayısı, bildirim gidecek veli e-postaları).
+    """
+    rows = db.execute(select(ExamQuestion, Question).join(
+        Question, Question.id == ExamQuestion.question_id
+    ).where(ExamQuestion.exam_id == exam.id)).all()
+    if len(rows) != 25:
+        raise HTTPException(status_code=409, detail="Sınav 25 sorudan oluşmuyor.")
+    correct = 0
+    for eq, question in rows:
+        answer = db.scalar(select(StudentAnswer).where(StudentAnswer.exam_question_id == eq.id))
+        if answer and answer.selected_option:
+            answer.is_correct = answer.selected_option == question.correct_option
+            correct += int(answer.is_correct)
+        elif answer:
+            answer.is_correct = False
+    exam.score = round(correct * 100 / 25)
+    exam.status = "completed"
+    exam.completed_at = datetime.now(timezone.utc)
+    parent_emails = db.scalars(select(User.email).join(
+        ParentStudentLink, ParentStudentLink.parent_id == User.id
+    ).where(ParentStudentLink.student_id == exam.student_id,
+            ParentStudentLink.consent_confirmed.is_(True))).all()
+    return correct, list(parent_emails)
+
+
+def expire_overdue_exams(db: Session, exams: list[Exam], background_tasks: BackgroundTasks) -> int:
+    """Süresi (ve tolerans süresi) dolmuş yayımlanmış sınavları sunucuda sonuçlandırır.
+
+    Öğrenci uygulamayı kapatsa bile sınav "yayında" kalmaz; puan ve veli bildirimi oluşur.
+    """
+    now = datetime.now(timezone.utc)
+    finished = 0
+    for exam in exams:
+        if exam.status != "published":
+            continue
+        deadline = exam_deadline(exam)
+        if deadline is None or now < deadline + OVERDUE_GRACE:
+            continue
+        try:
+            correct, parent_emails = finalize_exam(db, exam)
+        except HTTPException:
+            continue
+        finished += 1
+        for email in parent_emails:
+            background_tasks.add_task(send_exam_result_email, email, exam.title, exam.score, correct, 25)
+    if finished:
+        db.commit()
+    return finished
+
+
+
+class _ImmediateTasks:
+    """BackgroundTasks yerine, istek bağlamı olmayan süpürücü için e-postaları hemen gönderir."""
+
+    def add_task(self, func, *args, **kwargs) -> None:
+        try:
+            func(*args, **kwargs)
+        except Exception:  # e-posta hatası sonuçlandırmayı geri almamalı
+            logger.exception("Arka plan görevi başarısız oldu.")
+
+
+def sweep_overdue_exams(session_factory=None) -> int:
+    """Tüm süresi dolmuş yayımlanmış sınavları sonuçlandırır; zamanlanmış görev olarak çalışır."""
+    with (session_factory or SessionLocal)() as db:
+        exams = db.scalars(select(Exam).where(Exam.status == "published", Exam.started_at.is_not(None))).all()
+        return expire_overdue_exams(db, list(exams), _ImmediateTasks())
+
+
+def pick_reviewed_questions(db: Session, outcome_id: UUID, student_id: UUID) -> list[Question] | None:
+    """Onaylı havuzdan öğrencinin daha önce görmediği 25 soruyu seçer; yetmezse None döner."""
+    seen = select(ExamQuestion.question_id).join(Exam, Exam.id == ExamQuestion.exam_id).where(
+        Exam.student_id == student_id)
+    picked = db.scalars(select(Question).where(
+        Question.learning_outcome_id == outcome_id, Question.is_reviewed.is_(True),
+        Question.id.not_in(seen)).order_by(func.random()).limit(25)).all()
+    return list(picked) if len(picked) == 25 else None
 
 
 def student_question_payload(exam_question: ExamQuestion, question: Question) -> dict:
@@ -75,19 +162,24 @@ def create_exam(request: Request, payload: ExamGenerateRequest, user: User = Dep
     subject = db.get(Subject, unit.subject_id) if unit else None
     if not subject or subject.grade_level != student.grade_level:
         raise HTTPException(status_code=400, detail="Kazanım öğrencinin sınıf düzeyiyle eşleşmiyor.")
-    try:
-        generated = generate_questions(outcome.code, outcome.description, subject.grade_level,
-                                       subject.name, count=25)
-    except RuntimeError as exc:
-        raise HTTPException(status_code=503, detail=str(exc)) from exc
-    except ValueError as exc:
-        raise HTTPException(status_code=502, detail=str(exc)) from exc
-    except Exception as exc:
-        raise HTTPException(status_code=502, detail="Gemini soru üretimi sırasında hata oluştu.") from exc
+    reused = pick_reviewed_questions(db, outcome.id, student.id) if settings.REUSE_REVIEWED_QUESTIONS else None
+    generated = []
+    if reused is None:
+        try:
+            generated = generate_questions(outcome.code, outcome.description, subject.grade_level,
+                                           subject.name, count=25)
+        except RuntimeError as exc:
+            raise HTTPException(status_code=503, detail=str(exc)) from exc
+        except ValueError as exc:
+            raise HTTPException(status_code=502, detail=str(exc)) from exc
+        except Exception as exc:
+            raise HTTPException(status_code=502, detail="Gemini soru üretimi sırasında hata oluştu.") from exc
     exam = Exam(student_id=student.id, title=payload.title, status="pending_review", question_count=25)
     db.add(exam)
     try:
         db.flush()
+        for position, existing in enumerate(reused or [], start=1):
+            db.add(ExamQuestion(exam_id=exam.id, question_id=existing.id, position=position))
         for position, item in enumerate(generated, start=1):
             question = Question(
                 learning_outcome_id=outcome.id, prompt=item.prompt,
@@ -102,7 +194,8 @@ def create_exam(request: Request, payload: ExamGenerateRequest, user: User = Dep
     except Exception:
         db.rollback()
         raise
-    return {"id": str(exam.id), "title": exam.title, "question_count": 25, "status": exam.status}
+    return {"id": str(exam.id), "title": exam.title, "question_count": 25, "status": exam.status,
+            "source": "pool" if reused is not None else "gemini"}
 
 
 @router.get("/review-queue")
@@ -162,7 +255,8 @@ def reject_exam(exam_id: UUID, payload: ExamRejectRequest,
 
 
 @router.get("")
-def list_exams(user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+def list_exams(background_tasks: BackgroundTasks, user: User = Depends(get_current_user),
+               db: Session = Depends(get_db)):
     query = select(Exam)
     if user.role == "student":
         query = query.where(Exam.student_id == user.id)
@@ -173,16 +267,20 @@ def list_exams(user: User = Depends(get_current_user), db: Session = Depends(get
         query = query.where(Exam.student_id.in_(student_ids))
     elif user.role != "admin":
         raise HTTPException(status_code=403, detail="Yetkiniz yok.")
+    exams = db.scalars(query.order_by(Exam.id.desc())).all()
+    expire_overdue_exams(db, list(exams), background_tasks)
     return [{"id": str(e.id), "title": e.title, "status": e.status,
              "question_count": e.question_count, "score": e.score, "review_note": e.review_note}
-            for e in db.scalars(query.order_by(Exam.id.desc())).all()]
+            for e in exams]
 
 
 @router.get("/{exam_id}")
-def get_exam(exam_id: UUID, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+def get_exam(exam_id: UUID, background_tasks: BackgroundTasks, user: User = Depends(get_current_user),
+             db: Session = Depends(get_db)):
     exam = db.get(Exam, exam_id)
     if not exam or not can_access_student(user, exam.student_id, db):
         raise HTTPException(status_code=404, detail="Sınav bulunamadı.")
+    expire_overdue_exams(db, [exam], background_tasks)
     if not student_can_open_exam(exam.status) and user.role != "admin":
         raise HTTPException(status_code=409, detail="Sınav henüz yayımlanmadı veya erişime kapatıldı.")
     if user.role == "student" and exam.status == "published" and exam.started_at is None:
@@ -201,6 +299,7 @@ def get_exam(exam_id: UUID, user: User = Depends(get_current_user), db: Session 
     deadline = exam_deadline(exam)
     return {"id": str(exam.id), "title": exam.title, "status": exam.status,
             "duration_minutes": exam.duration_minutes,
+            "server_time": datetime.now(timezone.utc).isoformat(),
             "started_at": exam.started_at.isoformat() if exam.started_at else None,
             "deadline_at": deadline.isoformat() if deadline else None,
             "saved_answers": saved,
@@ -238,26 +337,7 @@ def submit_exam(exam_id: UUID, background_tasks: BackgroundTasks, user: User = D
         raise HTTPException(status_code=404, detail="Sınav bulunamadı.")
     if exam.status != "published":
         raise HTTPException(status_code=409, detail="Sınav daha önce tamamlanmış veya kapalı.")
-    rows = db.execute(select(ExamQuestion, Question).join(
-        Question, Question.id == ExamQuestion.question_id
-    ).where(ExamQuestion.exam_id == exam.id)).all()
-    if len(rows) != 25:
-        raise HTTPException(status_code=409, detail="Sınav 25 sorudan oluşmuyor.")
-    correct = 0
-    for eq, question in rows:
-        answer = db.scalar(select(StudentAnswer).where(StudentAnswer.exam_question_id == eq.id))
-        if answer and answer.selected_option:
-            answer.is_correct = answer.selected_option == question.correct_option
-            correct += int(answer.is_correct)
-        elif answer:
-            answer.is_correct = False
-    exam.score = round(correct * 100 / 25)
-    exam.status = "completed"
-    exam.completed_at = datetime.now(timezone.utc)
-    parent_emails = db.scalars(select(User.email).join(
-        ParentStudentLink, ParentStudentLink.parent_id == User.id
-    ).where(ParentStudentLink.student_id == exam.student_id,
-            ParentStudentLink.consent_confirmed.is_(True))).all()
+    correct, parent_emails = finalize_exam(db, exam)
     db.commit()
     for email in parent_emails:
         background_tasks.add_task(send_exam_result_email, email, exam.title, exam.score, correct, 25)

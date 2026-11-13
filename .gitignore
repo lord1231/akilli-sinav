@@ -19,3 +19,5 @@ postgres_data/
 .vscode/
 .idea/
 .DS_Store
+*.db
+node_modules/

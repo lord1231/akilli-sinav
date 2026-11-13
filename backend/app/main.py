@@ -1,3 +1,6 @@
+import asyncio
+import logging
+from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Request
@@ -11,6 +14,43 @@ from app.api.routes import admin, auth, curriculum, exams
 from app.core.config import settings
 from app.db.session import engine
 from app.core.rate_limit import limiter
+from app.api.routes.exams import sweep_overdue_exams
+from app.services.curriculum_seed import seed_missing_curriculum
+
+logger = logging.getLogger("uvicorn.error")
+
+
+async def _sweep_loop(interval: float) -> None:
+    """Süresi dolan sınavları periyodik olarak sonuçlandırır; hata döngüyü durdurmaz."""
+    while True:
+        await asyncio.sleep(interval)
+        try:
+            finished = await asyncio.to_thread(sweep_overdue_exams)
+            if finished:
+                logger.info("%d süresi dolan sınav otomatik sonuçlandırıldı.", finished)
+        except Exception:
+            logger.exception("Süresi dolan sınavların taranması başarısız oldu.")
+
+
+@asynccontextmanager
+async def lifespan(_: FastAPI):
+    if settings.AUTO_IMPORT_CURRICULUM:
+        try:
+            result = seed_missing_curriculum()
+            logger.info("Müfredat kontrolü: %d dosya, %d aktarıldı, %d atlandı, %d hata.",
+                        result.files, result.imported, result.skipped, len(result.errors))
+        except Exception:  # veritabanı hazır değilse API yine de açılsın
+            logger.exception("Müfredat otomatik yüklemesi başarısız oldu.")
+    sweeper = None
+    if settings.EXAM_SWEEP_INTERVAL_SECONDS > 0:
+        sweeper = asyncio.create_task(_sweep_loop(settings.EXAM_SWEEP_INTERVAL_SECONDS))
+    try:
+        yield
+    finally:
+        if sweeper:
+            sweeper.cancel()
+            await asyncio.gather(sweeper, return_exceptions=True)
+
 
 production = settings.APP_ENV.lower() == "production"
 docs_path = None if production else "/docs"
@@ -21,6 +61,7 @@ app = FastAPI(
     docs_url=docs_path,
     redoc_url=None if production else "/redoc",
     openapi_url=None if production else "/openapi.json",
+    lifespan=lifespan,
 )
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
