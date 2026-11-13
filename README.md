@@ -63,4 +63,4 @@ CI üç iş çalıştırır: SQLite backend testleri + Docker build, **PostgreSQ
 Süresi dolan sınavlar (öğrenci uygulamayı kapatsa bile) 60 sn toleranstan sonra sunucuda otomatik sonuçlandırılır ve veliye bildirilir.
 
 ## Canlıya alma
-Adım adım kurulum, Gemini/SMTP/HTTPS ayarı, yedekleme ve kontrol listesi: [docs/CANLIYA_ALMA_REHBERI.md](docs/CANLIYA_ALMA_REHBERI.md). Kurulumun hazır olup olmadığını `python -m app.cli.doctor` gösterir.
+Tek komutla kurulum (`bash scripts/install.sh`: otomatik HTTPS, yönetici hesabı, güvenli `.env`), Gemini/SMTP ayarı, yedekleme ve kontrol listesi: [docs/CANLIYA_ALMA_REHBERI.md](docs/CANLIYA_ALMA_REHBERI.md). Kurulumun hazır olup olmadığını `python -m app.cli.doctor` gösterir.

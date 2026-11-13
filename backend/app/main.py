@@ -53,6 +53,11 @@ async def lifespan(_: FastAPI):
 
 
 production = settings.APP_ENV.lower() == "production"
+# Arayüz satır içi script/stil/işleyici kullanmaz; tests/test_deploy_assets.py bunu güvence altına alır.
+CONTENT_SECURITY_POLICY = (
+    "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; "
+    "font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'"
+)
 docs_path = None if production else "/docs"
 app = FastAPI(
     title=settings.APP_NAME,
@@ -78,6 +83,8 @@ async def security_headers(request: Request, call_next):
     response.headers["X-Frame-Options"] = "DENY"
     response.headers["Referrer-Policy"] = "no-referrer"
     response.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=()"
+    if not request.url.path.startswith(("/docs", "/redoc", "/openapi.json")):
+        response.headers["Content-Security-Policy"] = CONTENT_SECURITY_POLICY
     if request.url.path.startswith("/api/"):
         response.headers["Cache-Control"] = "no-store"
     if production:

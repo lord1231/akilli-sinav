@@ -9,52 +9,56 @@ Her adımın sonunda "Doğrulama" bölümü vardır; o kutu başarılı olmadan 
 
 ---
 
-## 1. Düzeltmeleri GitHub'a gönderin
+## 1. Kod GitHub'da hazır
 
+Düzeltmeler `main` dalında birleştirilmiştir; ayrıca bir şey göndermeniz gerekmez. CI'ın üç işi (SQLite, PostgreSQL 16, ön yüz) yeşil olmalıdır:
+GitHub → **Actions** sekmesi.
+
+## 2. Sunucuyu kurun (tek komut)
+
+**Gerekenler**
+- Ubuntu 22.04/24.04 gibi bir Linux sunucu (VPS) ve **Docker + Docker Compose** kurulu olmalı: https://docs.docker.com/engine/install/
+  (Küçük bir VPS beklenen yük için yeterli olmalıdır; ben yük testi yapmadım.)
+- Bir **alan adı** ve DNS'te `A` kaydı: `sinav.alanadiniz.com` → sunucunun IP adresi.
+- Sunucuda **80 ve 443 portları** açık olmalı (HTTPS sertifikası için).
+- Elinizde hazır: **Gemini API anahtarı** (https://aistudio.google.com/apikey) ve **Gmail uygulama parolası** (Bölüm 5).
+
+**Kurulum**
 ```bash
-git checkout -b fix/akilli-sinav-review
-git am akilli-sinav-tum-duzeltmeler.patch      # yama dosyası depo klasöründe olmalı
-git push -u origin fix/akilli-sinav-review
+git clone https://github.com/lord1231/akilli-sinav.git
+cd akilli-sinav
+bash scripts/install.sh
 ```
-GitHub'da **Compare & pull request** düğmesine basın.
+Betik size şunları sorar: alan adı, yönetici e-postası, Gemini anahtarı (yazarken görünmez), SMTP bilgileri (varsayılan Gmail). Sonra kendisi:
 
-**Doğrulama:** Pull request sayfasındaki **Checks** bölümünde üç iş yeşil olmalı:
-`Backend tests`, `Backend tests (PostgreSQL 16)`, `Frontend DOM tests`.
-Kırmızı olan olursa işe tıklayın, hata satırını kopyalayıp bana gönderin. Hepsi yeşilse **Merge pull request** deyin.
+1. Rastgele `SECRET_KEY`, veritabanı parolası ve yönetici parolası üretir; `.env` dosyasını yalnızca sizin okuyabileceğiniz izinle (`600`) yazar.
+2. **HTTPS'i Caddy ile otomatik** kurar (sertifikayı alır ve yeniler), API portunu internete kapatır, gerçek kullanıcı IP'sini okuyacak şekilde ayarlar (**Bölüm 6'nın tamamı bununla yapılmış olur**).
+3. Servisleri derler ve başlatır, API'nin hazır olmasını bekler.
+4. **Yönetici hesabını oluşturur (Bölüm 3)**, yönetici parolasını sunucudaki `.env`'den siler ve size **bir kez** gösterir.
+5. `doctor` denetimini çalıştırır.
 
-## 2. Sunucuyu hazırlayın
+> Hatalı girdide (ör. `https://` ile başlayan alan adı, boş Gemini anahtarı) betik hiçbir şey yazmadan nedenini söyleyerek durur.
+> Mevcut bir `.env` varsa üzerine yazmaz; `--force` verirseniz eskisini yedekleyip yeniden yazar.
+> Betiği Docker'a dokunmadan denemek için: `bash scripts/install.sh --env-only`
 
-Gerekenler: Docker + Docker Compose kurulu bir Linux sunucu (VPS), bir alan adı (örn. `sinav.alanadiniz.com`) ve alan adının sunucu IP'sine yönlenmiş olması.
+**Doğrulama:** Tarayıcıda `https://sinav.alanadiniz.com/app/` açılmalı ve yönetici e-postası/parolasıyla giriş yapabilmelisiniz.
+Sertifika alınamazsa: `docker compose logs --tail=50 caddy` (genellikle DNS kaydı veya 80/443 portu sorunudur).
 
-```bash
-git clone https://github.com/lord1231/akilli-sinav.git && cd akilli-sinav
-cp .env.example .env
-nano .env
-```
-
-`.env` içinde şunları **mutlaka** değiştirin:
-
-| Değişken | Ne yazmalı | Nasıl üretilir |
-|---|---|---|
-| `SECRET_KEY` | En az 32 karakter rastgele | `python3 -c "import secrets;print(secrets.token_urlsafe(48))"` |
-| `POSTGRES_PASSWORD` | Uzun rastgele parola | aynı komut |
-| `DATABASE_URL` | Compose bunu kendisi ayarlar, dokunmayın | – |
-| `APP_BASE_URL` | `https://sinav.alanadiniz.com` | Gerçek alan adınız (https olmalı) |
-| `GEMINI_API_KEY` | Google AI Studio'dan aldığınız anahtar | https://aistudio.google.com/apikey |
-| `SMTP_*` | Bölüm 5'e bakın | – |
-| `ADMIN_EMAIL`, `ADMIN_PASSWORD` | Yönetici hesabınız (parola ≥ 14 karakter) | – |
-
-> `.env` dosyasını **asla** GitHub'a yüklemeyin (`.gitignore` zaten engeller).
+<details><summary>Elle kurulum (betiği kullanmak istemezseniz)</summary>
 
 ```bash
+cp .env.example .env && nano .env
 docker compose up -d --build
-docker compose logs -f api          # "Müfredat kontrolü: 21 dosya, 21 aktarıldı" satırını görün, Ctrl+C ile çıkın
 ```
-
-**Doğrulama:** `curl -s localhost:8000/health/ready` → `{"status":"ready","database":"connected"}`
-ve `curl -s localhost:8000/api/curriculum/status` → `subjects: 21, outcomes: 882`.
+`.env` içinde en az şunlar gerekir: `SECRET_KEY` (≥32 karakter), `POSTGRES_PASSWORD`, `APP_BASE_URL` (gerçek https adresi), `GEMINI_API_KEY`, `SMTP_HOST`, `SMTP_FROM_EMAIL`.
+Rastgele değer üretmek için: `python3 -c "import secrets;print(secrets.token_urlsafe(48))"`.
+HTTPS için `.env`'e `DOMAIN=sinav.alanadiniz.com`, `COMPOSE_PROFILES=https`, `API_BIND=127.0.0.1`, `FORWARDED_ALLOW_IPS=*` ekleyin.
+Değerleri tek tırnak içinde yazın (`SMTP_PASSWORD='...'`).
+</details>
 
 ## 3. Yönetici hesabını oluşturun
+
+> `scripts/install.sh` bunu sizin için zaten yaptı. Yalnızca elle kurulum yaptıysanız veya betik "yönetici oluşturulamadı" dediyse gerekir.
 
 ```bash
 docker compose exec api python -m app.cli.create_admin
@@ -114,6 +118,8 @@ Sonra giriş ekranında **Parolamı unuttum**'u deneyin; gelen bağlantı `APP_B
 
 ## 6. HTTPS ve gerçek kullanıcı IP'si
 
+> **`scripts/install.sh` kullandıysanız bu bölüm zaten uygulanmıştır** (Caddy, `FORWARDED_ALLOW_IPS`, API portunun kapatılması). Yalnızca kendi proxy'nizi (Nginx, Cloudflare) kullanıyorsanız aşağıyı okuyun.
+
 Siteyi doğrudan 8000 portundan değil, HTTPS veren bir proxy arkasından yayınlayın. En kolayı **Caddy** (sertifikayı kendisi alır):
 
 ```
@@ -149,7 +155,7 @@ Otomatik testler işlevi doğrular ama ekranın gerçek telefonda nasıl görün
 - [ ] Yatay çevirince düzen bozuluyor mu?
 
 Bozuk görünen ekranın fotoğrafını (hangi telefon/tarayıcı olduğunu yazarak) bana gönderirseniz düzeltirim.
-Telefonun ana ekranına eklemek için tarayıcı menüsünden **Ana ekrana ekle** yeterlidir.
+Telefonun ana ekranına eklemek için tarayıcı menüsünden **Ana ekrana ekle** yeterlidir; uygulama simgesi (AS) ve tam ekran açılış için gerekli manifest hazırdır. Bunu gerçek telefonda ben deneyemedim, sonucu bana bildirin.
 
 ## 8. Yedekleme
 
