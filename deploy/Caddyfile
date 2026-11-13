@@ -1,0 +1,7 @@
+# HTTPS sertifikasını Caddy otomatik alır ve yeniler. DOMAIN, .env dosyasından gelir.
+{$DOMAIN} {
+	encode gzip
+	@root path /
+	redir @root /app/ 302
+	reverse_proxy api:8000
+}
