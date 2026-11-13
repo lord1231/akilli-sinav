@@ -20,6 +20,9 @@ class Settings(BaseSettings):
     SMTP_PASSWORD: str = ""
     SMTP_FROM_EMAIL: str = ""
     SMTP_USE_TLS: bool = True
+    AUTO_IMPORT_CURRICULUM: bool = True
+    EXAM_SWEEP_INTERVAL_SECONDS: float = 60  # 0 = kapalı; süresi dolan sınavları sunucu kendisi sonuçlandırır
+    REUSE_REVIEWED_QUESTIONS: bool = False  # true: onaylı soru havuzundan, öğrencinin görmediği 25 soru varsa Gemini çağrılmaz
 
     @model_validator(mode="after")
     def validate_production_security(self):

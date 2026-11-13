@@ -3,12 +3,12 @@ from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field, field_validator
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_user
 from app.db.session import get_db
-from app.models import LearningOutcome, Subject, Unit, User
+from app.models import LearningOutcome, Question, Subject, Unit, User
 from app.services.audit import record_admin_action
 
 router = APIRouter(prefix="/api/curriculum", tags=["MEB Müfredatı"])
@@ -89,6 +89,21 @@ def list_subjects(grade: int | None = None, db: Session = Depends(get_db)):
     return [{"id": str(x.id), "grade_level": x.grade_level, "name": x.name,
              "curriculum_version": x.curriculum_version}
             for x in db.scalars(query.order_by(Subject.grade_level, Subject.name, Subject.curriculum_version)).all()]
+
+
+@router.get("/status")
+def curriculum_status(db: Session = Depends(get_db)):
+    subjects = db.scalar(select(func.count(Subject.id)).where(Subject.is_active.is_(True))) or 0
+    units = db.scalar(select(func.count(Unit.id))) or 0
+    outcomes = db.scalar(select(func.count(LearningOutcome.id))) or 0
+    questions = db.scalar(select(func.count(Question.id))) or 0
+    reviewed = db.scalar(select(func.count(Question.id)).where(Question.is_reviewed.is_(True))) or 0
+    by_grade = {str(g): n for g, n in db.execute(
+        select(Subject.grade_level, func.count(Subject.id)).where(Subject.is_active.is_(True))
+        .group_by(Subject.grade_level).order_by(Subject.grade_level))}
+    return {"subjects": subjects, "units": units, "outcomes": outcomes,
+            "subjects_by_grade": by_grade, "questions": questions, "reviewed_questions": reviewed,
+            "empty": subjects == 0 or outcomes == 0}
 
 
 @router.get("/subjects/{subject_id}/units")

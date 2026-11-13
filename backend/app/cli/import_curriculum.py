@@ -9,9 +9,9 @@ from app.db.session import SessionLocal
 from app.models import LearningOutcome, Subject, Unit
 
 
-def import_file(file_path: str | Path) -> tuple[int, int]:
+def import_file(file_path: str | Path, session_factory=None) -> tuple[int, int]:
     payload = CurriculumImport.model_validate_json(Path(file_path).read_text(encoding="utf-8"))
-    db = SessionLocal()
+    db = (session_factory or SessionLocal)()
     units_added = 0
     outcomes_added = 0
     try:

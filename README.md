@@ -14,7 +14,7 @@ MEB müfredatına dayalı, Gemini API destekli ve mobil uyumlu sınav platformu.
 2. Gerçek ortamda `APP_ENV=production`, `APP_DEBUG=false`, güçlü `SECRET_KEY`, veritabanı parolası, `GEMINI_API_KEY`, HTTPS `APP_BASE_URL` ve SMTP bilgilerini tanımlayın. Yerel geliştirmede `APP_ENV=development` kullanın.
 3. `docker compose up --build` ile başlatın.
 4. Geliştirme ortamında API belgeleri `/docs` adresindedir; üretimde Swagger/OpenAPI kapalıdır. Web arayüzü `/app/`, sağlık kontrolü `/health`, veritabanı kontrolü `/health/ready` adresindedir.
-5. Tüm resmî müfredat dosyalarını tek komutla içe aktarın: `docker compose exec api python -m app.cli.import_all_curriculum`.
+5. Müfredat (ders/ünite/kazanım) `data/curriculum/*.json` dosyalarından API açılırken **otomatik** yüklenir; yalnızca veritabanında eksik olan dersler eklenir, yöneticinin düzenlemelerinin üzerine yazılmaz. Durumu `GET /api/curriculum/status` ile görebilirsiniz. Otomatik yüklemeyi kapatmak için `AUTO_IMPORT_CURRICULUM=false` kullanın; elle yüklemek için: `docker compose exec api python -m app.cli.import_all_curriculum`.
 6. İlk yönetici hesabını oluşturmak için `.env` içinde `ADMIN_EMAIL`, en az 14 karakterli `ADMIN_PASSWORD` ve `ADMIN_FULL_NAME` belirleyin; ardından `docker compose exec api python -m app.cli.create_admin` komutunu bir kez çalıştırın.
 
 ## Uygulanan API
@@ -48,3 +48,19 @@ Mobil uyumlu web arayüzü, veli/öğrenci/yönetici ekranları, sınav akışı
 ## Canlıya geçiş
 
 Canlı sunucuya dağıtım öncesi zorunlu yapılandırma, HTTPS, SMTP, yedekleme ve KVKK kontrolleri için [`docs/production-deployment.md`](docs/production-deployment.md) listesini izleyin. Uygulama henüz canlıya dağıtılmamıştır.
+
+## Testler
+
+```bash
+# Backend (SQLite ile hızlı; PostgreSQL için DATABASE_URL=postgresql+psycopg://... verin)
+cd backend && alembic upgrade head && pytest -q
+
+# Ön yüz (jsdom ile gerçek DOM testleri)
+cd frontend && npm ci && npm test
+```
+
+CI üç iş çalıştırır: SQLite backend testleri + Docker build, **PostgreSQL 16** üzerinde migration/`alembic check`/testler ve ön yüz DOM testleri.
+Süresi dolan sınavlar (öğrenci uygulamayı kapatsa bile) 60 sn toleranstan sonra sunucuda otomatik sonuçlandırılır ve veliye bildirilir.
+
+## Canlıya alma
+Adım adım kurulum, Gemini/SMTP/HTTPS ayarı, yedekleme ve kontrol listesi: [docs/CANLIYA_ALMA_REHBERI.md](docs/CANLIYA_ALMA_REHBERI.md). Kurulumun hazır olup olmadığını `python -m app.cli.doctor` gösterir.
