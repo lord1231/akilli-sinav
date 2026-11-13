@@ -83,6 +83,40 @@ def test_seed_repairs_subject_that_has_no_units(factory):
         subject = db.scalar(select(Subject).where(Subject.name == exp["name"], Subject.grade_level == 5))
         assert db.scalar(select(func.count(Unit.id)).where(Unit.subject_id == subject.id)) == exp["units"]
 
+def test_seed_repairs_partial_subject_without_overwriting_existing_outcomes(factory):
+    path = CURRICULUM_DIR / "5-turkce-tymm-2024.json"
+    exp = expected(path)
+    with factory() as db:
+        subject = db.scalar(select(Subject).where(
+            Subject.grade_level == exp["grade"], Subject.name == exp["name"],
+            Subject.curriculum_version == exp["version"]))
+    seed_missing_curriculum(CURRICULUM_DIR, session_factory=factory)
+    with factory() as db:
+        subject = db.scalar(select(Subject).where(
+            Subject.grade_level == exp["grade"], Subject.name == exp["name"],
+            Subject.curriculum_version == exp["version"]))
+        first_unit = db.scalar(select(Unit).where(Unit.subject_id == subject.id).order_by(Unit.order_no))
+        deleted = db.scalar(select(LearningOutcome).where(LearningOutcome.unit_id == first_unit.id))
+        missing_code = deleted.code
+        db.delete(deleted)
+        preserved = db.scalars(select(LearningOutcome).where(LearningOutcome.unit_id == first_unit.id)).first()
+        preserved.description = "Yönetici tarafından korunması gereken özel açıklama."
+        preserved_id = preserved.id
+        db.commit()
+
+    result = seed_missing_curriculum(CURRICULUM_DIR, session_factory=factory)
+    assert result.errors == []
+    assert result.outcomes_added >= 1
+    with factory() as db:
+        subject = db.scalar(select(Subject).where(
+            Subject.grade_level == exp["grade"], Subject.name == exp["name"],
+            Subject.curriculum_version == exp["version"]))
+        total = db.scalar(select(func.count(LearningOutcome.id)).join(Unit).where(Unit.subject_id == subject.id))
+        assert total == exp["outcomes"]
+        restored = db.scalar(select(LearningOutcome).where(LearningOutcome.code == missing_code))
+        assert restored is not None
+        assert db.get(LearningOutcome, preserved_id).description == "Yönetici tarafından korunması gereken özel açıklama."
+
 
 def test_seed_reports_invalid_file_but_imports_the_rest(tmp_path, factory):
     (tmp_path / "bozuk.json").write_text("{ bu json degil", encoding="utf-8")
@@ -130,13 +164,14 @@ def test_application_startup_seeds_curriculum(monkeypatch, factory):
         assert db.scalar(select(func.count(Subject.id))) == len(FILES)
 
 
-def test_startup_survives_seed_failure(monkeypatch):
+def test_startup_fails_when_seed_fails(monkeypatch):
     def boom():
         raise RuntimeError("veritabanı hazır değil")
     monkeypatch.setattr(main_module, "seed_missing_curriculum", boom)
     monkeypatch.setattr(settings, "AUTO_IMPORT_CURRICULUM", True)
-    with TestClient(app) as c:
-        assert c.get("/health").json()["status"] == "ok"
+    with pytest.raises(RuntimeError, match="veritabanı hazır değil"):
+        with TestClient(app):
+            pass
 
 
 def test_startup_seed_can_be_disabled(monkeypatch):
