@@ -35,12 +35,12 @@ async def _sweep_loop(interval: float) -> None:
 @asynccontextmanager
 async def lifespan(_: FastAPI):
     if settings.AUTO_IMPORT_CURRICULUM:
-        try:
-            result = seed_missing_curriculum()
-            logger.info("Müfredat kontrolü: %d dosya, %d aktarıldı, %d atlandı, %d hata.",
-                        result.files, result.imported, result.skipped, len(result.errors))
-        except Exception:  # veritabanı hazır değilse API yine de açılsın
-            logger.exception("Müfredat otomatik yüklemesi başarısız oldu.")
+        result = seed_missing_curriculum()
+        logger.info("Müfredat kontrolü: %d dosya, %d aktarıldı, %d atlandı, %d hata.",
+                    result.files, result.imported, result.skipped, len(result.errors))
+        if result.errors:
+            details = "; ".join(result.errors[:5])
+            raise RuntimeError(f"Müfredat yüklemesi tamamlanamadı; API başlatılmadı: {details}")
     sweeper = None
     if settings.EXAM_SWEEP_INTERVAL_SECONDS > 0:
         sweeper = asyncio.create_task(_sweep_loop(settings.EXAM_SWEEP_INTERVAL_SECONDS))
@@ -102,9 +102,20 @@ def readiness_check() -> dict[str, str]:
     try:
         with engine.connect() as connection:
             connection.execute(text("SELECT 1"))
+            subjects = connection.execute(text(
+                "SELECT COUNT(*) FROM subjects WHERE is_active = TRUE"
+            )).scalar_one()
+            units = connection.execute(text("SELECT COUNT(*) FROM units")).scalar_one()
+            outcomes = connection.execute(text("SELECT COUNT(*) FROM learning_outcomes")).scalar_one()
     except SQLAlchemyError as exc:
-        raise HTTPException(status_code=503, detail="Veritabanına erişilemiyor.") from exc
-    return {"status": "ready", "database": "connected"}
+        raise HTTPException(status_code=503, detail="Veritabanı veya müfredat tablolarına erişilemiyor.") from exc
+    if not subjects or not units or not outcomes:
+        raise HTTPException(status_code=503, detail={
+            "status": "not_ready", "database": "connected",
+            "curriculum": {"subjects": subjects, "units": units, "outcomes": outcomes},
+        })
+    return {"status": "ready", "database": "connected",
+            "curriculum": {"subjects": subjects, "units": units, "outcomes": outcomes}}
 
 
 @app.get("/", tags=["Sistem"])
