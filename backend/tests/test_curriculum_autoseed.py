@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 import pytest
+from fastapi import HTTPException
 from fastapi.testclient import TestClient
 from sqlalchemy import func, select
 
@@ -153,6 +154,70 @@ def test_status_endpoint_reports_empty_then_populated(client, factory):
     assert full["subjects"] == len(FILES)
     assert full["outcomes"] == sum(expected(p)["outcomes"] for p in FILES)
     assert set(full["subjects_by_grade"]) == {"4", "5"}
+
+def test_readiness_rejects_database_without_curriculum(monkeypatch):
+    class Result:
+        def __init__(self, value):
+            self.value = value
+        def scalar_one(self):
+            return self.value
+
+    class Connection:
+        def __enter__(self):
+            return self
+        def __exit__(self, *args):
+            return False
+        def execute(self, statement):
+            query = str(statement)
+            if "subjects" in query:
+                return Result(0)
+            if "units" in query:
+                return Result(0)
+            if "learning_outcomes" in query:
+                return Result(0)
+            return Result(1)
+
+    class EmptyEngine:
+        def connect(self):
+            return Connection()
+
+    monkeypatch.setattr(main_module, "engine", EmptyEngine())
+    with pytest.raises(HTTPException) as error:
+        main_module.readiness_check()
+    assert error.value.status_code == 503
+    assert error.value.detail["curriculum"] == {"subjects": 0, "units": 0, "outcomes": 0}
+
+
+def test_readiness_accepts_populated_curriculum(monkeypatch):
+    class Result:
+        def __init__(self, value):
+            self.value = value
+        def scalar_one(self):
+            return self.value
+
+    class Connection:
+        def __enter__(self):
+            return self
+        def __exit__(self, *args):
+            return False
+        def execute(self, statement):
+            query = str(statement)
+            if "subjects" in query:
+                return Result(21)
+            if "units" in query:
+                return Result(120)
+            if "learning_outcomes" in query:
+                return Result(480)
+            return Result(1)
+
+    class ReadyEngine:
+        def connect(self):
+            return Connection()
+
+    monkeypatch.setattr(main_module, "engine", ReadyEngine())
+    result = main_module.readiness_check()
+    assert result["status"] == "ready"
+    assert result["curriculum"] == {"subjects": 21, "units": 120, "outcomes": 480}
 
 
 def test_application_startup_seeds_curriculum(monkeypatch, factory):
